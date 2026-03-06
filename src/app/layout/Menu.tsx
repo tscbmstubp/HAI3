@@ -2,7 +2,7 @@
  * Menu Component
  *
  * Side navigation menu displaying MFE extensions with presentation metadata.
- * Uses @hai3/uikit Sidebar components for proper styling and collapsible behavior.
+ * Uses local shadcn/ui Sidebar components for proper styling and collapsible behavior.
  */
 
 import React, { useState, useEffect, useCallback } from 'react';
@@ -25,7 +25,7 @@ import {
   SidebarMenuButton,
   SidebarMenuIcon,
   SidebarHeader,
-} from '@hai3/uikit';
+} from '@/app/components/ui/sidebar';
 import { Icon } from '@iconify/react';
 import { HAI3LogoIcon } from '@/app/icons/HAI3LogoIcon';
 import { HAI3LogoTextIcon } from '@/app/icons/HAI3LogoTextIcon';

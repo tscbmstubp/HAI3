@@ -16,8 +16,8 @@ export interface Hai3Config {
   hai3: true;
   /** Project layer (SDK architecture tier) */
   layer?: LayerType;
-  /** UI Kit selection: 'none' means no UIKit, any other string is the UIKit identifier */
-  uikit?: string;
+  /** UI components: 'shadcn' for shadcn/ui, 'none' for no UI components */
+  uikit?: 'shadcn' | 'none';
 }
 
 /**

@@ -11,8 +11,8 @@ FORBIDDEN: Creating screenset manually or by copying peers.
 1) Check prerequisites above.
 2) Read .ai/targets/SCREENSETS.md and .ai/targets/EVENTS.md before starting.
 3) Gather requirements from user (including UI sections).
-4) Create OpenSpec proposal via `.claude/commands/openspec-proposal.md` (REQUIRED).
-5) After approval, implement via `.claude/commands/openspec-apply.md` (REQUIRED).
+4) Create OpenSpec proposal via `/opsx:new` skill (REQUIRED).
+5) After approval, implement via `/opsx:apply` skill (REQUIRED).
 
 ## GATHER REQUIREMENTS
 Ask user for:
@@ -22,7 +22,7 @@ Ask user for:
 - UI sections per screen (e.g., "stats cards, charts, activity feed").
 
 ## STEP 1: Create OpenSpec Proposal (REQUIRED)
-Execute openspec:proposal command (see `.claude/commands/openspec-proposal.md`).
+Execute `/opsx:new` skill to create a new change.
 Proposal name: `add-{screenset-name}`
 
 ### proposal.md content
@@ -38,11 +38,11 @@ Add new {category} screenset "{screensetName}" with {screens} screen(s).
 - Initial screens: {screens}
 
 ## Component Plan
-- REQUIRED: Use @hai3/uikit components first; local uikit only if missing.
-- uikit/base/: rare primitives (inline styles allowed, needs justification)
-- uikit/composite/: screenset composites (theme tokens only)
-- components/: multi-screen components
-- screens/{screen}/components/: screen-specific components
+- REQUIRED: Use local shadcn/ui components from src/app/components/ui/ first.
+- src/mfe_packages/{name}-mfe/src/components/: MFE-specific components
+- src/mfe_packages/{name}-mfe/src/screens/{screen}/components/: screen-specific components
+
+
 
 ## Data Flow
 - Events: {domain events per EVENTS.md}
@@ -53,7 +53,7 @@ Add new {category} screenset "{screensetName}" with {screens} screen(s).
 ### tasks.md minimum required tasks
 NOTE: Proposal may include additional tasks, but MUST include these:
 ```
-- [ ] Create screenset: `hai3 screenset create {name} --category={category}`
+- [ ] Create screenset: `hai3 screenset create {name}`
 - [ ] Create components per Component Plan (BEFORE screen file)
 - [ ] Implement data flow per EVENTS.md (actions emit events, effects update slices)
 - [ ] Add API service with mocks
@@ -63,11 +63,11 @@ NOTE: Proposal may include additional tasks, but MUST include these:
 
 ## STEP 2: Wait for Approval
 Tell user: "Review proposal at `openspec/changes/add-{screenset-name}/`."
-Tell user: "Execute openspec:apply command to implement."
+Tell user: "Run `/opsx:apply` to implement."
 
 ## STEP 3: Implementation (via openspec:apply)
 BEFORE executing openspec:apply, verify tasks.md contains all minimum required tasks above.
-Execute openspec:apply command (see `.claude/commands/openspec-apply.md`).
+Execute `/opsx:apply` skill.
 Follow tasks.md strictly:
 1) Create screenset via `hai3 screenset create` (REQUIRED).
 2) Create components BEFORE screen file per Component Plan.

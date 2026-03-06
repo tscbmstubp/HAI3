@@ -58,8 +58,8 @@ interface Manifest {
     description: string;
     files: string[];
     directories: string[];
-    screensets: string[];
-    screensetTemplate: string;
+    screensets?: string[];
+    screensetTemplate?: string;
   };
   ai_overrides: {
     source: string;
@@ -489,7 +489,7 @@ For detailed guidance, use these resources:
 2. **REQUIRED**: Event-driven architecture only (dispatch events, handle in actions)
 3. **FORBIDDEN**: Direct slice dispatch from UI components
 4. **FORBIDDEN**: Hardcoded colors or inline styles
-5. **REQUIRED**: Use \`@hai3/uikit\` components for all UI
+5. **REQUIRED**: Use local shadcn/ui components for all UI
 6. **REQUIRED**: Run \`npm run arch:check\` before committing
 
 ## Available Commands
@@ -695,13 +695,7 @@ async function copyTemplates() {
     const dest = path.join(TEMPLATES_DIR, dir);
 
     if (await fs.pathExists(src)) {
-      await fs.copy(src, dest, {
-        filter: (srcPath: string) => {
-          // Exclude generated files (they exist in standalone projects, not in templates)
-          if (srcPath.endsWith('tailwindColors.ts')) return false;
-          return true;
-        },
-      });
+      await fs.copy(src, dest);
       const fileCount = await countFiles(dest);
       console.log(`  ✓ ${dir}/ (${fileCount} files)`);
     } else {
@@ -717,34 +711,47 @@ async function copyTemplates() {
     console.log('  ✓ src/app/mfe/bootstrap.ts (standalone template)');
   }
 
-  // Copy screensets from manifest
-  for (const screenset of manifest.root.screensets) {
-    const src = path.join(PROJECT_ROOT, 'src/screensets', screenset);
-    const dest = path.join(TEMPLATES_DIR, 'src/screensets', screenset);
-
-    if (await fs.pathExists(src)) {
-      await fs.copy(src, dest);
-      const fileCount = await countFiles(dest);
-      console.log(`  ✓ src/screensets/${screenset}/ (${fileCount} files)`);
-    } else {
-      console.log(`  ⚠ src/screensets/${screenset}/ (not found, skipping)`);
-    }
+  // Also copy the demo bootstrap variant for shadcn projects
+  const demoBooststrapSrc = path.join(CLI_ROOT, 'template-sources', 'standalone-mfe-bootstrap-with-demo.ts');
+  const demoBootstrapDest = path.join(TEMPLATES_DIR, 'src/app/mfe/bootstrap.demo.ts');
+  if (await fs.pathExists(demoBooststrapSrc)) {
+    await fs.copy(demoBooststrapSrc, demoBootstrapDest);
+    console.log('  ✓ src/app/mfe/bootstrap.demo.ts (demo bootstrap template)');
   }
 
-  // Copy screenset template from manifest
-  const templateSrc = path.join(PROJECT_ROOT, 'src/screensets', manifest.root.screensetTemplate);
-  const templateDest = path.join(TEMPLATES_DIR, 'screenset-template');
-  if (await fs.pathExists(templateSrc)) {
-    await fs.copy(templateSrc, templateDest);
-    const fileCount = await countFiles(templateDest);
-    console.log(`  ✓ screenset-template/ (${fileCount} files)`);
+  // Copy MFE template from _blank-mfe (source only, no dist/ or node_modules/)
+  const mfeTemplateSrc = path.join(PROJECT_ROOT, 'src/mfe_packages/_blank-mfe');
+  const mfeTemplateDest = path.join(TEMPLATES_DIR, 'mfe-template');
+  if (await fs.pathExists(mfeTemplateSrc)) {
+    await fs.copy(mfeTemplateSrc, mfeTemplateDest, {
+      filter: (srcPath: string) => {
+        const rel = path.relative(mfeTemplateSrc, srcPath);
+        if (rel.startsWith('dist') || rel.startsWith('node_modules')) return false;
+        return true;
+      },
+    });
+    const fileCount = await countFiles(mfeTemplateDest);
+    console.log(`  ✓ mfe-template/ (${fileCount} files from _blank-mfe)`);
+  } else {
+    console.log('  ⚠ mfe-template/ (src/mfe_packages/_blank-mfe not found, skipping)');
+  }
+
+  // Copy MFE shared utilities
+  const mfeSharedSrc = path.join(PROJECT_ROOT, 'src/mfe_packages/shared');
+  const mfeSharedDest = path.join(TEMPLATES_DIR, 'mfe-shared');
+  if (await fs.pathExists(mfeSharedSrc)) {
+    await fs.copy(mfeSharedSrc, mfeSharedDest);
+    const fileCount = await countFiles(mfeSharedDest);
+    console.log(`  ✓ mfe-shared/ (${fileCount} files from mfe_packages/shared)`);
+  } else {
+    console.log('  ⚠ mfe-shared/ (src/mfe_packages/shared not found, skipping)');
   }
 
   // Copy layout templates from monorepo source (single source of truth)
   // Source: /src/app/layout/ (monorepo's canonical layout files)
-  // Destination: templates/layout/hai3-uikit/ (CLI template with subdirectory structure)
+  // Destination: templates/layout/shadcn/ (CLI template with subdirectory structure)
   const layoutSrc = path.join(PROJECT_ROOT, 'src/app/layout');
-  const layoutDest = path.join(TEMPLATES_DIR, 'layout', 'hai3-uikit');
+  const layoutDest = path.join(TEMPLATES_DIR, 'layout', 'shadcn');
   if (await fs.pathExists(layoutSrc)) {
     await fs.copy(layoutSrc, layoutDest);
     const fileCount = await countFiles(layoutDest);
@@ -876,7 +883,6 @@ async function copyTemplates() {
       source: 'project root',
       rootFiles: manifest.root.files,
       directories: manifest.root.directories,
-      screensets: manifest.root.screensets,
     },
     stage1c: {
       source: 'root .ai/ (marker-based)',
@@ -907,7 +913,8 @@ async function copyTemplates() {
         app: 'GUIDELINES.md',
       },
     },
-    screensetTemplate: 'screenset-template',
+    mfeTemplate: 'mfe-template',
+    mfeShared: 'mfe-shared',
     generatedAt: new Date().toISOString(),
   };
   await fs.writeJson(path.join(TEMPLATES_DIR, 'manifest.json'), outputManifest, {

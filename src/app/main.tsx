@@ -2,9 +2,9 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { HAI3Provider, apiRegistry, createHAI3App, MfeHandlerMF, gtsPlugin } from '@hai3/react';
-import { Toaster } from '@hai3/uikit';
+import { Toaster } from '@/app/components/ui/sonner';
 import { AccountsApiService } from '@/app/api';
-import '@hai3/uikit/styles'; // UI Kit styles
+import './globals.css'; // Global styles with CSS variables
 import '@/app/events/bootstrapEvents'; // Register app-level events (type augmentation)
 import { registerBootstrapEffects } from '@/app/effects/bootstrapEffects'; // Register app-level effects
 import App from './App';

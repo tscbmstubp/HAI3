@@ -12,15 +12,15 @@ project:
   contents:
     - configs/             # ESLint, depcruise, pre-commit configs (flattened to root)
     - eslint-plugin-local/ # Local ESLint plugin with HAI3 rules
-    - scripts/             # Utility scripts (generate-colors, test-architecture)
+    - scripts/             # Utility scripts (test-architecture, check-mcp)
     - .npmrc               # NPM configuration
     - .nvmrc               # Node version
     - README.md            # Project README template
 
-# Stage 1a: Layout scaffold templates (HAI3 UIKit)
+# Stage 1a: Layout scaffold templates (shadcn)
 layout:
   source: ../../src/app/layout/
-  description: "Layout component templates using @hai3/uikit (from monorepo source)"
+  description: "Layout component templates using shadcn/ui (from monorepo source)"
   destination: src/app/layout/
   files:
     - Layout.tsx
@@ -44,25 +44,25 @@ root:
     - vite.config.ts
     - .gitignore
     - src/vite-env.d.ts
+    - src/app/globals.css
     - src/app/main.tsx
-    - src/app/main.no-uikit.tsx
+    - src/app/main.no-ui.tsx
     - src/app/App.tsx
     - src/app/App.no-studio.tsx
-    - src/app/App.no-uikit.tsx
-    - src/app/App.no-uikit.no-studio.tsx
+    - src/app/App.no-ui.tsx
+    - src/app/App.no-ui.no-studio.tsx
   directories:
-    - src/app/themes      # Theme definitions
-    - src/app/uikit       # UI kit registry
     - src/app/icons       # Icon definitions
     - src/app/api         # API services (AccountsApiService)
-    - src/app/components  # Reusable components (TextLoader)
+    - src/app/components  # Reusable components and shadcn/ui
+    - src/app/lib         # Utility functions (cn)
     - src/app/mfe         # MFE screen container and bootstrap
     - src/app/actions     # Bootstrap actions
     - src/app/effects     # Bootstrap effects
     - src/app/events      # Bootstrap events
-  screensets:
-    - demo            # Default screenset for new projects
-  screensetTemplate: _blank  # Template for hai3 screenset create
+    - src/app/themes      # Theme definitions (default, dark, light)
+  # MFE template is sourced from src/mfe_packages/_blank-mfe/ (see copy-templates.ts)
+  # mfeTemplate: _blank-mfe
 
 # Stage 1c: AI documentation overrides
 ai_overrides:

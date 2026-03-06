@@ -58,7 +58,7 @@ export async function copyLayoutTemplates(
 ): Promise<GeneratedFile[]> {
   const { projectRoot, force = false } = input;
   const templatesDir = getTemplatesDir();
-  const templatePath = path.join(templatesDir, 'layout', 'hai3-uikit');
+  const templatePath = path.join(templatesDir, 'layout', 'shadcn');
 
   // Check template exists
   if (!(await fs.pathExists(templatePath))) {

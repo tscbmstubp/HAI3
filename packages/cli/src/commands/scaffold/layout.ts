@@ -58,7 +58,7 @@ export const scaffoldLayoutCommand: CommandDefinition<
     const { logger, projectRoot } = ctx;
     const force = args.force ?? false;
 
-    logger.info('Scaffolding HAI3 UIKit layout components...');
+    logger.info('Scaffolding layout components...');
     logger.newline();
 
     // Generate files from template
@@ -78,8 +78,7 @@ export const scaffoldLayoutCommand: CommandDefinition<
     }
     logger.newline();
 
-    logger.info('Note: Make sure @hai3/uikit is installed:');
-    logger.log('  npm install @hai3/uikit');
+    logger.info('Note: Make sure shadcn/ui components are set up in src/app/components/ui/');
     logger.newline();
 
     const layoutPath = path.join(projectRoot!, 'src', 'app', 'layout');

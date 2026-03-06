@@ -19,6 +19,7 @@ import {
   aiSyncCommand,
   updateLayoutCommand,
   migrateCommand,
+  screensetCreateCommand,
 } from './commands/index.js';
 
 // CLI version
@@ -32,6 +33,7 @@ registry.register(scaffoldLayoutCommand);
 registry.register(aiSyncCommand);
 registry.register(updateLayoutCommand);
 registry.register(migrateCommand);
+registry.register(screensetCreateCommand);
 
 // Create Commander program
 const program = new Command();
@@ -50,7 +52,7 @@ program
   .description('Create a new HAI3 project or layer package')
   .option('--studio', 'Include Studio package')
   .option('--no-studio', 'Exclude Studio package')
-  .option('--uikit <type>', "UI kit to use ('hai3' for @hai3/uikit, 'none' for no UI kit)")
+  .option('--uikit <type>', "UI components ('shadcn' for shadcn/ui, 'none' for no UI components)")
   .option('-l, --layer <type>', 'Create a package for a specific SDK layer (sdk, framework, react)')
   .option('--local', 'Use local @hai3 packages from monorepo (file:) instead of npm')
   .action(async (projectName: string, options: Record<string, unknown>) => {
@@ -59,7 +61,7 @@ program
       {
         projectName,
         studio: options.studio as boolean | undefined,
-        uikit: options.uikit as 'hai3' | 'none' | undefined,
+        uikit: options.uikit as 'shadcn' | 'none' | undefined,
         layer: options.layer as 'sdk' | 'framework' | 'react' | 'app' | undefined,
         local: options.local as boolean | undefined,
       },
@@ -188,6 +190,31 @@ aiCmd
         tool: options.tool as 'claude' | 'copilot' | 'cursor' | 'windsurf' | 'all',
         detectPackages: options.detectPackages as boolean,
         diff: options.diff as boolean,
+      },
+      { interactive: true }
+    );
+
+    if (!result.success) {
+      process.exit(1);
+    }
+  });
+
+// hai3 screenset subcommand
+const screensetCmd = program
+  .command('screenset')
+  .description('Screenset management commands');
+
+// hai3 screenset create <name>
+screensetCmd
+  .command('create <name>')
+  .description('Create a new MFE screenset package')
+  .option('-p, --port <number>', 'MFE dev server port (auto-assigned if omitted)', parseInt)
+  .action(async (name: string, options: Record<string, unknown>) => {
+    const result = await executeCommand(
+      screensetCreateCommand,
+      {
+        name,
+        port: options.port as number | undefined,
       },
       { interactive: true }
     );

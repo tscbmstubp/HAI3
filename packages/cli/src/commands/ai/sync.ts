@@ -192,7 +192,7 @@ For detailed guidance, use these resources:
 2. **REQUIRED**: Event-driven architecture only (dispatch events, handle in actions)
 3. **FORBIDDEN**: Direct slice dispatch from UI components
 4. **FORBIDDEN**: Hardcoded colors or inline styles
-5. **REQUIRED**: Use \`@hai3/uikit\` components for all UI
+5. **REQUIRED**: Use local shadcn/ui components for all UI
 6. **REQUIRED**: Run \`npm run arch:check\` before committing
 
 ## Available Commands

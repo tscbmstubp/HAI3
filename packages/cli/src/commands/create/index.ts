@@ -16,7 +16,7 @@ import { aiSyncCommand } from '../ai/sync.js';
 export interface CreateCommandArgs {
   projectName: string;
   studio?: boolean;
-  uikit?: 'hai3' | 'none';
+  uikit?: 'shadcn' | 'none';
   layer?: LayerType;
   /** Use local monorepo packages (file:) instead of npm registry */
   local?: boolean;
@@ -56,7 +56,7 @@ export const createCommand: CommandDefinition<
       name: 'uikit',
       description: 'UI Kit selection',
       type: 'string',
-      choices: ['hai3', 'none'],
+      choices: ['shadcn', 'none'],
     },
     {
       name: 'layer',
@@ -201,19 +201,19 @@ export const createCommand: CommandDefinition<
       promptQuestions.push({
         name: 'uikit',
         type: 'list' as const,
-        message: 'Select UI kit:',
+        message: 'Select UI components:',
         choices: [
-          { name: 'HAI3 UIKit (@hai3/uikit)', value: 'hai3' },
+          { name: 'shadcn/ui (locally-owned components)', value: 'shadcn' },
           { name: 'None (implement your own)', value: 'none' },
         ],
-        default: 'hai3',
+        default: 'shadcn',
       });
     }
 
     if (promptQuestions.length > 0) {
       const answers = await prompt<{
         studio?: boolean;
-        uikit?: 'hai3' | 'none';
+        uikit?: 'shadcn' | 'none';
       }>(promptQuestions);
 
       if (studio === undefined) {
@@ -246,7 +246,7 @@ export const createCommand: CommandDefinition<
     const files = await generateProject({
       projectName: args.projectName,
       studio: studio!,
-      uikit: uikit || 'hai3',
+      uikit: uikit || 'shadcn',
       layer,
       useLocalPackages: Boolean(monorepoRoot),
       monorepoRoot: monorepoRoot ?? undefined,
@@ -260,7 +260,7 @@ export const createCommand: CommandDefinition<
     // Display message if demo screenset was excluded
     if (uikit === 'none') {
       logger.newline();
-      logger.warn('Demo screenset excluded (requires @hai3/uikit).');
+      logger.warn('Demo screenset excluded (no UI components).');
       logger.log('Create your own screenset with `hai3 screenset create`.');
     }
 

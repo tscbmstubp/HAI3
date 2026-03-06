@@ -4,6 +4,7 @@ import type { GeneratedFile, Hai3Config, LayerType } from '../core/types.js';
 import { getTemplatesDir } from '../core/templates.js';
 import { isTargetApplicableToLayer, selectCommandVariant } from '../core/layers.js';
 import { getLocalPackageRef } from '../utils/project.js';
+import { applyMfeReplacements, applyMfeFileRename } from './screenset.js';
 
 /**
  * Input for project generation
@@ -13,8 +14,8 @@ export interface ProjectGeneratorInput {
   projectName: string;
   /** Include studio */
   studio: boolean;
-  /** UIKit option: 'hai3' (default) or 'none' */
-  uikit?: 'hai3' | 'none';
+  /** UI components: 'shadcn' (default) or 'none' */
+  uikit?: 'shadcn' | 'none';
   /** Project layer (SDK architecture tier) */
   layer?: LayerType;
   /** Use local monorepo packages via file: (for linked CLI development) */
@@ -65,7 +66,7 @@ export async function generateProject(
   const {
     projectName,
     studio,
-    uikit = 'hai3',
+    uikit = 'shadcn',
     layer = 'app',
     useLocalPackages = false,
     monorepoRoot,
@@ -87,13 +88,12 @@ export async function generateProject(
   // Extract paths from new 3-stage manifest structure
   const rootFiles = manifest.stage1b?.rootFiles || manifest.rootFiles || [];
   const directories = manifest.stage1b?.directories || manifest.directories || [];
-  const screensets = manifest.stage1b?.screensets || manifest.screensets || [];
 
   // 2. Copy root template files
   for (const file of rootFiles) {
     // Special handling for main.tsx - select template variant based on uikit flag
     if (file === 'src/app/main.tsx') {
-      const templateName = uikit === 'hai3' ? 'src/app/main.tsx' : 'src/app/main.no-uikit.tsx';
+      const templateName = uikit === 'shadcn' ? 'src/app/main.tsx' : 'src/app/main.no-ui.tsx';
       const templatePath = path.join(templatesDir, templateName);
       const content = await fs.readFile(templatePath, 'utf-8');
       files.push({ path: 'src/app/main.tsx', content });
@@ -103,10 +103,10 @@ export async function generateProject(
     // Special handling for App.tsx - select template variant based on uikit and studio flags
     if (file === 'src/app/App.tsx') {
       let templateName: string;
-      if (uikit === 'hai3') {
+      if (uikit === 'shadcn') {
         templateName = studio ? 'src/app/App.tsx' : 'src/app/App.no-studio.tsx';
       } else {
-        templateName = studio ? 'src/app/App.no-uikit.tsx' : 'src/app/App.no-uikit.no-studio.tsx';
+        templateName = studio ? 'src/app/App.no-ui.tsx' : 'src/app/App.no-ui.no-studio.tsx';
       }
       const templatePath = path.join(templatesDir, templateName);
       const content = await fs.readFile(templatePath, 'utf-8');
@@ -116,23 +116,24 @@ export async function generateProject(
 
     // Skip template variant files - they're handled by the special cases above
     const variantFiles = [
-      'src/app/main.no-uikit.tsx',
+      'src/app/main.no-ui.tsx',
       'src/app/App.no-studio.tsx',
-      'src/app/App.no-uikit.tsx',
-      'src/app/App.no-uikit.no-studio.tsx',
+      'src/app/App.no-ui.tsx',
+      'src/app/App.no-ui.no-studio.tsx',
     ];
     if (variantFiles.includes(file)) {
       continue;
     }
 
-    // Skip UIKit-dependent config files when uikit === 'none'
-    // These files have CSS variable references that only work with @hai3/uikit
+    // Skip UI-dependent config files when uikit === 'none'
     if (uikit === 'none') {
-      const uikitDependentFiles = [
+      const uiDependentFiles = [
         'tailwind.config.ts',
         'postcss.config.js',
+        'components.json',
+        'src/app/globals.css',
       ];
-      if (uikitDependentFiles.includes(file)) {
+      if (uiDependentFiles.includes(file)) {
         continue;
       }
     }
@@ -144,16 +145,15 @@ export async function generateProject(
     }
   }
 
-  // 3. Copy template directories (src/themes, src/uikit, src/icons)
+  // 3. Copy template directories (src/icons, src/components/ui, etc.)
   for (const dir of directories) {
-    // Skip themes directory when uikit === 'none' (themes depend on @hai3/uikit)
-    if (dir === 'src/app/themes' && uikit === 'none') {
+    // Skip uikit directory (deprecated — replaced by shadcn)
+    if (dir === 'src/app/uikit') {
       continue;
     }
 
-    // Skip components directory when uikit === 'none' (contains TextLoader.tsx which depends on @hai3/uikit)
-    // We'll handle individual file filtering below for more granular control
-    if (dir === 'src/app/components' && uikit === 'none') {
+    // Skip components and themes directories when uikit === 'none'
+    if ((dir === 'src/app/components' || dir === 'src/app/themes') && uikit === 'none') {
       continue;
     }
 
@@ -162,9 +162,9 @@ export async function generateProject(
     files.push(...dirFiles);
   }
 
-  // 3.0 Copy layout templates (HAI3 UIKit layout) - only if uikit === 'hai3'
-  if (uikit === 'hai3') {
-    const layoutDir = path.join(templatesDir, 'layout', 'hai3-uikit');
+  // 3.0 Copy layout templates (shadcn layout) - only if uikit === 'shadcn'
+  if (uikit === 'shadcn') {
+    const layoutDir = path.join(templatesDir, 'layout', 'shadcn');
     if (await fs.pathExists(layoutDir)) {
       const layoutFiles = await readDirRecursive(layoutDir, 'src/app/layout');
       files.push(...layoutFiles);
@@ -281,10 +281,8 @@ export async function generateProject(
   const scriptsDir = path.join(templatesDir, 'scripts');
   if (await fs.pathExists(scriptsDir)) {
     let scriptFiles = await readDirRecursive(scriptsDir, 'scripts');
-    // Filter out generate-colors.ts when uikit === 'none' (not needed without @hai3/uikit)
-    if (uikit === 'none') {
-      scriptFiles = scriptFiles.filter(f => !f.path.includes('generate-colors'));
-    }
+    // Always filter out generate-colors.ts (deprecated — shadcn uses CSS variables)
+    scriptFiles = scriptFiles.filter(f => !f.path.includes('generate-colors'));
     files.push(...scriptFiles);
   }
 
@@ -305,20 +303,45 @@ export async function generateProject(
     }
   }
 
-  // 4. Copy screensets from templates
-  // Skip demo screenset if uikit === 'none' (demo requires @hai3/uikit)
-  for (const screenset of screensets) {
-    // Skip demo screenset when UIKit is not included
-    if (screenset === 'demo' && uikit === 'none') {
-      continue;
+  // 3.5 For shadcn projects, override bootstrap.ts with the demo variant
+  if (uikit === 'shadcn') {
+    const demoBootstrapPath = path.join(templatesDir, 'src/app/mfe/bootstrap.demo.ts');
+    if (await fs.pathExists(demoBootstrapPath)) {
+      const content = await fs.readFile(demoBootstrapPath, 'utf-8');
+      // Override the bootstrap.ts that was added from the directories copy above
+      const existingIdx = files.findIndex((f) => f.path === 'src/app/mfe/bootstrap.ts');
+      if (existingIdx >= 0) {
+        files[existingIdx] = { path: 'src/app/mfe/bootstrap.ts', content };
+      } else {
+        files.push({ path: 'src/app/mfe/bootstrap.ts', content });
+      }
     }
+  }
 
-    const screensetPath = path.join(templatesDir, 'src/screensets', screenset);
-    const screensetFiles = await readDirRecursive(
-      screensetPath,
-      `src/screensets/${screenset}`
-    );
-    files.push(...screensetFiles);
+  // 4. Copy MFE packages into scaffolded project (shadcn only — no MFE without UI components)
+  if (uikit === 'shadcn') {
+    // 4a. Copy mfe-shared/ → src/mfe_packages/shared/
+    const mfeSharedDir = path.join(templatesDir, 'mfe-shared');
+    if (await fs.pathExists(mfeSharedDir)) {
+      const mfeSharedFiles = await readDirRecursive(mfeSharedDir, 'src/mfe_packages/shared');
+      files.push(...mfeSharedFiles);
+    }
+  }
+
+  // 4b. Copy mfe-template/ as demo-mfe (only for shadcn projects)
+  if (uikit === 'shadcn') {
+    const mfeTemplateDir = path.join(templatesDir, 'mfe-template');
+    if (await fs.pathExists(mfeTemplateDir)) {
+      const templateFiles = await readDirRecursive(mfeTemplateDir);
+      const demoFiles = templateFiles.map((file) => {
+        const parts = file.path.split(path.sep);
+        const renamedParts = parts.map((part) => applyMfeFileRename(part, 'demo'));
+        const renamedPath = renamedParts.join(path.sep);
+        const content = applyMfeReplacements(file.content, 'demo', 'Demo', 3001);
+        return { path: path.join('src/mfe_packages/demo-mfe', renamedPath), content };
+      });
+      files.push(...demoFiles);
+    }
   }
 
   // 5. Generate dynamic files (need project-specific values)
@@ -334,15 +357,49 @@ export async function generateProject(
     content: JSON.stringify(config, null, 2) + '\n',
   });
 
-  // 5.2 package.json
+  // 5.2 components.json (shadcn CLI config) - only for shadcn projects
+  if (uikit === 'shadcn') {
+    const componentsJson = {
+      $schema: 'https://ui.shadcn.com/schema.json',
+      style: 'new-york',
+      rsc: false,
+      tsx: true,
+      tailwind: {
+        config: 'tailwind.config.ts',
+        css: 'src/app/globals.css',
+        baseColor: 'neutral',
+        cssVariables: true,
+        prefix: '',
+      },
+      iconLibrary: 'lucide',
+      aliases: {
+        components: '@/app/components',
+        utils: '@/app/lib/utils',
+        ui: '@/app/components/ui',
+        lib: '@/app/lib',
+        hooks: '@/app/hooks',
+      },
+      registries: {},
+    };
+    files.push({
+      path: 'components.json',
+      content: JSON.stringify(componentsJson, null, 2) + '\n',
+    });
+  }
+
+  // 5.3 package.json
   // Use 'alpha' tag for @hai3 packages during alpha phase
   // This resolves to the latest alpha version from npm
-  // Only L3 packages allowed: @hai3/react (required), @hai3/uikit (conditional)
+  // Only L3 packages allowed: @hai3/react (required)
   const dependencies: Record<string, string> = {
     '@hai3/react': 'alpha',
     '@hookform/resolvers': '5.2.2',
     '@iconify/react': '5.0.2',
+    '@radix-ui/react-avatar': '1.1.10',
+    '@radix-ui/react-slot': '1.2.3',
     '@reduxjs/toolkit': '2.11.2',
+    'class-variance-authority': '0.7.1',
+    clsx: '2.1.1',
     'date-fns': '4.1.0',
     'input-otp': '1.4.2',
     lodash: '4.17.21',
@@ -352,6 +409,8 @@ export async function generateProject(
     'react-dom': '19.2.4',
     'react-hook-form': '7.68.0',
     'react-redux': '9.2.0',
+    sonner: '2.0.7',
+    'tailwind-merge': '3.3.0',
     'tailwindcss-animate': '1.0.7',
     zod: '4.0.0',
   };
@@ -384,10 +443,7 @@ export async function generateProject(
     devDependencies['@hai3/studio'] = 'alpha';
   }
 
-  // Conditionally add @hai3/uikit dependency
-  if (uikit === 'hai3') {
-    dependencies['@hai3/uikit'] = 'alpha';
-  }
+  // @hai3/uikit removed — shadcn components are locally owned
 
   // When using local packages (linked CLI), replace @hai3/* with file: refs
   if (useLocalPackages && monorepoRoot && projectPath) {
@@ -415,13 +471,12 @@ export async function generateProject(
     packageManager: 'npm@11.7.0',
     workspaces: ['eslint-plugin-local'],
     scripts: {
-      dev: uikit === 'hai3' ? 'npm run generate:colors && vite' : 'vite',
+      dev: 'vite',
       'check:mcp': 'npx tsx scripts/check-mcp.ts',
-      build: uikit === 'hai3' ? 'npm run generate:colors && vite build' : 'vite build',
+      build: 'vite build',
       preview: 'vite preview',
       lint: 'npm run build --workspace=eslint-plugin-local && eslint . --max-warnings 0',
-      'type-check': uikit === 'hai3' ? 'npm run generate:colors && tsc --noEmit' : 'tsc --noEmit',
-      ...(uikit === 'hai3' && { 'generate:colors': 'npx tsx scripts/generate-colors.ts' }),
+      'type-check': 'tsc --noEmit',
       'arch:check': 'npx tsx scripts/test-architecture.ts',
       'arch:deps':
         'npx dependency-cruiser src/ --config .dependency-cruiser.cjs --output-type err-long',

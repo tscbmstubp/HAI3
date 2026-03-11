@@ -4,6 +4,10 @@
  * Executes migrations in order, tracks applied migrations,
  * and handles dry-run mode.
  */
+// @cpt-FEATURE:cpt-hai3-algo-cli-tooling-resolve-pending-migrations:p2
+// @cpt-FEATURE:cpt-hai3-algo-cli-tooling-apply-migration:p2
+// @cpt-FEATURE:cpt-hai3-state-cli-tooling-migration-tracker:p2
+// @cpt-FEATURE:cpt-hai3-dod-cli-tooling-migrations:p2
 
 import path from 'path';
 import fs from 'fs-extra';
@@ -181,6 +185,7 @@ export async function previewMigration(
 /**
  * Apply a migration
  */
+// @cpt-begin:cpt-hai3-algo-cli-tooling-apply-migration:p2:inst-1
 export async function applyMigration(
   migration: Migration,
   options: MigrationOptions,
@@ -309,9 +314,12 @@ export async function applyMigration(
   };
 }
 
+// @cpt-end:cpt-hai3-algo-cli-tooling-apply-migration:p2:inst-1
+
 /**
  * Run migrations up to a target version
  */
+// @cpt-begin:cpt-hai3-algo-cli-tooling-resolve-pending-migrations:p2:inst-1
 export async function runMigrations(
   options: MigrationOptions,
   logger: MigrationLogger
@@ -370,6 +378,8 @@ export async function runMigrations(
 
   return results;
 }
+
+// @cpt-end:cpt-hai3-algo-cli-tooling-resolve-pending-migrations:p2:inst-1
 
 /**
  * Format a migration result for display

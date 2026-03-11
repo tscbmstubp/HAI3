@@ -8,6 +8,7 @@
  * @packageDocumentation
  * @internal
  */
+// @cpt-FEATURE:cpt-hai3-algo-screenset-registry-operation-serialization:p1
 
 /**
  * Operation serializer for per-entity concurrency control.
@@ -33,6 +34,7 @@ export class OperationSerializer {
    * @param operation - Operation function to execute
    * @returns Promise resolving to operation result
    */
+  // @cpt-begin:cpt-hai3-algo-screenset-registry-operation-serialization:p1:inst-1
   async serializeOperation<T>(
     entityId: string,
     operation: () => Promise<T>
@@ -59,6 +61,7 @@ export class OperationSerializer {
       }
     }
   }
+  // @cpt-end:cpt-hai3-algo-screenset-registry-operation-serialization:p1:inst-1
 
   /**
    * Clear all operation queues.

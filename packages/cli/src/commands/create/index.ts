@@ -1,3 +1,5 @@
+// @cpt-FEATURE:cpt-hai3-flow-cli-tooling-create-project:p1
+// @cpt-FEATURE:cpt-hai3-dod-cli-tooling-package:p1
 import fs from 'fs-extra';
 import path from 'path';
 import type { CommandDefinition } from '../../core/command.js';
@@ -29,6 +31,7 @@ export interface CreateCommandResult {
 /**
  * Create command implementation
  */
+// @cpt-begin:cpt-hai3-flow-cli-tooling-create-project:p1:inst-1
 export const createCommand: CommandDefinition<
   CreateCommandArgs,
   CreateCommandResult
@@ -63,6 +66,7 @@ export const createCommand: CommandDefinition<
     },
   ],
 
+  // @cpt-begin:cpt-hai3-algo-cli-tooling-validate-project-name:p1:inst-2
   validate(args, ctx) {
     // Validate project name
     if (!args.projectName) {
@@ -95,6 +99,7 @@ export const createCommand: CommandDefinition<
 
     return validationOk();
   },
+  // @cpt-end:cpt-hai3-algo-cli-tooling-validate-project-name:p1:inst-2
 
   async execute(args, ctx): Promise<CreateCommandResult> {
     const { logger, prompt } = ctx;
@@ -260,3 +265,4 @@ export const createCommand: CommandDefinition<
     };
   },
 };
+// @cpt-end:cpt-hai3-flow-cli-tooling-create-project:p1:inst-1

@@ -1,3 +1,9 @@
+// @cpt-FEATURE:cpt-hai3-dod-uikit-components-toast:p1
+// @cpt-FEATURE:cpt-hai3-flow-uikit-components-display-toast:p1
+// @cpt-FEATURE:cpt-hai3-flow-uikit-components-promise-toast:p1
+// @cpt-FEATURE:cpt-hai3-algo-uikit-components-toast-merge-defaults:p1
+// @cpt-FEATURE:cpt-hai3-state-uikit-components-toast-lifecycle:p1
+
 import { useMemo } from 'react';
 import { toast, type ExternalToast } from 'sonner';
 
@@ -47,6 +53,10 @@ interface UseToastReturn {
  *   error: "Failed to save"
  * });
  */
+// @cpt-begin:cpt-hai3-algo-uikit-components-toast-merge-defaults:p1:inst-1
+// @cpt-begin:cpt-hai3-flow-uikit-components-display-toast:p1:inst-1
+// @cpt-begin:cpt-hai3-flow-uikit-components-promise-toast:p1:inst-1
+// @cpt-begin:cpt-hai3-state-uikit-components-toast-lifecycle:p1:inst-1
 export function useToast(options: UseToastOptions = {}): UseToastReturn {
   const { defaultDuration, defaultPosition } = options;
 
@@ -85,5 +95,9 @@ export function useToast(options: UseToastOptions = {}): UseToastReturn {
     };
   }, [defaultDuration, defaultPosition]);
 }
+// @cpt-end:cpt-hai3-algo-uikit-components-toast-merge-defaults:p1:inst-1
+// @cpt-end:cpt-hai3-flow-uikit-components-display-toast:p1:inst-1
+// @cpt-end:cpt-hai3-flow-uikit-components-promise-toast:p1:inst-1
+// @cpt-end:cpt-hai3-state-uikit-components-toast-lifecycle:p1:inst-1
 
 export type { UseToastOptions, UseToastReturn, ToastOptions, ToastPromiseOptions, PromiseResult };

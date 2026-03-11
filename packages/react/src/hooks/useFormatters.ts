@@ -6,6 +6,8 @@
  *
  * React Layer: L3
  */
+// @cpt-FEATURE:cpt-hai3-flow-react-bindings-use-formatters:p1
+// @cpt-FEATURE:cpt-hai3-dod-react-bindings-formatters-hook:p1
 
 import { useMemo } from 'react';
 import {
@@ -41,6 +43,8 @@ import { useTranslation } from './useTranslation';
  * );
  * ```
  */
+// @cpt-begin:cpt-hai3-flow-react-bindings-use-formatters:p1:inst-1
+// @cpt-begin:cpt-hai3-dod-react-bindings-formatters-hook:p1:inst-1
 export function useFormatters(): UseFormattersReturn {
   // useTranslation() subscribes to language changes so this component re-renders
   // when language changes; formatters read i18nRegistry.getLanguage() at call time
@@ -65,3 +69,5 @@ export function useFormatters(): UseFormattersReturn {
     [language]
   );
 }
+// @cpt-end:cpt-hai3-flow-react-bindings-use-formatters:p1:inst-1
+// @cpt-end:cpt-hai3-dod-react-bindings-formatters-hook:p1:inst-1

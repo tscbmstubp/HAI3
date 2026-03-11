@@ -1,8 +1,8 @@
 # Feature: UIKit Components
 
-- [ ] `p1` - **ID**: `cpt-hai3-featstatus-uikit-components`
+- [x] `p1` - **ID**: `cpt-hai3-featstatus-uikit-components`
 
-- [ ] `p1` - `cpt-hai3-feature-uikit-components`
+- [x] `p1` - `cpt-hai3-feature-uikit-components`
 
 ## Table of Contents
 
@@ -59,89 +59,89 @@ Success criteria:
 
 ### Consume a Base Component
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-uikit-components-consume-base`
+- [x] `p1` - **ID**: `cpt-hai3-flow-uikit-components-consume-base`
 
 **Actors**: `cpt-hai3-actor-developer`
 
-1. [ ] `p1` - Developer imports the desired component by name from `@hai3/uikit` - `inst-import-component`
-2. [ ] `p1` - Developer passes props including an optional `ref` to the component - `inst-pass-props`
-3. [ ] `p1` - Component renders with Tailwind utility classes derived from the active CSS custom properties - `inst-render-output`
-4. [ ] `p1` - IF `ref` was provided, the underlying DOM element is bound to the caller's ref - `inst-ref-binding`
-5. [ ] `p1` - RETURN rendered React element - `inst-return-element`
+1. [x] `p1` - Developer imports the desired component by name from `@hai3/uikit` - `inst-import-component`
+2. [x] `p1` - Developer passes props including an optional `ref` to the component - `inst-pass-props`
+3. [x] `p1` - Component renders with Tailwind utility classes derived from the active CSS custom properties - `inst-render-output`
+4. [x] `p1` - IF `ref` was provided, the underlying DOM element is bound to the caller's ref - `inst-ref-binding`
+5. [x] `p1` - RETURN rendered React element - `inst-return-element`
 
 ### Consume a Composite Component
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-uikit-components-consume-composite`
+- [x] `p1` - **ID**: `cpt-hai3-flow-uikit-components-consume-composite`
 
 **Actors**: `cpt-hai3-actor-developer`
 
-1. [ ] `p1` - Developer imports a composite component (e.g., `Sidebar`, `DataTable`, `IconButton`, `ChatInput`) from `@hai3/uikit` - `inst-import-composite`
-2. [ ] `p1` - Developer provides domain-level props (e.g., `columns` and `data` for `DataTable`; `collapsed` for `Sidebar`) - `inst-provide-props`
-3. [ ] `p1` - Composite component composes one or more base primitives internally - `inst-internal-composition`
-4. [ ] `p1` - RETURN rendered composite element - `inst-return-composite`
+1. [x] `p1` - Developer imports a composite component (e.g., `Sidebar`, `DataTable`, `IconButton`, `ChatInput`) from `@hai3/uikit` - `inst-import-composite`
+2. [x] `p1` - Developer provides domain-level props (e.g., `columns` and `data` for `DataTable`; `collapsed` for `Sidebar`) - `inst-provide-props`
+3. [x] `p1` - Composite component composes one or more base primitives internally - `inst-internal-composition`
+4. [x] `p1` - RETURN rendered composite element - `inst-return-composite`
 
 ### Apply Theme to Document
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-uikit-components-apply-theme-document`
+- [x] `p1` - **ID**: `cpt-hai3-flow-uikit-components-apply-theme-document`
 
 **Actors**: `cpt-hai3-actor-developer`
 
-1. [ ] `p1` - Developer imports `applyTheme` and a `Theme`-shaped object from their application code - `inst-import-apply-theme`
-2. [ ] `p1` - Developer calls `applyTheme(theme, themeName)` during application bootstrap - `inst-call-apply-theme`
-3. [ ] `p1` - Algorithm: `cpt-hai3-algo-uikit-components-apply-theme-document` runs to set CSS variables on `document.documentElement` - `inst-algo-apply-theme-doc`
-4. [ ] `p1` - All UIKit components rendered in the document tree reflect the new token values - `inst-components-reflect-theme`
-5. [ ] `p2` - IF `themeName` ends with `-large`, root font size is set to 125% to enable proportional scaling across all rem-based dimensions - `inst-large-font-scale`
-6. [ ] `p1` - RETURN void - `inst-return-void`
+1. [x] `p1` - Developer imports `applyTheme` and a `Theme`-shaped object from their application code - `inst-import-apply-theme`
+2. [x] `p1` - Developer calls `applyTheme(theme, themeName)` during application bootstrap - `inst-call-apply-theme`
+3. [x] `p1` - Algorithm: `cpt-hai3-algo-uikit-components-apply-theme-document` runs to set CSS variables on `document.documentElement` - `inst-algo-apply-theme-doc`
+4. [x] `p1` - All UIKit components rendered in the document tree reflect the new token values - `inst-components-reflect-theme`
+5. [x] `p2` - IF `themeName` ends with `-large`, root font size is set to 125% to enable proportional scaling across all rem-based dimensions - `inst-large-font-scale`
+6. [x] `p1` - RETURN void - `inst-return-void`
 
 ### Apply Theme to Shadow DOM Root
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-uikit-components-apply-theme-shadow`
+- [x] `p1` - **ID**: `cpt-hai3-flow-uikit-components-apply-theme-shadow`
 
 **Actors**: `cpt-hai3-actor-developer`
 
-1. [ ] `p1` - Developer imports `applyThemeToShadowRoot` - `inst-import-shadow-fn`
-2. [ ] `p1` - Developer calls `applyThemeToShadowRoot(shadowRoot, theme, themeName)` when a Shadow DOM context is initialised - `inst-call-shadow-fn`
-3. [ ] `p1` - Algorithm: `cpt-hai3-algo-uikit-components-apply-theme-shadow` runs to inject a `<style>` element with `:host { … }` CSS variable declarations into the shadow root - `inst-algo-apply-theme-shadow`
-4. [ ] `p1` - IF a style element with id `__hai3-theme-vars__` already exists, it is reused and its content replaced (idempotent) - `inst-reuse-style-element`
-5. [ ] `p1` - UIKit components rendered inside the shadow root reflect the injected token values - `inst-shadow-components-reflect`
-6. [ ] `p1` - RETURN void - `inst-return-shadow-void`
+1. [x] `p1` - Developer imports `applyThemeToShadowRoot` - `inst-import-shadow-fn`
+2. [x] `p1` - Developer calls `applyThemeToShadowRoot(shadowRoot, theme, themeName)` when a Shadow DOM context is initialised - `inst-call-shadow-fn`
+3. [x] `p1` - Algorithm: `cpt-hai3-algo-uikit-components-apply-theme-shadow` runs to inject a `<style>` element with `:host { … }` CSS variable declarations into the shadow root - `inst-algo-apply-theme-shadow`
+4. [x] `p1` - IF a style element with id `__hai3-theme-vars__` already exists, it is reused and its content replaced (idempotent) - `inst-reuse-style-element`
+5. [x] `p1` - UIKit components rendered inside the shadow root reflect the injected token values - `inst-shadow-components-reflect`
+6. [x] `p1` - RETURN void - `inst-return-shadow-void`
 
 ### Display Toast Notification
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-uikit-components-display-toast`
+- [x] `p1` - **ID**: `cpt-hai3-flow-uikit-components-display-toast`
 
 **Actors**: `cpt-hai3-actor-developer`
 
-1. [ ] `p1` - Developer places a `<Toaster />` component in the component tree once (typically at app root) - `inst-place-toaster`
-2. [ ] `p1` - Developer calls `const { success, error, warning, info, promise, dismiss } = useToast(options?)` inside a React component - `inst-call-use-toast`
-3. [ ] `p1` - Developer invokes one of the returned methods with a message string and optional per-call options - `inst-invoke-toast-method`
-4. [ ] `p1` - Algorithm: `cpt-hai3-algo-uikit-components-toast-merge-defaults` merges hook-level defaults (duration, position) with per-call options - `inst-algo-merge-defaults`
-5. [ ] `p1` - The Sonner toast is displayed in the active `<Toaster />` viewport position - `inst-sonner-display`
-6. [ ] `p1` - RETURN the toast ID (`string | number`) - `inst-return-toast-id`
+1. [x] `p1` - Developer places a `<Toaster />` component in the component tree once (typically at app root) - `inst-place-toaster`
+2. [x] `p1` - Developer calls `const { success, error, warning, info, promise, dismiss } = useToast(options?)` inside a React component - `inst-call-use-toast`
+3. [x] `p1` - Developer invokes one of the returned methods with a message string and optional per-call options - `inst-invoke-toast-method`
+4. [x] `p1` - Algorithm: `cpt-hai3-algo-uikit-components-toast-merge-defaults` merges hook-level defaults (duration, position) with per-call options - `inst-algo-merge-defaults`
+5. [x] `p1` - The Sonner toast is displayed in the active `<Toaster />` viewport position - `inst-sonner-display`
+6. [x] `p1` - RETURN the toast ID (`string | number`) - `inst-return-toast-id`
 
 ### Display Promise Toast
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-uikit-components-promise-toast`
+- [x] `p1` - **ID**: `cpt-hai3-flow-uikit-components-promise-toast`
 
 **Actors**: `cpt-hai3-actor-developer`
 
-1. [ ] `p1` - Developer invokes `promise(asyncFn, { loading, success, error })` from `useToast()` - `inst-invoke-promise`
-2. [ ] `p1` - A loading toast is shown immediately - `inst-loading-toast`
-3. [ ] `p1` - IF the promise resolves, the loading toast transitions to success with the resolved message - `inst-resolve-success`
-4. [ ] `p1` - IF the promise rejects, the loading toast transitions to error with the rejection message - `inst-resolve-error`
-5. [ ] `p1` - RETURN a `PromiseResult<T>` with an `unwrap()` accessor to the original promise - `inst-return-promise-result`
+1. [x] `p1` - Developer invokes `promise(asyncFn, { loading, success, error })` from `useToast()` - `inst-invoke-promise`
+2. [x] `p1` - A loading toast is shown immediately - `inst-loading-toast`
+3. [x] `p1` - IF the promise resolves, the loading toast transitions to success with the resolved message - `inst-resolve-success`
+4. [x] `p1` - IF the promise rejects, the loading toast transitions to error with the rejection message - `inst-resolve-error`
+5. [x] `p1` - RETURN a `PromiseResult<T>` with an `unwrap()` accessor to the original promise - `inst-return-promise-result`
 
 ### Register and Look Up Component by Enum
 
-- [ ] `p2` - **ID**: `cpt-hai3-flow-uikit-components-registry-lookup`
+- [x] `p2` - **ID**: `cpt-hai3-flow-uikit-components-registry-lookup`
 
 **Actors**: `cpt-hai3-actor-developer`
 
-1. [ ] `p2` - Developer imports `UiKitComponent` enum and `UiKitComponentMap` type from `@hai3/uikit` - `inst-import-enum`
-2. [ ] `p2` - Developer uses the enum value as a key into a component map of type `UiKitComponentMap` for type-safe dynamic lookup - `inst-enum-lookup`
-3. [ ] `p2` - IF the component key is present in the map, the associated `ComponentType` is returned - `inst-return-component-type`
-4. [ ] `p2` - IF the component key is absent, the caller handles the missing case; no default is provided by the library - `inst-missing-key`
-5. [ ] `p2` - RETURN resolved `ComponentType` or undefined - `inst-return-resolved`
+1. [x] `p2` - Developer imports `UiKitComponent` enum and `UiKitComponentMap` type from `@hai3/uikit` - `inst-import-enum`
+2. [x] `p2` - Developer uses the enum value as a key into a component map of type `UiKitComponentMap` for type-safe dynamic lookup - `inst-enum-lookup`
+3. [x] `p2` - IF the component key is present in the map, the associated `ComponentType` is returned - `inst-return-component-type`
+4. [x] `p2` - IF the component key is absent, the caller handles the missing case; no default is provided by the library - `inst-missing-key`
+5. [x] `p2` - RETURN resolved `ComponentType` or undefined - `inst-return-resolved`
 
 ---
 
@@ -149,60 +149,60 @@ Success criteria:
 
 ### Apply Theme to Document
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-uikit-components-apply-theme-document`
+- [x] `p1` - **ID**: `cpt-hai3-algo-uikit-components-apply-theme-document`
 
 Translates a `Theme` object into CSS custom properties on `document.documentElement`, compatible with shadcn/ui's variable naming convention.
 
-1. [ ] `p1` - IF `themeName` is provided, set `data-theme` attribute on `document.documentElement` - `inst-set-data-theme`
-2. [ ] `p1` - FOR EACH color token in `theme.colors` (primary, secondary, accent, background, foreground, muted, border, error, warning, success, info), normalise the value: IF the value starts with `hsl(`, strip the `hsl()` wrapper; IF the value is `transparent`, use as-is - `inst-normalise-colors`
-3. [ ] `p1` - Set shadcn-named CSS variables (`--background`, `--foreground`, `--primary`, `--secondary`, `--muted`, `--accent`, `--destructive`, `--border`, `--input`, `--ring`, `--card`, `--card-foreground`, `--popover`, `--popover-foreground`) on `document.documentElement.style` - `inst-set-shadcn-vars`
-4. [ ] `p1` - Set semantic state variables (`--error`, `--warning`, `--success`, `--info`) - `inst-set-semantic-vars`
-5. [ ] `p1` - Set five chart color variables (`--chart-1` through `--chart-5`) using the raw OKLCH values from `theme.colors.chart` without HSL normalisation - `inst-set-chart-vars`
-6. [ ] `p1` - Set five main-menu variables (`--left-menu`, `--left-menu-foreground`, `--left-menu-hover`, `--left-menu-selected`, `--left-menu-border`) from `theme.colors.mainMenu` - `inst-set-menu-vars`
-7. [ ] `p1` - FOR EACH entry in `theme.spacing`, set `--spacing-{key}` variable - `inst-set-spacing`
-8. [ ] `p1` - FOR EACH entry in `theme.borderRadius`, set `--radius-{key}` variable - `inst-set-radius`
-9. [ ] `p1` - FOR EACH entry in `theme.shadows`, set `--shadow-{key}` variable - `inst-set-shadows`
-10. [ ] `p1` - FOR EACH entry in `theme.transitions`, set `--transition-{key}` variable - `inst-set-transitions`
-11. [ ] `p2` - IF `themeName` ends with `-large`, set `document.documentElement.style.fontSize` to `'125%'`; otherwise clear `fontSize` to restore browser default - `inst-large-font-size`
-12. [ ] `p1` - RETURN void - `inst-return`
+1. [x] `p1` - IF `themeName` is provided, set `data-theme` attribute on `document.documentElement` - `inst-set-data-theme`
+2. [x] `p1` - FOR EACH color token in `theme.colors` (primary, secondary, accent, background, foreground, muted, border, error, warning, success, info), normalise the value: IF the value starts with `hsl(`, strip the `hsl()` wrapper; IF the value is `transparent`, use as-is - `inst-normalise-colors`
+3. [x] `p1` - Set shadcn-named CSS variables (`--background`, `--foreground`, `--primary`, `--secondary`, `--muted`, `--accent`, `--destructive`, `--border`, `--input`, `--ring`, `--card`, `--card-foreground`, `--popover`, `--popover-foreground`) on `document.documentElement.style` - `inst-set-shadcn-vars`
+4. [x] `p1` - Set semantic state variables (`--error`, `--warning`, `--success`, `--info`) - `inst-set-semantic-vars`
+5. [x] `p1` - Set five chart color variables (`--chart-1` through `--chart-5`) using the raw OKLCH values from `theme.colors.chart` without HSL normalisation - `inst-set-chart-vars`
+6. [x] `p1` - Set five main-menu variables (`--left-menu`, `--left-menu-foreground`, `--left-menu-hover`, `--left-menu-selected`, `--left-menu-border`) from `theme.colors.mainMenu` - `inst-set-menu-vars`
+7. [x] `p1` - FOR EACH entry in `theme.spacing`, set `--spacing-{key}` variable - `inst-set-spacing`
+8. [x] `p1` - FOR EACH entry in `theme.borderRadius`, set `--radius-{key}` variable - `inst-set-radius`
+9. [x] `p1` - FOR EACH entry in `theme.shadows`, set `--shadow-{key}` variable - `inst-set-shadows`
+10. [x] `p1` - FOR EACH entry in `theme.transitions`, set `--transition-{key}` variable - `inst-set-transitions`
+11. [x] `p2` - IF `themeName` ends with `-large`, set `document.documentElement.style.fontSize` to `'125%'`; otherwise clear `fontSize` to restore browser default - `inst-large-font-size`
+12. [x] `p1` - RETURN void - `inst-return`
 
 ### Apply Theme to Shadow Root
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-uikit-components-apply-theme-shadow`
+- [x] `p1` - **ID**: `cpt-hai3-algo-uikit-components-apply-theme-shadow`
 
 Translates a `Theme` object into a `:host { … }` CSS block injected into a Shadow DOM root, following the same variable set as the document algorithm.
 
-1. [ ] `p1` - IF a `<style>` element with `id="__hai3-theme-vars__"` exists in `shadowRoot`, reuse it; otherwise create a new `<style>` element with that id and append it to `shadowRoot` - `inst-get-or-create-style`
-2. [ ] `p1` - IF `themeName` is provided, set `data-theme` attribute on the style element for debugging traceability - `inst-shadow-data-theme`
-3. [ ] `p1` - Build a list of CSS variable declarations using the same normalisation and variable naming rules as `cpt-hai3-algo-uikit-components-apply-theme-document` - `inst-build-declarations`
-4. [ ] `p1` - Wrap all declarations in a `:host { … }` block and assign to `styleElement.textContent` - `inst-wrap-host`
-5. [ ] `p2` - IF `themeName` ends with `-large`, append an additional `:host { font-size: 125%; }` block - `inst-shadow-large-font`
-6. [ ] `p1` - RETURN void - `inst-shadow-return`
+1. [x] `p1` - IF a `<style>` element with `id="__hai3-theme-vars__"` exists in `shadowRoot`, reuse it; otherwise create a new `<style>` element with that id and append it to `shadowRoot` - `inst-get-or-create-style`
+2. [x] `p1` - IF `themeName` is provided, set `data-theme` attribute on the style element for debugging traceability - `inst-shadow-data-theme`
+3. [x] `p1` - Build a list of CSS variable declarations using the same normalisation and variable naming rules as `cpt-hai3-algo-uikit-components-apply-theme-document` - `inst-build-declarations`
+4. [x] `p1` - Wrap all declarations in a `:host { … }` block and assign to `styleElement.textContent` - `inst-wrap-host`
+5. [x] `p2` - IF `themeName` ends with `-large`, append an additional `:host { font-size: 125%; }` block - `inst-shadow-large-font`
+6. [x] `p1` - RETURN void - `inst-shadow-return`
 
 ### Merge Toast Defaults
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-uikit-components-toast-merge-defaults`
+- [x] `p1` - **ID**: `cpt-hai3-algo-uikit-components-toast-merge-defaults`
 
 Produces the final `ToastOptions` passed to Sonner for each call, combining hook-level defaults with per-call overrides.
 
-1. [ ] `p1` - Capture `defaultDuration` and `defaultPosition` from the `UseToastOptions` object passed to `useToast()` - `inst-capture-defaults`
-2. [ ] `p1` - FOR EACH toast method call, construct a merged options object: start from `{ duration: defaultDuration, position: defaultPosition }`, then spread per-call `options` on top so per-call values take precedence - `inst-spread-options`
-3. [ ] `p1` - Pass merged options to the corresponding Sonner function (`toast`, `toast.success`, `toast.error`, `toast.warning`, `toast.info`, `toast.loading`) - `inst-pass-to-sonner`
-4. [ ] `p2` - FOR `promise` calls, pass `options` directly to `toast.promise` without default-duration merging — Sonner controls loading duration internally - `inst-promise-passthrough`
-5. [ ] `p1` - Memoize the entire returned method bundle via `useMemo([defaultDuration, defaultPosition])` so method references are stable across renders - `inst-memoise`
-6. [ ] `p1` - RETURN the stable method bundle - `inst-return-bundle`
+1. [x] `p1` - Capture `defaultDuration` and `defaultPosition` from the `UseToastOptions` object passed to `useToast()` - `inst-capture-defaults`
+2. [x] `p1` - FOR EACH toast method call, construct a merged options object: start from `{ duration: defaultDuration, position: defaultPosition }`, then spread per-call `options` on top so per-call values take precedence - `inst-spread-options`
+3. [x] `p1` - Pass merged options to the corresponding Sonner function (`toast`, `toast.success`, `toast.error`, `toast.warning`, `toast.info`, `toast.loading`) - `inst-pass-to-sonner`
+4. [x] `p2` - FOR `promise` calls, pass `options` directly to `toast.promise` without default-duration merging — Sonner controls loading duration internally - `inst-promise-passthrough`
+5. [x] `p1` - Memoize the entire returned method bundle via `useMemo([defaultDuration, defaultPosition])` so method references are stable across renders - `inst-memoise`
+6. [x] `p1` - RETURN the stable method bundle - `inst-return-bundle`
 
 ### Validate Ref-as-Prop Pattern
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-uikit-components-validate-ref-pattern`
+- [x] `p1` - **ID**: `cpt-hai3-algo-uikit-components-validate-ref-pattern`
 
 Describes the rule applied when authoring or reviewing UIKit components to ensure React 19 native ref conformance. This is a design-time check, not a runtime algorithm.
 
-1. [ ] `p1` - IF a component file imports `forwardRef` from `react`, the implementation is non-conformant and MUST be rewritten - `inst-reject-forward-ref`
-2. [ ] `p1` - Each component function MUST accept `ref` as an explicit prop in its parameter destructuring, typed as `React.Ref<T>` where `T` is the rendered HTML element type - `inst-ref-prop-type`
-3. [ ] `p1` - The `ref` value MUST be forwarded directly to the underlying DOM element or Radix primitive's `ref` prop - `inst-forward-ref-value`
-4. [ ] `p1` - The component's exported `ButtonProps` (or equivalent props interface) MUST be compatible with an intersection type including `{ ref?: React.Ref<T> }` when the component needs to surface its ref publicly - `inst-props-intersection`
-5. [ ] `p1` - RETURN conformant component - `inst-return-conformant`
+1. [x] `p1` - IF a component file imports `forwardRef` from `react`, the implementation is non-conformant and MUST be rewritten - `inst-reject-forward-ref`
+2. [x] `p1` - Each component function MUST accept `ref` as an explicit prop in its parameter destructuring, typed as `React.Ref<T>` where `T` is the rendered HTML element type - `inst-ref-prop-type`
+3. [x] `p1` - The `ref` value MUST be forwarded directly to the underlying DOM element or Radix primitive's `ref` prop - `inst-forward-ref-value`
+4. [x] `p1` - The component's exported `ButtonProps` (or equivalent props interface) MUST be compatible with an intersection type including `{ ref?: React.Ref<T> }` when the component needs to surface its ref publicly - `inst-props-intersection`
+5. [x] `p1` - RETURN conformant component - `inst-return-conformant`
 
 ---
 
@@ -210,40 +210,40 @@ Describes the rule applied when authoring or reviewing UIKit components to ensur
 
 ### Sidebar Collapsed State
 
-- [ ] `p1` - **ID**: `cpt-hai3-state-uikit-components-sidebar-collapsed`
+- [x] `p1` - **ID**: `cpt-hai3-state-uikit-components-sidebar-collapsed`
 
 The `Sidebar` component exposes a controlled collapsed/expanded state via the `collapsed` boolean prop. State ownership lives outside the component (in the consuming screen or layout).
 
-1. [ ] `p1` - **FROM** expanded (`collapsed=false`) **TO** collapsed (`collapsed=true`) **WHEN** parent sets `collapsed` prop to `true` - `inst-to-collapsed`
-2. [ ] `p1` - **FROM** collapsed (`collapsed=true`) **TO** expanded (`collapsed=false`) **WHEN** parent sets `collapsed` prop to `false` - `inst-to-expanded`
+1. [x] `p1` - **FROM** expanded (`collapsed=false`) **TO** collapsed (`collapsed=true`) **WHEN** parent sets `collapsed` prop to `true` - `inst-to-collapsed`
+2. [x] `p1` - **FROM** collapsed (`collapsed=true`) **TO** expanded (`collapsed=false`) **WHEN** parent sets `collapsed` prop to `false` - `inst-to-expanded`
 
 Transitions set `data-state` attribute (`"expanded"` or `"collapsed"`) and `data-collapsible` attribute (`""` or `"icon"`) on the underlying `<aside>` element. CSS transition `transition-[width]` handles the visual change.
 
 ### DataTable Internal State
 
-- [ ] `p1` - **ID**: `cpt-hai3-state-uikit-components-data-table`
+- [x] `p1` - **ID**: `cpt-hai3-state-uikit-components-data-table`
 
 `DataTable` maintains internal sorting, filtering, column visibility, and row selection state via `@tanstack/react-table`. An external `table` instance may be provided to override internal state management entirely.
 
-1. [ ] `p1` - **FROM** unfiltered **TO** filtered **WHEN** consumer updates the filter value through the `filterInput` slot component - `inst-to-filtered`
-2. [ ] `p1` - **FROM** filtered **TO** unfiltered **WHEN** filter is cleared - `inst-to-unfiltered`
-3. [ ] `p1` - **FROM** unsorted **TO** sorted-ascending **WHEN** user clicks a sortable column header - `inst-to-sorted-asc`
-4. [ ] `p1` - **FROM** sorted-ascending **TO** sorted-descending **WHEN** user clicks the same column header again - `inst-to-sorted-desc`
-5. [ ] `p1` - **FROM** sorted-descending **TO** unsorted **WHEN** user clicks the same column header a third time - `inst-to-unsorted`
-6. [ ] `p2` - **FROM** any state **TO** external-controlled **WHEN** a non-null `table` prop is provided; internal state is bypassed - `inst-to-external-controlled`
+1. [x] `p1` - **FROM** unfiltered **TO** filtered **WHEN** consumer updates the filter value through the `filterInput` slot component - `inst-to-filtered`
+2. [x] `p1` - **FROM** filtered **TO** unfiltered **WHEN** filter is cleared - `inst-to-unfiltered`
+3. [x] `p1` - **FROM** unsorted **TO** sorted-ascending **WHEN** user clicks a sortable column header - `inst-to-sorted-asc`
+4. [x] `p1` - **FROM** sorted-ascending **TO** sorted-descending **WHEN** user clicks the same column header again - `inst-to-sorted-desc`
+5. [x] `p1` - **FROM** sorted-descending **TO** unsorted **WHEN** user clicks the same column header a third time - `inst-to-unsorted`
+6. [x] `p2` - **FROM** any state **TO** external-controlled **WHEN** a non-null `table` prop is provided; internal state is bypassed - `inst-to-external-controlled`
 
 ### Toast Lifecycle
 
-- [ ] `p1` - **ID**: `cpt-hai3-state-uikit-components-toast-lifecycle`
+- [x] `p1` - **ID**: `cpt-hai3-state-uikit-components-toast-lifecycle`
 
 Each toast instance produced by `useToast()` progresses through states managed entirely by the Sonner library. UIKit's role is to initiate transitions; Sonner owns the state machine.
 
-1. [ ] `p1` - **FROM** absent **TO** visible **WHEN** a toast method is invoked - `inst-toast-appear`
-2. [ ] `p1` - **FROM** loading **TO** success **WHEN** a `promise` toast's async function resolves - `inst-promise-to-success`
-3. [ ] `p1` - **FROM** loading **TO** error **WHEN** a `promise` toast's async function rejects - `inst-promise-to-error`
-4. [ ] `p1` - **FROM** visible **TO** absent **WHEN** the auto-dismiss duration elapses - `inst-auto-dismiss`
-5. [ ] `p1` - **FROM** visible **TO** absent **WHEN** `dismiss(toastId)` is called - `inst-manual-dismiss`
-6. [ ] `p1` - **FROM** visible **TO** absent **WHEN** `dismiss()` is called with no argument (dismisses all) - `inst-dismiss-all`
+1. [x] `p1` - **FROM** absent **TO** visible **WHEN** a toast method is invoked - `inst-toast-appear`
+2. [x] `p1` - **FROM** loading **TO** success **WHEN** a `promise` toast's async function resolves - `inst-promise-to-success`
+3. [x] `p1` - **FROM** loading **TO** error **WHEN** a `promise` toast's async function rejects - `inst-promise-to-error`
+4. [x] `p1` - **FROM** visible **TO** absent **WHEN** the auto-dismiss duration elapses - `inst-auto-dismiss`
+5. [x] `p1` - **FROM** visible **TO** absent **WHEN** `dismiss(toastId)` is called - `inst-manual-dismiss`
+6. [x] `p1` - **FROM** visible **TO** absent **WHEN** `dismiss()` is called with no argument (dismisses all) - `inst-dismiss-all`
 
 ---
 
@@ -251,7 +251,7 @@ Each toast instance produced by `useToast()` progresses through states managed e
 
 ### React 19 Ref-as-Prop Pattern
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-uikit-components-ref-pattern`
+- [x] `p1` - **ID**: `cpt-hai3-dod-uikit-components-ref-pattern`
 
 All components in `packages/uikit/src/` accept `ref` as a plain prop, not via `forwardRef`. `forwardRef` is not imported anywhere in the package.
 
@@ -276,7 +276,7 @@ All components in `packages/uikit/src/` accept `ref` as a plain prop, not via `f
 
 ### Layout Components
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-uikit-components-layout`
+- [x] `p1` - **ID**: `cpt-hai3-dod-uikit-components-layout`
 
 The package exports all required layout components: `AspectRatio`, `Drawer`, `ResizablePanelGroup` / `ResizablePanel` / `ResizableHandle`, `ScrollArea` / `ScrollBar`, `Separator`, `Card` family, `Dialog` family, `Sheet` family.
 
@@ -302,7 +302,7 @@ The package exports all required layout components: `AspectRatio`, `Drawer`, `Re
 
 ### Navigation Components
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-uikit-components-navigation`
+- [x] `p1` - **ID**: `cpt-hai3-dod-uikit-components-navigation`
 
 The package exports all required navigation components: `Breadcrumb` family, `Pagination` family, `NavigationMenu` family, `Menubar` family, `Tabs` family. The `Sidebar` composite also provides collapsible navigation with a controlled `collapsed` boolean prop.
 
@@ -326,7 +326,7 @@ The package exports all required navigation components: `Breadcrumb` family, `Pa
 
 ### Form Components
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-uikit-components-form`
+- [x] `p1` - **ID**: `cpt-hai3-dod-uikit-components-form`
 
 The package exports all required form components: `Input`, `Textarea`, `Checkbox`, `RadioGroup` / `RadioGroupItem`, `NativeSelect` family, `Calendar` / `CalendarDayButton`, `InputOTP` family, `Label`, `Field` family, `InputGroup` family, `DatePicker` family.
 
@@ -353,7 +353,7 @@ The package exports all required form components: `Input`, `Textarea`, `Checkbox
 
 ### Data Display and Chart Components
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-uikit-components-data-display`
+- [x] `p1` - **ID**: `cpt-hai3-dod-uikit-components-data-display`
 
 The package exports `DataTable` (with pagination, column header, view options sub-components), `ChartContainer`, `ChartTooltipContent`, `ChartLegendContent`, and the full set of Recharts chart type exports.
 
@@ -378,7 +378,7 @@ The package exports `DataTable` (with pagination, column header, view options su
 
 ### Toast System
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-uikit-components-toast`
+- [x] `p1` - **ID**: `cpt-hai3-dod-uikit-components-toast`
 
 The package exports `useToast` hook and `Toaster` component. The raw Sonner `toast` function is NOT exported from `@hai3/uikit`. `useToast` returns eight typed methods: `toast`, `success`, `error`, `warning`, `info`, `loading`, `promise`, `dismiss`.
 
@@ -407,7 +407,7 @@ The package exports `useToast` hook and `Toaster` component. The raw Sonner `toa
 
 ### Theme System
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-uikit-components-theme`
+- [x] `p1` - **ID**: `cpt-hai3-dod-uikit-components-theme`
 
 The package exports `applyTheme`, `applyThemeToShadowRoot`, and the `Theme` type. These are the only public APIs for applying themes; no runtime theme state is held inside the package.
 
@@ -436,7 +436,7 @@ The package exports `applyTheme`, `applyThemeToShadowRoot`, and the `Theme` type
 
 ### Component Registry Types
 
-- [ ] `p2` - **ID**: `cpt-hai3-dod-uikit-components-registry-types`
+- [x] `p2` - **ID**: `cpt-hai3-dod-uikit-components-registry-types`
 
 The package exports `UiKitComponent` enum, `UiKitIcon` enum, `UiKitComponentMap` interface, and `ComponentName` type, enabling type-safe dynamic component lookup without importing concrete implementations at call sites.
 
@@ -461,7 +461,7 @@ The package exports `UiKitComponent` enum, `UiKitIcon` enum, `UiKitComponentMap`
 
 ### Standalone Package Constraint
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-uikit-components-standalone`
+- [x] `p1` - **ID**: `cpt-hai3-dod-uikit-components-standalone`
 
 `@hai3/uikit` has zero `@hai3/*` runtime dependencies. The `package.json` `dependencies` field MUST NOT contain any `@hai3/*` entry. `dependency-cruiser` rules enforce this at CI.
 
@@ -483,19 +483,19 @@ The package exports `UiKitComponent` enum, `UiKitIcon` enum, `UiKitComponentMap`
 
 ## Acceptance Criteria
 
-- [ ] `forwardRef` is not imported in any file under `packages/uikit/src/`
-- [ ] All base and composite components accept an optional `ref` prop typed as `React.Ref<ElementType>`
-- [ ] `applyTheme` and `applyThemeToShadowRoot` correctly set the full CSS variable set documented in `cpt-hai3-algo-uikit-components-apply-theme-document`
-- [ ] `applyThemeToShadowRoot` called twice on the same shadow root produces exactly one `<style>` element
-- [ ] `useToast({ defaultDuration: 5000 })` causes all toast calls from that hook instance to use 5000ms duration unless overridden per-call
-- [ ] `useToast()` returns stable method references across re-renders when `defaultDuration` and `defaultPosition` have not changed
-- [ ] Importing `{ toast }` directly from `@hai3/uikit` results in a TypeScript error (not exported)
-- [ ] `promise(asyncFn, { loading, success, error })` shows loading, transitions to success on resolve, and to error on rejection
-- [ ] `dismiss(toastId)` removes the specific toast; `dismiss()` removes all visible toasts
-- [ ] `UiKitComponent` enum and `UiKitComponentMap` allow type-safe dynamic component resolution without importing concrete component implementations
-- [ ] `@hai3/uikit` has no `@hai3/*` entries in `package.json` dependencies
-- [ ] `DataTable` renders without error when an external `table` prop is provided
-- [ ] Theme `-large` suffix causes root font size to become 125% in both document and shadow-root contexts
+- [x] `forwardRef` is not imported in any file under `packages/uikit/src/`
+- [x] All base and composite components accept an optional `ref` prop typed as `React.Ref<ElementType>`
+- [x] `applyTheme` and `applyThemeToShadowRoot` correctly set the full CSS variable set documented in `cpt-hai3-algo-uikit-components-apply-theme-document`
+- [x] `applyThemeToShadowRoot` called twice on the same shadow root produces exactly one `<style>` element
+- [x] `useToast({ defaultDuration: 5000 })` causes all toast calls from that hook instance to use 5000ms duration unless overridden per-call
+- [x] `useToast()` returns stable method references across re-renders when `defaultDuration` and `defaultPosition` have not changed
+- [x] Importing `{ toast }` directly from `@hai3/uikit` results in a TypeScript error (not exported)
+- [x] `promise(asyncFn, { loading, success, error })` shows loading, transitions to success on resolve, and to error on rejection
+- [x] `dismiss(toastId)` removes the specific toast; `dismiss()` removes all visible toasts
+- [x] `UiKitComponent` enum and `UiKitComponentMap` allow type-safe dynamic component resolution without importing concrete component implementations
+- [x] `@hai3/uikit` has no `@hai3/*` entries in `package.json` dependencies
+- [x] `DataTable` renders without error when an external `table` prop is provided
+- [x] Theme `-large` suffix causes root font size to become 125% in both document and shadow-root contexts
 
 ---
 

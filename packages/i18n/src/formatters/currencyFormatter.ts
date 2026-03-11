@@ -4,9 +4,11 @@
  * Uses i18nRegistry.getLanguage() for locale; fallback to Language.English when null.
  * null, undefined, and NaN return ''; invalid currencyCode also returns '' and does not throw.
  */
+// @cpt-FEATURE:cpt-hai3-dod-i18n-infrastructure-formatters:p1
 
 import { getLocale, toNumber } from './utils';
 
+// @cpt-begin:cpt-hai3-dod-i18n-infrastructure-formatters:p1:inst-8
 /**
  * Format a value as currency for the given currency code.
  *
@@ -31,3 +33,4 @@ export function formatCurrency(
     return '';
   }
 }
+// @cpt-end:cpt-hai3-dod-i18n-infrastructure-formatters:p1:inst-8

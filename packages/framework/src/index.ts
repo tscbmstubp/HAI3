@@ -10,6 +10,8 @@
  * Framework Layer: L2 (Depends on all SDK packages)
  */
 
+// @cpt-FEATURE:cpt-hai3-dod-framework-composition-reexports:p1
+
 // ============================================================================
 // Core Exports
 // ============================================================================

@@ -1,3 +1,7 @@
+// @cpt-FEATURE:cpt-hai3-flow-cli-tooling-ai-sync:p1
+// @cpt-FEATURE:cpt-hai3-algo-cli-tooling-generate-ai-config:p1
+// @cpt-FEATURE:cpt-hai3-algo-cli-tooling-generate-command-adapters:p1
+// @cpt-FEATURE:cpt-hai3-dod-cli-tooling-ai-sync:p1
 import path from 'path';
 import fs from 'fs-extra';
 import lodash from 'lodash';
@@ -127,6 +131,7 @@ interface GenerateOptions {
 /**
  * Generate CLAUDE.md file
  */
+// @cpt-begin:cpt-hai3-algo-cli-tooling-generate-ai-config:p1:inst-1
 async function generateClaudeMd(
   projectRoot: string,
   userRules: string | null,
@@ -164,9 +169,12 @@ ${userRules}
   return { file: 'CLAUDE.md', changed: oldContent !== content };
 }
 
+// @cpt-end:cpt-hai3-algo-cli-tooling-generate-ai-config:p1:inst-1
+
 /**
  * Generate .github/copilot-instructions.md
  */
+// @cpt-begin:cpt-hai3-algo-cli-tooling-generate-ai-config:p1:inst-2
 async function generateCopilotInstructions(
   projectRoot: string,
   userRules: string | null,
@@ -236,9 +244,12 @@ ${userRules}
   return { file: '.github/copilot-instructions.md', changed: oldContent !== content };
 }
 
+// @cpt-end:cpt-hai3-algo-cli-tooling-generate-ai-config:p1:inst-2
+
 /**
  * Generate .cursor/rules/hai3.mdc
  */
+// @cpt-begin:cpt-hai3-algo-cli-tooling-generate-ai-config:p1:inst-3
 async function generateCursorRules(
   projectRoot: string,
   userRules: string | null,
@@ -278,9 +289,12 @@ ${userRules}
   return { file: '.cursor/rules/hai3.mdc', changed: oldContent !== content };
 }
 
+// @cpt-end:cpt-hai3-algo-cli-tooling-generate-ai-config:p1:inst-3
+
 /**
  * Generate .windsurf/rules/hai3.md
  */
+// @cpt-begin:cpt-hai3-algo-cli-tooling-generate-ai-config:p1:inst-4
 async function generateWindsurfRules(
   projectRoot: string,
   userRules: string | null,
@@ -317,6 +331,8 @@ ${userRules}
   await fs.writeFile(filePath, content);
   return { file: '.windsurf/rules/hai3.md', changed: oldContent !== content };
 }
+
+// @cpt-end:cpt-hai3-algo-cli-tooling-generate-ai-config:p1:inst-4
 
 /**
  * Scan installed @hai3 packages for commands
@@ -388,6 +404,7 @@ async function scanCommandsInDirectory(
  * Generate command adapters for an IDE
  * Implements precedence: project > company > hai3 > packages
  */
+// @cpt-begin:cpt-hai3-algo-cli-tooling-generate-command-adapters:p1:inst-1
 async function generateCommandAdapters(
   projectRoot: string,
   commandsDir: string,
@@ -472,6 +489,8 @@ Use \`.ai/${cmd.relativePath}\` as the single source of truth.
   return count;
 }
 
+// @cpt-end:cpt-hai3-algo-cli-tooling-generate-command-adapters:p1:inst-1
+
 /**
  * Generate GitHub Copilot command adapters
  */
@@ -489,6 +508,7 @@ async function generateCopilotCommands(
  *
  * Generates IDE-specific configuration files from .ai/ directory.
  */
+// @cpt-begin:cpt-hai3-flow-cli-tooling-ai-sync:p1:inst-1
 export const aiSyncCommand: CommandDefinition<AiSyncArgs, AiSyncResult> = {
   name: 'ai:sync',
   description: 'Sync AI assistant configuration files',
@@ -698,3 +718,4 @@ export const aiSyncCommand: CommandDefinition<AiSyncArgs, AiSyncResult> = {
     };
   },
 };
+// @cpt-end:cpt-hai3-flow-cli-tooling-ai-sync:p1:inst-1

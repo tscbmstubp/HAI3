@@ -5,6 +5,10 @@
  * Supports REST, SSE, and mock protocols.
  */
 
+// @cpt-FEATURE:cpt-hai3-dod-api-communication-plugin-types:p1
+// @cpt-FEATURE:cpt-hai3-algo-api-communication-is-mock-plugin:p2
+// @cpt-FEATURE:cpt-hai3-state-api-communication-mock-mode:p2
+
 import type { BaseApiService } from './BaseApiService';
 
 // ============================================================================
@@ -70,11 +74,13 @@ export const MOCK_PLUGIN = Symbol.for('hai3:plugin:mock');
  * }
  * ```
  */
+// @cpt-begin:cpt-hai3-algo-api-communication-is-mock-plugin:p2:inst-1
 export function isMockPlugin(plugin: unknown): boolean {
   if (!plugin || typeof plugin !== 'object') return false;
   const constructor = (plugin as object).constructor;
   return MOCK_PLUGIN in constructor;
 }
+// @cpt-end:cpt-hai3-algo-api-communication-is-mock-plugin:p2:inst-1
 
 /**
  * Mock Response Factory Function

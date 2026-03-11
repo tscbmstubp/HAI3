@@ -7,6 +7,8 @@
  * @packageDocumentation
  * @internal
  */
+// @cpt-FEATURE:cpt-hai3-state-screenset-registry-extension-load:p1
+// @cpt-FEATURE:cpt-hai3-state-screenset-registry-extension-mount:p1
 
 import type { MfeHandler, ParentMfeBridge } from '../handler/types';
 import type { RuntimeCoordinator } from '../coordination/types';
@@ -101,6 +103,7 @@ export class DefaultMountManager extends MountManager {
    * @param extensionId - ID of the extension to load
    * @returns Promise resolving when bundle is loaded
    */
+  // @cpt-begin:cpt-hai3-state-screenset-registry-extension-load:p1:inst-1
   async loadExtension(extensionId: string): Promise<void> {
     // Verify extension is registered
     const extensionState = this.extensionManager.getExtensionState(extensionId);
@@ -146,6 +149,7 @@ export class DefaultMountManager extends MountManager {
       throw error;
     }
   }
+  // @cpt-end:cpt-hai3-state-screenset-registry-extension-load:p1:inst-1
 
   /**
    * Preload an extension bundle without mounting.
@@ -164,6 +168,7 @@ export class DefaultMountManager extends MountManager {
    * @param container - DOM element to mount into
    * @returns Promise resolving to the parent bridge
    */
+  // @cpt-begin:cpt-hai3-state-screenset-registry-extension-mount:p1:inst-1
   async mountExtension(extensionId: string, container: Element): Promise<ParentMfeBridge> {
     // Verify extension is registered
     const extensionState = this.extensionManager.getExtensionState(extensionId);
@@ -262,6 +267,7 @@ export class DefaultMountManager extends MountManager {
       throw error;
     }
   }
+  // @cpt-end:cpt-hai3-state-screenset-registry-extension-mount:p1:inst-1
 
   /**
    * Unmount an extension from its container.

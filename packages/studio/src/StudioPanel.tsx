@@ -1,3 +1,5 @@
+// @cpt-FEATURE:cpt-hai3-dod-studio-devtools-panel-overlay:p1
+// @cpt-FEATURE:cpt-hai3-algo-studio-devtools-portal-management:p1
 import React from 'react';
 import { useTranslation } from '@hai3/react';
 import { Card } from '@hai3/uikit';
@@ -8,6 +10,8 @@ import { useStudioContext } from './StudioProvider';
 import { ControlPanel } from './sections/ControlPanel';
 import { STORAGE_KEYS } from './types';
 
+// @cpt-begin:cpt-hai3-dod-studio-devtools-panel-overlay:p1:inst-1
+// @cpt-begin:cpt-hai3-algo-studio-devtools-portal-management:p1:inst-1
 export const StudioPanel: React.FC = () => {
   const { toggleCollapsed, setPortalContainer } = useStudioContext();
   const { t } = useTranslation();
@@ -105,3 +109,5 @@ export const StudioPanel: React.FC = () => {
 };
 
 StudioPanel.displayName = 'StudioPanel';
+// @cpt-end:cpt-hai3-dod-studio-devtools-panel-overlay:p1:inst-1
+// @cpt-end:cpt-hai3-algo-studio-devtools-portal-management:p1:inst-1

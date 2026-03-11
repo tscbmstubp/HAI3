@@ -7,6 +7,11 @@
  * SDK Layer: L1 (Zero dependencies)
  */
 
+// @cpt-FEATURE:cpt-hai3-dod-api-communication-rest-mock-plugin:p2
+// @cpt-FEATURE:cpt-hai3-flow-api-communication-mock-activation:p2
+// @cpt-FEATURE:cpt-hai3-algo-api-communication-mock-factory-match:p2
+// @cpt-FEATURE:cpt-hai3-algo-api-communication-is-mock-plugin:p2
+
 import {
   RestPluginWithConfig,
   type RestRequestContext,
@@ -76,6 +81,8 @@ export class RestMockPlugin extends RestPluginWithConfig<RestMockConfig> {
    * Intercept REST request and return mock if available.
    * Returns RestShortCircuitResponse to skip HTTP request.
    */
+  // @cpt-begin:cpt-hai3-flow-api-communication-mock-activation:p2:inst-1
+  // @cpt-begin:cpt-hai3-algo-api-communication-mock-factory-match:p2:inst-1
   async onRequest(
     context: RestRequestContext
   ): Promise<RestRequestContext | RestShortCircuitResponse> {
@@ -103,6 +110,8 @@ export class RestMockPlugin extends RestPluginWithConfig<RestMockConfig> {
     // No mock found, pass through
     return context;
   }
+  // @cpt-end:cpt-hai3-flow-api-communication-mock-activation:p2:inst-1
+  // @cpt-end:cpt-hai3-algo-api-communication-mock-factory-match:p2:inst-1
 
   /**
    * Find a mock factory for the given method and URL.

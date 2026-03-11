@@ -1,3 +1,5 @@
+// @cpt-FEATURE:cpt-hai3-flow-studio-devtools-gts-package:p1
+// @cpt-FEATURE:cpt-hai3-dod-studio-devtools-control-panel:p1
 import React from 'react';
 import {
   useHAI3,
@@ -37,6 +39,7 @@ export interface MfePackageSelectorProps {
   className?: string;
 }
 
+// @cpt-begin:cpt-hai3-flow-studio-devtools-gts-package:p1:inst-1
 export const MfePackageSelector: React.FC<MfePackageSelectorProps> = ({
   className = '',
 }) => {
@@ -111,3 +114,4 @@ export const MfePackageSelector: React.FC<MfePackageSelectorProps> = ({
 };
 
 MfePackageSelector.displayName = 'MfePackageSelector';
+// @cpt-end:cpt-hai3-flow-studio-devtools-gts-package:p1:inst-1

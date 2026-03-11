@@ -1,3 +1,5 @@
+// @cpt-FEATURE:cpt-hai3-state-framework-composition-tenant:p1
+// @cpt-FEATURE:cpt-hai3-dod-framework-composition-app-config:p1
 import { createSlice, type ReducerPayload } from '@hai3/state';
 import type { TenantState, Tenant } from '../layoutTypes';
 
@@ -17,6 +19,7 @@ const initialState: TenantState = {
   loading: false,
 };
 
+// @cpt-begin:cpt-hai3-state-framework-composition-tenant:p1:inst-1
 const { slice, setTenant, setTenantLoading, clearTenant } = createSlice({
   name: SLICE_KEY,
   initialState,
@@ -35,6 +38,7 @@ const { slice, setTenant, setTenantLoading, clearTenant } = createSlice({
   },
 });
 
+// @cpt-end:cpt-hai3-state-framework-composition-tenant:p1:inst-1
 export const tenantSlice = slice;
 export const tenantActions = { setTenant, setTenantLoading, clearTenant };
 

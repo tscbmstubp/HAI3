@@ -3,6 +3,8 @@
  *
  * React Layer: L3
  */
+// @cpt-FEATURE:cpt-hai3-flow-react-bindings-use-translation:p1
+// @cpt-FEATURE:cpt-hai3-dod-react-bindings-translation-hook:p1
 
 import { useMemo, useCallback, useSyncExternalStore } from 'react';
 import type { Language } from '@hai3/framework';
@@ -26,6 +28,8 @@ import type { UseTranslationReturn } from '../types';
  * );
  * ```
  */
+// @cpt-begin:cpt-hai3-flow-react-bindings-use-translation:p1:inst-1
+// @cpt-begin:cpt-hai3-dod-react-bindings-translation-hook:p1:inst-1
 export function useTranslation(): UseTranslationReturn {
   const app = useHAI3();
   const { i18nRegistry } = app;
@@ -83,3 +87,5 @@ export function useTranslation(): UseTranslationReturn {
     isRTL,
   };
 }
+// @cpt-end:cpt-hai3-flow-react-bindings-use-translation:p1:inst-1
+// @cpt-end:cpt-hai3-dod-react-bindings-translation-hook:p1:inst-1

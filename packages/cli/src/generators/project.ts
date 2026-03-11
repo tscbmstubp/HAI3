@@ -1,3 +1,5 @@
+// @cpt-FEATURE:cpt-hai3-algo-cli-tooling-generate-project:p1
+// @cpt-FEATURE:cpt-hai3-dod-cli-tooling-templates:p1
 import path from 'path';
 import fs from 'fs-extra';
 import type { GeneratedFile, Hai3Config, LayerType } from '../core/types.js';
@@ -52,6 +54,7 @@ async function readDirRecursive(
  * Generate all files for a new HAI3 project
  * Combines template files with dynamically generated config files
  */
+// @cpt-begin:cpt-hai3-algo-cli-tooling-generate-project:p1:inst-1
 export async function generateProject(
   input: ProjectGeneratorInput
 ): Promise<GeneratedFile[]> {
@@ -417,3 +420,4 @@ export async function generateProject(
 
   return files;
 }
+// @cpt-end:cpt-hai3-algo-cli-tooling-generate-project:p1:inst-1

@@ -1,3 +1,4 @@
+// @cpt-FEATURE:cpt-hai3-algo-studio-devtools-localStorage-guard:p1
 /**
  * Utility functions for persisting Studio state to localStorage
  */
@@ -6,6 +7,7 @@
  * Save a value to localStorage with a given key
  * Handles errors gracefully (e.g., quota exceeded, localStorage disabled)
  */
+// @cpt-begin:cpt-hai3-algo-studio-devtools-localStorage-guard:p1:inst-1
 export const saveStudioState = <T>(key: string, value: T): void => {
   try {
     localStorage.setItem(key, JSON.stringify(value));
@@ -27,3 +29,4 @@ export const loadStudioState = <T>(key: string, defaultValue: T): T => {
     return defaultValue;
   }
 };
+// @cpt-end:cpt-hai3-algo-studio-devtools-localStorage-guard:p1:inst-1

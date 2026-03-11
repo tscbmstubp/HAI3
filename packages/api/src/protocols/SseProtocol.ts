@@ -5,6 +5,13 @@
  * SDK Layer: L1 (Zero @hai3 dependencies)
  */
 
+// @cpt-FEATURE:cpt-hai3-dod-api-communication-sse-protocol:p1
+// @cpt-FEATURE:cpt-hai3-flow-api-communication-sse-connection:p1
+// @cpt-FEATURE:cpt-hai3-flow-api-communication-sse-disconnect:p1
+// @cpt-FEATURE:cpt-hai3-algo-api-communication-sse-plugin-chain:p1
+// @cpt-FEATURE:cpt-hai3-algo-api-communication-plugin-ordering:p1
+// @cpt-FEATURE:cpt-hai3-state-api-communication-sse-connection:p1
+
 import assign from 'lodash/assign.js';
 import {
   ApiProtocol,
@@ -102,6 +109,7 @@ export class SseProtocol extends ApiProtocol<SsePluginHooks> {
    * Get global plugins from apiRegistry, filtering out excluded classes.
    * @private
    */
+  // @cpt-begin:cpt-hai3-algo-api-communication-plugin-ordering:p1:inst-1
   private getGlobalPlugins(): readonly SsePluginHooks[] {
     const allGlobalPlugins = apiRegistry.plugins.getAll(SseProtocol);
     const excludedClasses = this._getExcludedClasses();
@@ -131,6 +139,7 @@ export class SseProtocol extends ApiProtocol<SsePluginHooks> {
       ...Array.from(this._instancePlugins),
     ];
   }
+  // @cpt-end:cpt-hai3-algo-api-communication-plugin-ordering:p1:inst-1
 
   /**
    * Execute SSE plugin chain for connection lifecycle
@@ -139,6 +148,7 @@ export class SseProtocol extends ApiProtocol<SsePluginHooks> {
    * @param context - SSE connection context
    * @returns Modified context or short-circuit response
    */
+  // @cpt-begin:cpt-hai3-algo-api-communication-sse-plugin-chain:p1:inst-1
   private async executePluginChainAsync(
     context: SseConnectContext
   ): Promise<SseConnectContext | { shortCircuit: EventSourceLike }> {
@@ -158,6 +168,7 @@ export class SseProtocol extends ApiProtocol<SsePluginHooks> {
 
     return currentContext;
   }
+  // @cpt-end:cpt-hai3-algo-api-communication-sse-plugin-chain:p1:inst-1
 
   /**
    * Connect to SSE stream
@@ -168,6 +179,8 @@ export class SseProtocol extends ApiProtocol<SsePluginHooks> {
    * @param onComplete - Optional callback when stream completes
    * @returns Connection ID for disconnecting
    */
+  // @cpt-begin:cpt-hai3-flow-api-communication-sse-connection:p1:inst-1
+  // @cpt-begin:cpt-hai3-state-api-communication-sse-connection:p1:inst-1
   async connect(
     url: string,
     onMessage: (event: MessageEvent) => void,
@@ -206,6 +219,8 @@ export class SseProtocol extends ApiProtocol<SsePluginHooks> {
 
     return connectionId;
   }
+  // @cpt-end:cpt-hai3-flow-api-communication-sse-connection:p1:inst-1
+  // @cpt-end:cpt-hai3-state-api-communication-sse-connection:p1:inst-1
 
   /**
    * Attach event handlers to EventSource (mock or real)
@@ -246,6 +261,7 @@ export class SseProtocol extends ApiProtocol<SsePluginHooks> {
    *
    * @param connectionId - Connection ID returned from connect()
    */
+  // @cpt-begin:cpt-hai3-flow-api-communication-sse-disconnect:p1:inst-1
   disconnect(connectionId: string): void {
     const connection = this.connections.get(connectionId);
     if (connection) {
@@ -253,6 +269,7 @@ export class SseProtocol extends ApiProtocol<SsePluginHooks> {
       this.connections.delete(connectionId);
     }
   }
+  // @cpt-end:cpt-hai3-flow-api-communication-sse-disconnect:p1:inst-1
 
   /**
    * Generate unique connection ID

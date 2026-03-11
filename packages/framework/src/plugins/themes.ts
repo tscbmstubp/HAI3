@@ -4,6 +4,11 @@
  * Framework Layer: L2
  */
 
+// @cpt-FEATURE:cpt-hai3-flow-framework-composition-theme-propagation:p1
+// @cpt-FEATURE:cpt-hai3-flow-framework-composition-shared-property-broadcast:p1
+// @cpt-FEATURE:cpt-hai3-dod-framework-composition-propagation:p1
+// @cpt-FEATURE:cpt-hai3-dod-framework-composition-shared-property:p1
+
 import { eventBus } from '@hai3/state';
 import { HAI3_SHARED_PROPERTY_THEME } from '@hai3/screensets';
 import type { HAI3Plugin, ChangeThemePayload, ThemesConfig } from '../types';
@@ -22,9 +27,11 @@ declare module '@hai3/state' {
  *
  * @param payload - The theme change payload
  */
+// @cpt-begin:cpt-hai3-flow-framework-composition-theme-propagation:p1:inst-1
 function changeTheme(payload: ChangeThemePayload): void {
   eventBus.emit('theme/changed', payload);
 }
+// @cpt-end:cpt-hai3-flow-framework-composition-theme-propagation:p1:inst-1
 
 /**
  * Themes plugin factory.
@@ -61,6 +68,8 @@ export function themes(config?: ThemesConfig): HAI3Plugin {
       },
     },
 
+    // @cpt-begin:cpt-hai3-flow-framework-composition-theme-propagation:p1:inst-2
+    // @cpt-begin:cpt-hai3-dod-framework-composition-propagation:p1:inst-1
     onInit(app) {
       // Subscribe to theme changes
       eventBus.on('theme/changed', (payload: ChangeThemePayload) => {
@@ -78,5 +87,7 @@ export function themes(config?: ThemesConfig): HAI3Plugin {
         themeRegistry.apply(themes[0].id);
       }
     },
+    // @cpt-end:cpt-hai3-flow-framework-composition-theme-propagation:p1:inst-2
+    // @cpt-end:cpt-hai3-dod-framework-composition-propagation:p1:inst-1
   };
 }

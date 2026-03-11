@@ -73,6 +73,8 @@ export type HAI3SliceResult<
  * dispatch(setSelected(threadId));
  * ```
  */
+// @cpt-FEATURE:cpt-hai3-algo-state-management-create-slice:p1
+// @cpt-FEATURE:cpt-hai3-dod-state-management-create-slice:p1
 export function createSlice<
   TState,
   TReducers extends SliceCaseReducers<TState>,

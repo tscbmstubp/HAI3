@@ -6,6 +6,9 @@
  *
  * @packageDocumentation
  */
+// @cpt-FEATURE:cpt-hai3-flow-react-bindings-extension-domain-slot:p1
+// @cpt-FEATURE:cpt-hai3-state-react-bindings-extension-slot:p1
+// @cpt-FEATURE:cpt-hai3-dod-react-bindings-extension-slot:p1
 
 import React, { useEffect, useRef, useState } from 'react';
 import type { ScreensetsRegistry, ParentMfeBridge } from '@hai3/framework';
@@ -82,6 +85,9 @@ export interface ExtensionDomainSlotProps {
  * />
  * ```
  */
+// @cpt-begin:cpt-hai3-flow-react-bindings-extension-domain-slot:p1:inst-1
+// @cpt-begin:cpt-hai3-state-react-bindings-extension-slot:p1:inst-1
+// @cpt-begin:cpt-hai3-dod-react-bindings-extension-slot:p1:inst-1
 export function ExtensionDomainSlot(props: ExtensionDomainSlotProps): React.ReactElement {
   const {
     registry,
@@ -228,3 +234,6 @@ export function ExtensionDomainSlot(props: ExtensionDomainSlotProps): React.Reac
     />
   );
 }
+// @cpt-end:cpt-hai3-flow-react-bindings-extension-domain-slot:p1:inst-1
+// @cpt-end:cpt-hai3-state-react-bindings-extension-slot:p1:inst-1
+// @cpt-end:cpt-hai3-dod-react-bindings-extension-slot:p1:inst-1

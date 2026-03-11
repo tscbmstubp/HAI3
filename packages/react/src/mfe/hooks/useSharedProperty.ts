@@ -5,6 +5,9 @@
  *
  * React Layer: L3
  */
+// @cpt-FEATURE:cpt-hai3-flow-react-bindings-use-shared-property:p1
+// @cpt-FEATURE:cpt-hai3-algo-react-bindings-mfe-context-guard:p1
+// @cpt-FEATURE:cpt-hai3-dod-react-bindings-mfe-hooks:p1
 
 import { useSyncExternalStore, useCallback } from 'react';
 import { useMfeContext } from '../MfeContext';
@@ -34,6 +37,9 @@ import { useMfeContext } from '../MfeContext';
  * }
  * ```
  */
+// @cpt-begin:cpt-hai3-flow-react-bindings-use-shared-property:p1:inst-1
+// @cpt-begin:cpt-hai3-algo-react-bindings-mfe-context-guard:p1:inst-4
+// @cpt-begin:cpt-hai3-dod-react-bindings-mfe-hooks:p1:inst-4
 export function useSharedProperty<T = unknown>(propertyTypeId: string): T | undefined {
   // Enforce MfeProvider context requirement
   const { bridge } = useMfeContext(); // Throws if not in MfeProvider
@@ -57,3 +63,6 @@ export function useSharedProperty<T = unknown>(propertyTypeId: string): T | unde
 
   return value;
 }
+// @cpt-end:cpt-hai3-flow-react-bindings-use-shared-property:p1:inst-1
+// @cpt-end:cpt-hai3-algo-react-bindings-mfe-context-guard:p1:inst-4
+// @cpt-end:cpt-hai3-dod-react-bindings-mfe-hooks:p1:inst-4

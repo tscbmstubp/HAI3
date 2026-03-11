@@ -1,3 +1,5 @@
+// @cpt-FEATURE:cpt-hai3-state-cli-tooling-command-lifecycle:p1
+// @cpt-FEATURE:cpt-hai3-dod-cli-tooling-command-infra:p1
 import type { CommandDefinition, CommandContext } from './command.js';
 import type { CommandResult, ExecutionMode } from './types.js';
 import { Logger } from './logger.js';
@@ -34,6 +36,7 @@ async function buildContext(mode: ExecutionMode): Promise<CommandContext> {
  * @param mode - Execution mode (interactive or programmatic)
  * @returns Command result with success/failure and data
  */
+// @cpt-begin:cpt-hai3-state-cli-tooling-command-lifecycle:p1:inst-1
 export async function executeCommand<TArgs, TResult>(
   command: CommandDefinition<TArgs, TResult>,
   args: TArgs,
@@ -63,6 +66,8 @@ export async function executeCommand<TArgs, TResult>(
     };
   }
 }
+
+// @cpt-end:cpt-hai3-state-cli-tooling-command-lifecycle:p1:inst-1
 
 /**
  * Build context for testing or external use

@@ -1,6 +1,7 @@
 /**
  * Validation utilities for CLI commands
  */
+// @cpt-FEATURE:cpt-hai3-algo-cli-tooling-validate-project-name:p1
 
 import lodash from 'lodash';
 const { toLower } = lodash;
@@ -9,6 +10,7 @@ const { toLower } = lodash;
  * Validate npm package name
  * Based on npm package name rules
  */
+// @cpt-begin:cpt-hai3-algo-cli-tooling-validate-project-name:p1:inst-1
 export function isValidPackageName(name: string): boolean {
   if (!name || name.length === 0) return false;
   if (name.length > 214) return false;
@@ -28,6 +30,7 @@ export function isValidPackageName(name: string): boolean {
   }
   return true;
 }
+// @cpt-end:cpt-hai3-algo-cli-tooling-validate-project-name:p1:inst-1
 
 /**
  * Validate camelCase string

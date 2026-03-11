@@ -16,11 +16,11 @@ The DESIGN is decomposed into 11 features aligned with package/module boundaries
 
 **Overall implementation status:**
 
-- [ ] `p1` - **ID**: `cpt-hai3-status-overall`
+- [x] `p1` - **ID**: `cpt-hai3-status-overall`
 
 ### 2.1 [State Management](feature-state-management/) ⏳ HIGH
 
-- [ ] `p1` - **ID**: `cpt-hai3-feature-state-management`
+- [x] `p1` - **ID**: `cpt-hai3-feature-state-management`
 
 - **Purpose**: Provides the foundational state management and event infrastructure for the entire HAI3 system. Implements the typed EventBus, Redux Toolkit store with dynamic slice registration, action factory, and effect system that enforce the Action → Event → Effect → Reducer data flow pattern.
 
@@ -86,7 +86,7 @@ The DESIGN is decomposed into 11 features aligned with package/module boundaries
 
 ### 2.2 [Screenset Registry & Contracts](feature-screenset-registry/) ⏳ HIGH
 
-- [ ] `p1` - **ID**: `cpt-hai3-feature-screenset-registry`
+- [x] `p1` - **ID**: `cpt-hai3-feature-screenset-registry`
 
 - **Purpose**: Defines the contract between host application and microfrontend extensions. Manages the screen-set registry, MFE type contracts (entry types, domain declarations, shared property schemas, action types), and auto-discovery via Vite glob imports.
 
@@ -147,7 +147,7 @@ The DESIGN is decomposed into 11 features aligned with package/module boundaries
 
 ### 2.3 [MFE Blob URL Isolation](feature-mfe-isolation/) ⏳ HIGH
 
-- [ ] `p1` - **ID**: `cpt-hai3-feature-mfe-isolation`
+- [x] `p1` - **ID**: `cpt-hai3-feature-mfe-isolation`
 
 - **Purpose**: Implements per-MFE JavaScript isolation through blob URL evaluation. Each MFE bundle is fetched, its import specifiers rewritten to blob URLs, and evaluated in a fresh module scope. This ensures each MFE has its own module-level state (EventBus, store) independent of the host and other MFEs.
 
@@ -217,7 +217,7 @@ The DESIGN is decomposed into 11 features aligned with package/module boundaries
 
 ### 2.4 [API Communication](feature-api-communication/) ⏳ HIGH
 
-- [ ] `p1` - **ID**: `cpt-hai3-feature-api-communication`
+- [x] `p1` - **ID**: `cpt-hai3-feature-api-communication`
 
 - **Purpose**: Provides a unified API service layer abstracting REST and SSE protocols behind consistent interfaces. Includes global and instance-level plugin systems for cross-cutting concerns, mock mode control via symbol-based plugin identification, and protocol-specific configuration.
 
@@ -281,7 +281,7 @@ The DESIGN is decomposed into 11 features aligned with package/module boundaries
 
 ### 2.5 [Internationalization Infrastructure](feature-i18n-infrastructure/) ⏳ HIGH
 
-- [ ] `p1` - **ID**: `cpt-hai3-feature-i18n-infrastructure`
+- [x] `p1` - **ID**: `cpt-hai3-feature-i18n-infrastructure`
 
 - **Purpose**: Provides internationalization infrastructure supporting 36 languages with locale-aware formatting, hybrid namespace model for menu/screen-level translations, and lazy chunk loading.
 
@@ -339,7 +339,7 @@ The DESIGN is decomposed into 11 features aligned with package/module boundaries
 
 ### 2.6 [Framework Composition](feature-framework-composition/) ⏳ HIGH
 
-- [ ] `p1` - **ID**: `cpt-hai3-feature-framework-composition`
+- [x] `p1` - **ID**: `cpt-hai3-feature-framework-composition`
 
 - **Purpose**: Composes L1 SDK packages into a cohesive application framework through the plugin architecture. Provides the builder API, plugin system, layout orchestration, configuration management, microfrontends lifecycle plugin, shared property bridge with GTS validation, and theme/i18n propagation to MFEs.
 
@@ -420,7 +420,7 @@ The DESIGN is decomposed into 11 features aligned with package/module boundaries
 
 ### 2.7 [React Bindings](feature-react-bindings/) ⏳ HIGH
 
-- [ ] `p1` - **ID**: `cpt-hai3-feature-react-bindings`
+- [x] `p1` - **ID**: `cpt-hai3-feature-react-bindings`
 
 - **Purpose**: Bridges the framework layer to React 19, providing the root provider, typed hooks, MFE rendering with Shadow DOM CSS isolation, and error boundaries. This is the primary API surface that application developers interact with.
 
@@ -476,7 +476,7 @@ The DESIGN is decomposed into 11 features aligned with package/module boundaries
 
 ### 2.8 [UIKit Components](feature-uikit-components/) ⏳ HIGH
 
-- [ ] `p1` - **ID**: `cpt-hai3-feature-uikit-components`
+- [x] `p1` - **ID**: `cpt-hai3-feature-uikit-components`
 
 - **Purpose**: Provides a consistent, accessible component library built on shadcn/ui patterns with Radix primitives and Tailwind CSS. All components use React 19 ref-as-prop pattern. UIKit is standalone with no HAI3 framework dependencies.
 
@@ -530,7 +530,7 @@ The DESIGN is decomposed into 11 features aligned with package/module boundaries
 
 ### 2.9 [Studio DevTools](feature-studio-devtools/) ⏳ MEDIUM
 
-- [ ] `p2` - **ID**: `cpt-hai3-feature-studio-devtools`
+- [x] `p2` - **ID**: `cpt-hai3-feature-studio-devtools`
 
 - **Purpose**: Provides a development-time overlay for inspecting and tweaking theme, i18n, viewport, and state. Conditionally loaded via `import.meta.env.DEV` for zero production bundle impact. Persists panel state to localStorage.
 
@@ -582,7 +582,7 @@ The DESIGN is decomposed into 11 features aligned with package/module boundaries
 
 ### 2.10 [CLI Tooling](feature-cli-tooling/) ⏳ MEDIUM
 
-- [ ] `p2` - **ID**: `cpt-hai3-feature-cli-tooling`
+- [x] `p2` - **ID**: `cpt-hai3-feature-cli-tooling`
 
 - **Purpose**: Reduces boilerplate and enforces conventions through interactive scaffolding commands. Generates screen-sets, MFE packages, and components from real project files used as templates. Supports both interactive (human) and programmatic (AI agent) execution modes.
 
@@ -637,7 +637,7 @@ The DESIGN is decomposed into 11 features aligned with package/module boundaries
 
 ### 2.11 [Publishing Pipeline](feature-publishing-pipeline/) ⏳ MEDIUM
 
-- [ ] `p2` - **ID**: `cpt-hai3-feature-publishing-pipeline`
+- [x] `p2` - **ID**: `cpt-hai3-feature-publishing-pipeline`
 
 - **Purpose**: Automates NPM package publishing with correct layer-order dependency resolution, version detection via git diff, and idempotent CI workflow. Ensures all packages have correct metadata, ESM output, and consistent versioning.
 

@@ -1,8 +1,8 @@
 # Feature: CLI Tooling
 
-- [ ] `p2` - **ID**: `cpt-hai3-featstatus-cli-tooling`
+- [x] `p2` - **ID**: `cpt-hai3-featstatus-cli-tooling`
 
-- [ ] `p2` - **ID**: `cpt-hai3-feature-cli-tooling`
+- [x] `p2` - **ID**: `cpt-hai3-feature-cli-tooling`
 
 ## Table of Contents
 
@@ -51,7 +51,7 @@ Success criteria: A developer runs `hai3 create my-app`, changes into the direct
 
 ### Create Project
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-cli-tooling-create-project`
+- [x] `p1` - **ID**: `cpt-hai3-flow-cli-tooling-create-project`
 
 **Actors**: `cpt-hai3-actor-developer`, `cpt-hai3-actor-cli`
 
@@ -69,7 +69,7 @@ Success criteria: A developer runs `hai3 create my-app`, changes into the direct
 
 ### Scaffold Layout
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-cli-tooling-scaffold-layout`
+- [x] `p1` - **ID**: `cpt-hai3-flow-cli-tooling-scaffold-layout`
 
 **Actors**: `cpt-hai3-actor-developer`, `cpt-hai3-actor-cli`
 
@@ -82,7 +82,7 @@ Success criteria: A developer runs `hai3 create my-app`, changes into the direct
 
 ### Update Project
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-cli-tooling-update-project`
+- [x] `p1` - **ID**: `cpt-hai3-flow-cli-tooling-update-project`
 
 **Actors**: `cpt-hai3-actor-developer`, `cpt-hai3-actor-cli`
 
@@ -97,7 +97,7 @@ Success criteria: A developer runs `hai3 create my-app`, changes into the direct
 
 ### Update Layout
 
-- [ ] `p2` - **ID**: `cpt-hai3-flow-cli-tooling-update-layout`
+- [x] `p2` - **ID**: `cpt-hai3-flow-cli-tooling-update-layout`
 
 **Actors**: `cpt-hai3-actor-developer`, `cpt-hai3-actor-cli`
 
@@ -110,7 +110,7 @@ Success criteria: A developer runs `hai3 create my-app`, changes into the direct
 
 ### Sync AI Configurations
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-cli-tooling-ai-sync`
+- [x] `p1` - **ID**: `cpt-hai3-flow-cli-tooling-ai-sync`
 
 **Actors**: `cpt-hai3-actor-developer`, `cpt-hai3-actor-cli`
 
@@ -126,7 +126,7 @@ Success criteria: A developer runs `hai3 create my-app`, changes into the direct
 
 ### Validate Components
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-cli-tooling-validate-components`
+- [x] `p1` - **ID**: `cpt-hai3-flow-cli-tooling-validate-components`
 
 **Actors**: `cpt-hai3-actor-developer`, `cpt-hai3-actor-cli`
 
@@ -140,7 +140,7 @@ Success criteria: A developer runs `hai3 create my-app`, changes into the direct
 
 ### Apply Code Migrations
 
-- [ ] `p2` - **ID**: `cpt-hai3-flow-cli-tooling-migrate`
+- [x] `p2` - **ID**: `cpt-hai3-flow-cli-tooling-migrate`
 
 **Actors**: `cpt-hai3-actor-developer`, `cpt-hai3-actor-cli`
 
@@ -158,7 +158,7 @@ Success criteria: A developer runs `hai3 create my-app`, changes into the direct
 
 ### Validate Project Name
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-cli-tooling-validate-project-name`
+- [x] `p1` - **ID**: `cpt-hai3-algo-cli-tooling-validate-project-name`
 
 1. [ ] - `p1` - **IF** `projectName` is empty or missing **RETURN** error `MISSING_NAME` - `inst-check-empty-name`
 2. [ ] - `p1` - **IF** `projectName` does not match a valid npm package name pattern (lowercase, hyphens, no leading dots or underscores, no uppercase) **RETURN** error `INVALID_NAME` - `inst-check-npm-name-pattern`
@@ -167,7 +167,7 @@ Success criteria: A developer runs `hai3 create my-app`, changes into the direct
 
 ### Generate Project Files
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-cli-tooling-generate-project`
+- [x] `p1` - **ID**: `cpt-hai3-algo-cli-tooling-generate-project`
 
 Constructs the complete set of `GeneratedFile` entries for a new HAI3 project from bundled templates and dynamic content.
 
@@ -190,7 +190,7 @@ Constructs the complete set of `GeneratedFile` entries for a new HAI3 project fr
 
 ### Layer Command Variant Selection
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-cli-tooling-select-command-variant`
+- [x] `p1` - **ID**: `cpt-hai3-algo-cli-tooling-select-command-variant`
 
 Selects the most specific command file variant for a given HAI3 architecture layer. Implements cascade fallback so higher layers inherit lower-layer commands when no specific override exists.
 
@@ -202,7 +202,7 @@ Selects the most specific command file variant for a given HAI3 architecture lay
 
 ### Detect Release Channel
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-cli-tooling-detect-release-channel`
+- [x] `p1` - **ID**: `cpt-hai3-algo-cli-tooling-detect-release-channel`
 
 Determines whether the globally installed `@hai3/cli` is on the `alpha` or `stable` channel.
 
@@ -213,7 +213,7 @@ Determines whether the globally installed `@hai3/cli` is on the `alpha` or `stab
 
 ### Sync Templates
 
-- [ ] `p2` - **ID**: `cpt-hai3-algo-cli-tooling-sync-templates`
+- [x] `p2` - **ID**: `cpt-hai3-algo-cli-tooling-sync-templates`
 
 Updates project template-derived files (AI target docs, IDE configs, command adapters) from the currently installed CLI templates without overwriting user-owned source files.
 
@@ -224,7 +224,7 @@ Updates project template-derived files (AI target docs, IDE configs, command ada
 
 ### Generate AI Configuration for Tool
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-cli-tooling-generate-ai-config`
+- [x] `p1` - **ID**: `cpt-hai3-algo-cli-tooling-generate-ai-config`
 
 Generates the IDE/AI-tool-specific configuration file and command adapter files for a single target tool.
 
@@ -236,7 +236,7 @@ Generates the IDE/AI-tool-specific configuration file and command adapter files 
 
 ### Generate Command Adapters
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-cli-tooling-generate-command-adapters`
+- [x] `p1` - **ID**: `cpt-hai3-algo-cli-tooling-generate-command-adapters`
 
 Writes adapter stub files for each discovered command into the target IDE commands directory. Implements a four-tier precedence hierarchy so project-level overrides take priority over framework defaults.
 
@@ -249,7 +249,7 @@ Writes adapter stub files for each discovered command into the target IDE comman
 
 ### Scan Component Violations
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-cli-tooling-scan-component-violations`
+- [x] `p1` - **ID**: `cpt-hai3-algo-cli-tooling-scan-component-violations`
 
 Inspects TypeScript and TSX source files for four categories of architectural violations.
 
@@ -262,7 +262,7 @@ Inspects TypeScript and TSX source files for four categories of architectural vi
 
 ### Resolve Pending Migrations
 
-- [ ] `p2` - **ID**: `cpt-hai3-algo-cli-tooling-resolve-pending-migrations`
+- [x] `p2` - **ID**: `cpt-hai3-algo-cli-tooling-resolve-pending-migrations`
 
 Determines which registered migrations have not yet been applied to the project.
 
@@ -275,7 +275,7 @@ Determines which registered migrations have not yet been applied to the project.
 
 ### Apply Migration
 
-- [ ] `p2` - **ID**: `cpt-hai3-algo-cli-tooling-apply-migration`
+- [x] `p2` - **ID**: `cpt-hai3-algo-cli-tooling-apply-migration`
 
 Applies a single versioned migration to the target project using ts-morph AST transformations.
 
@@ -288,7 +288,7 @@ Applies a single versioned migration to the target project using ts-morph AST tr
 
 ### Build CLI Templates at Build Time
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-cli-tooling-build-templates`
+- [x] `p1` - **ID**: `cpt-hai3-algo-cli-tooling-build-templates`
 
 The `copy-templates.ts` script assembles the complete templates directory inside `packages/cli/templates/` during the CLI package build (`npm run build` in `packages/cli`).
 
@@ -308,7 +308,7 @@ The `copy-templates.ts` script assembles the complete templates directory inside
 
 ### Command Execution Lifecycle
 
-- [ ] `p1` - **ID**: `cpt-hai3-state-cli-tooling-command-lifecycle`
+- [x] `p1` - **ID**: `cpt-hai3-state-cli-tooling-command-lifecycle`
 
 Represents the runtime state of any CLI command from invocation through completion, governing the behavior of `executeCommand()`.
 
@@ -321,7 +321,7 @@ Represents the runtime state of any CLI command from invocation through completi
 
 ### Migration Tracker State
 
-- [ ] `p2` - **ID**: `cpt-hai3-state-cli-tooling-migration-tracker`
+- [x] `p2` - **ID**: `cpt-hai3-state-cli-tooling-migration-tracker`
 
 Tracks which migrations have been applied to a project, persisted in `.hai3/migrations.json`.
 
@@ -336,7 +336,7 @@ Tracks which migrations have been applied to a project, persisted in `.hai3/migr
 
 ### CLI Package and Binary
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-cli-tooling-package`
+- [x] `p1` - **ID**: `cpt-hai3-dod-cli-tooling-package`
 
 `@hai3/cli` is published as a workspace package with a `hai3` binary entry point. The package supports ESM environments (Node.js 18+) and exposes a dual programmatic API via `api.ts` for use by AI agents without interactive prompts.
 
@@ -364,7 +364,7 @@ Tracks which migrations have been applied to a project, persisted in `.hai3/migr
 
 ### Command Registry and Executor
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-cli-tooling-command-infra`
+- [x] `p1` - **ID**: `cpt-hai3-dod-cli-tooling-command-infra`
 
 `CommandRegistry` manages command registration and lookup by name. `executeCommand()` builds context, runs validation, executes the command, and returns a type-safe `CommandResult<T>`. Dual-mode execution is controlled through `ExecutionMode`: interactive mode uses `@inquirer/prompts`; programmatic mode uses pre-filled answers supplied as `Record<string, unknown>`.
 
@@ -385,7 +385,7 @@ Tracks which migrations have been applied to a project, persisted in `.hai3/migr
 
 ### Template-Based Project Generation
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-cli-tooling-templates`
+- [x] `p1` - **ID**: `cpt-hai3-dod-cli-tooling-templates`
 
 The `copy-templates.ts` build script assembles the full template set into `packages/cli/templates/` at build time. The project generator reads from this bundled directory at runtime — no network access required. Templates cover project scaffolding, AI target docs, IDE configs, command adapters, and OpenSpec skills for all four supported AI tools.
 
@@ -410,7 +410,7 @@ The `copy-templates.ts` build script assembles the full template set into `packa
 
 ### Layer-Aware Command Variant Selection
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-cli-tooling-layer-variants`
+- [x] `p1` - **ID**: `cpt-hai3-dod-cli-tooling-layer-variants`
 
 `selectCommandVariant()` and `isTargetApplicableToLayer()` in `src/core/layers.ts` implement the cascade fallback so that sdk-layer projects receive only sdk-applicable commands and target files, while app-layer projects inherit the full hierarchy.
 
@@ -430,7 +430,7 @@ The `copy-templates.ts` build script assembles the full template set into `packa
 
 ### AI Configuration Sync
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-cli-tooling-ai-sync`
+- [x] `p1` - **ID**: `cpt-hai3-dod-cli-tooling-ai-sync`
 
 `aiSyncCommand` generates IDE-specific rule files and command adapter stubs for Claude Code, GitHub Copilot, Cursor, and Windsurf. Supports four-tier command precedence (project > company > hai3 > packages). Preserves user custom rules from `.ai/rules/app.md` across syncs. Supports `--diff` preview mode.
 
@@ -454,7 +454,7 @@ The `copy-templates.ts` build script assembles the full template set into `packa
 
 ### Component Structure Validation
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-cli-tooling-validate`
+- [x] `p1` - **ID**: `cpt-hai3-dod-cli-tooling-validate`
 
 `validateComponentsCommand` scans `.ts` / `.tsx` files and enforces four architectural rules: no inline FC components in Screen files, no inline data arrays in Screen files, no `@hai3/react` / `@hai3/framework` imports in UIKit files, no `style={{}}` or hex color literals outside base UIKit folders. Violations carry file path, line number, rule name, message, severity, and a suggestion.
 
@@ -476,7 +476,7 @@ The `copy-templates.ts` build script assembles the full template set into `packa
 
 ### Codemod Migration System
 
-- [ ] `p2` - **ID**: `cpt-hai3-dod-cli-tooling-migrations`
+- [x] `p2` - **ID**: `cpt-hai3-dod-cli-tooling-migrations`
 
 `migrateCommand` applies versioned codemods using ts-morph AST transforms. Migrations are idempotent — a migration already recorded in `.hai3/migrations.json` is skipped. Supports dry-run mode, status listing, version-targeted runs, and configurable glob patterns.
 
@@ -504,15 +504,15 @@ The `copy-templates.ts` build script assembles the full template set into `packa
 
 ## Acceptance Criteria
 
-- [ ] `hai3 create my-app` scaffolds a complete HAI3 application with correct `package.json`, `hai3.config.json`, `CLAUDE.md`, and all four AI tool configuration files
-- [ ] `hai3 create my-sdk --layer sdk` generates a minimal SDK-layer package with only sdk-applicable target files and command variants
-- [ ] `hai3 scaffold layout` writes layout components to `src/app/layout/` inside an existing project; skips existing files unless `--force` is passed
-- [ ] `hai3 ai sync` regenerates `CLAUDE.md`, `.github/copilot-instructions.md`, `.cursor/rules/hai3.mdc`, `.windsurf/rules/hai3.md`, and command adapters; preserves `.ai/rules/app.md` content across runs
-- [ ] `hai3 ai sync --diff` prints a change summary without writing files
-- [ ] `hai3 validate components` exits with code 0 when no violations are found and code 1 when any `error`-severity violation is present
-- [ ] `hai3 migrate --dry-run` previews changes without modifying source files and without updating `.hai3/migrations.json`
-- [ ] `hai3 migrate` is idempotent: running it twice does not re-apply an already applied migration
-- [ ] `hai3 update --alpha` and `hai3 update --stable` cannot be combined; the command exits with `CONFLICTING_OPTIONS` when both flags are present
-- [ ] CLI build produces exactly 30 OpenSpec skill `SKILL.md` files (10 per editor × 3 editors) and 10 Copilot OPSX command files in `packages/cli/templates/`
-- [ ] `executeCommand(createCommand, args, { interactive: false, answers })` returns `{ success: true, data }` without prompts — programmatic API is fully functional
-- [ ] `selectCommandVariant` returns `null` for any command that has no applicable variant for the given layer, ensuring layer packages do not receive irrelevant commands
+- [x] `hai3 create my-app` scaffolds a complete HAI3 application with correct `package.json`, `hai3.config.json`, `CLAUDE.md`, and all four AI tool configuration files
+- [x] `hai3 create my-sdk --layer sdk` generates a minimal SDK-layer package with only sdk-applicable target files and command variants
+- [x] `hai3 scaffold layout` writes layout components to `src/app/layout/` inside an existing project; skips existing files unless `--force` is passed
+- [x] `hai3 ai sync` regenerates `CLAUDE.md`, `.github/copilot-instructions.md`, `.cursor/rules/hai3.mdc`, `.windsurf/rules/hai3.md`, and command adapters; preserves `.ai/rules/app.md` content across runs
+- [x] `hai3 ai sync --diff` prints a change summary without writing files
+- [x] `hai3 validate components` exits with code 0 when no violations are found and code 1 when any `error`-severity violation is present
+- [x] `hai3 migrate --dry-run` previews changes without modifying source files and without updating `.hai3/migrations.json`
+- [x] `hai3 migrate` is idempotent: running it twice does not re-apply an already applied migration
+- [x] `hai3 update --alpha` and `hai3 update --stable` cannot be combined; the command exits with `CONFLICTING_OPTIONS` when both flags are present
+- [x] CLI build produces exactly 30 OpenSpec skill `SKILL.md` files (10 per editor × 3 editors) and 10 Copilot OPSX command files in `packages/cli/templates/`
+- [x] `executeCommand(createCommand, args, { interactive: false, answers })` returns `{ success: true, data }` without prompts — programmatic API is fully functional
+- [x] `selectCommandVariant` returns `null` for any command that has no applicable variant for the given layer, ensuring layer packages do not receive irrelevant commands

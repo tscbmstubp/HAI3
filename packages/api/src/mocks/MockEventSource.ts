@@ -6,6 +6,10 @@
  * SDK Layer: L1 (Zero dependencies)
  */
 
+// @cpt-FEATURE:cpt-hai3-dod-api-communication-sse-mock-plugin:p2
+// @cpt-FEATURE:cpt-hai3-algo-api-communication-mock-event-source:p2
+// @cpt-FEATURE:cpt-hai3-state-api-communication-mock-event-source:p2
+
 import type { EventSourceLike } from '../types';
 
 /**
@@ -93,6 +97,7 @@ export class MockEventSource implements EventSourceLike {
   /**
    * Close the connection
    */
+  // @cpt-begin:cpt-hai3-state-api-communication-mock-event-source:p2:inst-1
   close(): void {
     if (this.readyState === 2) return; // Already closed
 
@@ -103,10 +108,12 @@ export class MockEventSource implements EventSourceLike {
       this.abortController.abort();
     }
   }
+  // @cpt-end:cpt-hai3-state-api-communication-mock-event-source:p2:inst-1
 
   /**
    * Start emitting events asynchronously
    */
+  // @cpt-begin:cpt-hai3-algo-api-communication-mock-event-source:p2:inst-1
   private async startEmitting(): Promise<void> {
     this.abortController = new AbortController();
     const signal = this.abortController.signal;
@@ -152,6 +159,7 @@ export class MockEventSource implements EventSourceLike {
     // All events emitted - close connection
     this.readyState = 2; // CLOSED
   }
+  // @cpt-end:cpt-hai3-algo-api-communication-mock-event-source:p2:inst-1
 
   /**
    * Emit an event to registered listeners

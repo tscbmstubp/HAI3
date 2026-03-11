@@ -1,8 +1,8 @@
 # Feature: State Management
 
-- [ ] `p1` - **ID**: `cpt-hai3-featstatus-state-management`
+- [x] `p1` - **ID**: `cpt-hai3-featstatus-state-management`
 
-- [ ] `p2` - `cpt-hai3-feature-state-management`
+- [x] `p2` - `cpt-hai3-feature-state-management`
 
 ## Table of Contents
 
@@ -57,98 +57,98 @@ Success criteria: Any `@hai3/state` consumer can emit and receive typed events, 
 
 ### 2.1 Developer Subscribes to Events and Augments Types
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-state-management-type-augmentation`
+- [x] `p1` - **ID**: `cpt-hai3-flow-state-management-type-augmentation`
 
 **Actors**: `cpt-hai3-actor-developer`
 
 **Pre-condition**: `@hai3/state` is installed. The developer is authoring a screenset module.
 
-1. [ ] `p1` - Developer declares a `module '@hai3/state'` block augmenting `EventPayloadMap` with screenset-specific event keys and payload shapes - `inst-augment-event-map`
-2. [ ] `p1` - Developer declares a `module '@hai3/state'` block augmenting `RootState` with screenset-specific slice key-to-state mappings - `inst-augment-root-state`
-3. [ ] `p1` - TypeScript compiler merges the declarations into the base interfaces, making new event keys available to `eventBus.emit()` and `eventBus.on()` without explicit casting - `inst-ts-merge`
-4. [ ] `p1` - Developer calls `eventBus.on('screenset/domain/eventName', handler)` with full payload type inference - `inst-subscribe-typed`
-5. [ ] `p1` - RETURN subscription object containing `unsubscribe()` - `inst-return-subscription`
+1. [x] `p1` - Developer declares a `module '@hai3/state'` block augmenting `EventPayloadMap` with screenset-specific event keys and payload shapes - `inst-augment-event-map`
+2. [x] `p1` - Developer declares a `module '@hai3/state'` block augmenting `RootState` with screenset-specific slice key-to-state mappings - `inst-augment-root-state`
+3. [x] `p1` - TypeScript compiler merges the declarations into the base interfaces, making new event keys available to `eventBus.emit()` and `eventBus.on()` without explicit casting - `inst-ts-merge`
+4. [x] `p1` - Developer calls `eventBus.on('screenset/domain/eventName', handler)` with full payload type inference - `inst-subscribe-typed`
+5. [x] `p1` - RETURN subscription object containing `unsubscribe()` - `inst-return-subscription`
 
 ---
 
 ### 2.2 Developer Defines and Registers a Slice
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-state-management-slice-registration`
+- [x] `p1` - **ID**: `cpt-hai3-flow-state-management-slice-registration`
 
 **Actors**: `cpt-hai3-actor-developer`, `cpt-hai3-actor-runtime`
 
 **Pre-condition**: The developer has augmented `RootState` with the slice key.
 
-1. [ ] `p1` - Developer calls `createSlice({ name, initialState, reducers })` - `inst-call-create-slice`
-2. [ ] `p1` - RETURN destructured result `{ slice, ...reducerFunctions }` where `slice` exposes only `name` and `reducer` - `inst-return-slice-result`
-3. [ ] `p1` - Developer calls `registerSlice(slice, initEffects)` - `inst-call-register-slice`
-4. [ ] `p1` - Runtime executes the slice registration process via `cpt-hai3-algo-state-management-register-slice` - `inst-run-register`
-5. [ ] `p1` - Runtime calls `initEffects(dispatch)` to wire event subscriptions for this slice - `inst-call-init-effects`
-6. [ ] `p1` - RETURN (void); slice state is now live in the Redux store - `inst-return-registered`
+1. [x] `p1` - Developer calls `createSlice({ name, initialState, reducers })` - `inst-call-create-slice`
+2. [x] `p1` - RETURN destructured result `{ slice, ...reducerFunctions }` where `slice` exposes only `name` and `reducer` - `inst-return-slice-result`
+3. [x] `p1` - Developer calls `registerSlice(slice, initEffects)` - `inst-call-register-slice`
+4. [x] `p1` - Runtime executes the slice registration process via `cpt-hai3-algo-state-management-register-slice` - `inst-run-register`
+5. [x] `p1` - Runtime calls `initEffects(dispatch)` to wire event subscriptions for this slice - `inst-call-init-effects`
+6. [x] `p1` - RETURN (void); slice state is now live in the Redux store - `inst-return-registered`
 
 ---
 
 ### 2.3 Developer Authors an Effect
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-state-management-effect-authoring`
+- [x] `p1` - **ID**: `cpt-hai3-flow-state-management-effect-authoring`
 
 **Actors**: `cpt-hai3-actor-developer`, `cpt-hai3-actor-runtime`
 
 **Pre-condition**: A slice is registered. Reducer functions are exported from the slice module.
 
-1. [ ] `p1` - Developer authors an `EffectInitializer` function that receives `dispatch: AppDispatch` - `inst-define-effect-initializer`
-2. [ ] `p1` - Inside the initializer, developer calls `eventBus.on(eventKey, handler)` for each event this slice reacts to - `inst-subscribe-in-effect`
-3. [ ] `p1` - Each handler receives the typed payload and calls `dispatch(reducerFunction(payload))` to update state - `inst-dispatch-reducer`
-4. [ ] `p1` - Developer returns a cleanup function from the initializer that calls `subscription.unsubscribe()` for each subscription - `inst-return-cleanup`
-5. [ ] `p1` - Runtime stores the cleanup function, keyed by slice name, in the effect cleanups map - `inst-store-cleanup`
+1. [x] `p1` - Developer authors an `EffectInitializer` function that receives `dispatch: AppDispatch` - `inst-define-effect-initializer`
+2. [x] `p1` - Inside the initializer, developer calls `eventBus.on(eventKey, handler)` for each event this slice reacts to - `inst-subscribe-in-effect`
+3. [x] `p1` - Each handler receives the typed payload and calls `dispatch(reducerFunction(payload))` to update state - `inst-dispatch-reducer`
+4. [x] `p1` - Developer returns a cleanup function from the initializer that calls `subscription.unsubscribe()` for each subscription - `inst-return-cleanup`
+5. [x] `p1` - Runtime stores the cleanup function, keyed by slice name, in the effect cleanups map - `inst-store-cleanup`
 
 ---
 
 ### 2.4 Framework Plugin Initializes the Store
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-state-management-store-init`
+- [x] `p1` - **ID**: `cpt-hai3-flow-state-management-store-init`
 
 **Actors**: `cpt-hai3-actor-framework-plugin`, `cpt-hai3-actor-host-app`, `cpt-hai3-actor-runtime`
 
 **Pre-condition**: No store instance exists yet.
 
-1. [ ] `p1` - Framework plugin calls `createStore(initialReducers)` with its static layout reducers - `inst-call-create-store`
-2. [ ] `p1` - Runtime creates a Redux Toolkit store via `configureStore` using the combined static reducers - `inst-configure-rtk-store`
-3. [ ] `p1` - Runtime wraps the RTK store in a typed `HAI3Store<RootState>` facade exposing `getState`, `dispatch`, `subscribe`, `replaceReducer` - `inst-wrap-store`
-4. [ ] `p1` - RETURN `HAI3Store` instance to the framework plugin - `inst-return-store`
-5. [ ] `p1` - Subsequent calls to `getStore()` by any module return the same instance without re-creation - `inst-get-store-singleton`
+1. [x] `p1` - Framework plugin calls `createStore(initialReducers)` with its static layout reducers - `inst-call-create-store`
+2. [x] `p1` - Runtime creates a Redux Toolkit store via `configureStore` using the combined static reducers - `inst-configure-rtk-store`
+3. [x] `p1` - Runtime wraps the RTK store in a typed `HAI3Store<RootState>` facade exposing `getState`, `dispatch`, `subscribe`, `replaceReducer` - `inst-wrap-store`
+4. [x] `p1` - RETURN `HAI3Store` instance to the framework plugin - `inst-return-store`
+5. [x] `p1` - Subsequent calls to `getStore()` by any module return the same instance without re-creation - `inst-get-store-singleton`
 
 ---
 
 ### 2.5 Screenset Action Triggers State Update (Flux Data Flow)
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-state-management-flux-dataflow`
+- [x] `p1` - **ID**: `cpt-hai3-flow-state-management-flux-dataflow`
 
 **Actors**: `cpt-hai3-actor-developer`, `cpt-hai3-actor-runtime`
 
 **Pre-condition**: A slice is registered with effects wired. The consuming component has called the action function.
 
-1. [ ] `p1` - A HAI3 Action function (authored by the developer) calls `eventBus.emit(eventKey, payload)` - `inst-action-emit`
-2. [ ] `p1` - EventBus delivers the payload synchronously to all registered handlers for that event key - `inst-bus-deliver`
-3. [ ] `p1` - The matching Effect handler receives the payload and performs any side-effect work (e.g., API call, validation) - `inst-effect-side-effect`
-4. [ ] `p1` - Effect handler calls `dispatch(reducerFunction(payload))` to produce a Redux action - `inst-effect-dispatch`
-5. [ ] `p1` - Redux Toolkit reducer processes the action and returns the next immutable state - `inst-reducer-update`
-6. [ ] `p1` - Redux store notifies all subscribers of the state change - `inst-store-notify`
+1. [x] `p1` - A HAI3 Action function (authored by the developer) calls `eventBus.emit(eventKey, payload)` - `inst-action-emit`
+2. [x] `p1` - EventBus delivers the payload synchronously to all registered handlers for that event key - `inst-bus-deliver`
+3. [x] `p1` - The matching Effect handler receives the payload and performs any side-effect work (e.g., API call, validation) - `inst-effect-side-effect`
+4. [x] `p1` - Effect handler calls `dispatch(reducerFunction(payload))` to produce a Redux action - `inst-effect-dispatch`
+5. [x] `p1` - Redux Toolkit reducer processes the action and returns the next immutable state - `inst-reducer-update`
+6. [x] `p1` - Redux store notifies all subscribers of the state change - `inst-store-notify`
 
 ---
 
 ### 2.6 Slice Unregistration (Testing / HMR Cleanup)
 
-- [ ] `p2` - **ID**: `cpt-hai3-flow-state-management-slice-unregister`
+- [x] `p2` - **ID**: `cpt-hai3-flow-state-management-slice-unregister`
 
 **Actors**: `cpt-hai3-actor-developer`, `cpt-hai3-actor-runtime`
 
 **Pre-condition**: A slice with the given name is registered.
 
-1. [ ] `p2` - Developer or test harness calls `unregisterSlice(sliceName)` - `inst-call-unregister`
-2. [ ] `p2` - Runtime runs effect cleanup for the slice via `cpt-hai3-algo-state-management-unregister-slice` - `inst-run-cleanup`
-3. [ ] `p2` - Runtime removes the slice reducer from `dynamicReducers` and rebuilds the root reducer - `inst-rebuild-reducer`
-4. [ ] `p2` - Redux store reflects the removed slice state key after `replaceReducer` - `inst-store-updated`
+1. [x] `p2` - Developer or test harness calls `unregisterSlice(sliceName)` - `inst-call-unregister`
+2. [x] `p2` - Runtime runs effect cleanup for the slice via `cpt-hai3-algo-state-management-unregister-slice` - `inst-run-cleanup`
+3. [x] `p2` - Runtime removes the slice reducer from `dynamicReducers` and rebuilds the root reducer - `inst-rebuild-reducer`
+4. [x] `p2` - Redux store reflects the removed slice state key after `replaceReducer` - `inst-store-updated`
 
 ---
 
@@ -156,98 +156,98 @@ Success criteria: Any `@hai3/state` consumer can emit and receive typed events, 
 
 ### 3.1 Register Slice
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-state-management-register-slice`
+- [x] `p1` - **ID**: `cpt-hai3-algo-state-management-register-slice`
 
 **Inputs**: `slice: SliceObject<TState>`, `initEffects?: EffectInitializer`
 
-1. [ ] `p1` - IF no store instance exists, call `createStore()` to auto-create a default store - `inst-auto-create-store`
-2. [ ] `p1` - IF a previous effect cleanup exists for `slice.name`, call it and remove the entry from the cleanups map — this handles HMR re-execution where the module is re-evaluated but the slice is still registered - `inst-cleanup-previous-effects`
-3. [ ] `p1` - IF `dynamicReducers[slice.name]` already exists, re-initialize effects only (if provided), store the cleanup, and RETURN — avoids duplicate reducer registration during HMR - `inst-hmr-reregister`
-4. [ ] `p1` - IF `slice.name` contains `/`, split on `/` and validate exactly two non-empty parts exist; IF not, THROW with a descriptive error identifying the invalid format - `inst-validate-domain-format`
-5. [ ] `p1` - Add `slice.reducer` to `dynamicReducers` under key `slice.name` - `inst-add-dynamic-reducer`
-6. [ ] `p1` - Combine all static and dynamic reducers via `combineReducers` and call `store.replaceReducer` to hot-swap the root reducer - `inst-replace-root-reducer`
-7. [ ] `p1` - IF `initEffects` is provided, call `initEffects(dispatch)` to wire event subscriptions - `inst-call-init-effects`
-8. [ ] `p1` - IF `initEffects` returns a cleanup function, store it in the effect cleanups map under `slice.name` - `inst-store-effect-cleanup`
-9. [ ] `p1` - RETURN (void) - `inst-return`
+1. [x] `p1` - IF no store instance exists, call `createStore()` to auto-create a default store - `inst-auto-create-store`
+2. [x] `p1` - IF a previous effect cleanup exists for `slice.name`, call it and remove the entry from the cleanups map — this handles HMR re-execution where the module is re-evaluated but the slice is still registered - `inst-cleanup-previous-effects`
+3. [x] `p1` - IF `dynamicReducers[slice.name]` already exists, re-initialize effects only (if provided), store the cleanup, and RETURN — avoids duplicate reducer registration during HMR - `inst-hmr-reregister`
+4. [x] `p1` - IF `slice.name` contains `/`, split on `/` and validate exactly two non-empty parts exist; IF not, THROW with a descriptive error identifying the invalid format - `inst-validate-domain-format`
+5. [x] `p1` - Add `slice.reducer` to `dynamicReducers` under key `slice.name` - `inst-add-dynamic-reducer`
+6. [x] `p1` - Combine all static and dynamic reducers via `combineReducers` and call `store.replaceReducer` to hot-swap the root reducer - `inst-replace-root-reducer`
+7. [x] `p1` - IF `initEffects` is provided, call `initEffects(dispatch)` to wire event subscriptions - `inst-call-init-effects`
+8. [x] `p1` - IF `initEffects` returns a cleanup function, store it in the effect cleanups map under `slice.name` - `inst-store-effect-cleanup`
+9. [x] `p1` - RETURN (void) - `inst-return`
 
 ---
 
 ### 3.2 Unregister Slice
 
-- [ ] `p2` - **ID**: `cpt-hai3-algo-state-management-unregister-slice`
+- [x] `p2` - **ID**: `cpt-hai3-algo-state-management-unregister-slice`
 
 **Inputs**: `sliceName: string`
 
-1. [ ] `p2` - IF no store instance exists, RETURN early — nothing to unregister - `inst-guard-no-store`
-2. [ ] `p2` - IF `dynamicReducers[sliceName]` does not exist, log a warning and RETURN — slice was never registered - `inst-guard-not-registered`
-3. [ ] `p2` - IF a cleanup function exists for `sliceName` in the cleanups map, call it and remove the entry - `inst-run-effect-cleanup`
-4. [ ] `p2` - Remove `sliceName` from `dynamicReducers` - `inst-remove-reducer`
-5. [ ] `p2` - Rebuild root reducer combining remaining static and dynamic reducers; IF no reducers remain, use an identity reducer returning empty object - `inst-rebuild-root-reducer`
-6. [ ] `p2` - Call `store.replaceReducer` with the rebuilt root reducer - `inst-replace-reducer`
-7. [ ] `p2` - RETURN (void) - `inst-return`
+1. [x] `p2` - IF no store instance exists, RETURN early — nothing to unregister - `inst-guard-no-store`
+2. [x] `p2` - IF `dynamicReducers[sliceName]` does not exist, log a warning and RETURN — slice was never registered - `inst-guard-not-registered`
+3. [x] `p2` - IF a cleanup function exists for `sliceName` in the cleanups map, call it and remove the entry - `inst-run-effect-cleanup`
+4. [x] `p2` - Remove `sliceName` from `dynamicReducers` - `inst-remove-reducer`
+5. [x] `p2` - Rebuild root reducer combining remaining static and dynamic reducers; IF no reducers remain, use an identity reducer returning empty object - `inst-rebuild-root-reducer`
+6. [x] `p2` - Call `store.replaceReducer` with the rebuilt root reducer - `inst-replace-reducer`
+7. [x] `p2` - RETURN (void) - `inst-return`
 
 ---
 
 ### 3.3 EventBus Emit
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-state-management-eventbus-emit`
+- [x] `p1` - **ID**: `cpt-hai3-algo-state-management-eventbus-emit`
 
 **Inputs**: `eventType: K extends keyof EventPayloadMap`, `payload?: EventPayloadMap[K]`
 
-1. [ ] `p1` - Look up the handler set for `eventType` in the internal handlers map - `inst-lookup-handlers`
-2. [ ] `p1` - IF no handlers are registered for `eventType`, RETURN (no-op; event is dropped silently) - `inst-no-handlers`
-3. [ ] `p1` - FOR EACH handler in the set, call `handler(payload)` synchronously - `inst-invoke-handlers`
-4. [ ] `p1` - RETURN (void) - `inst-return`
+1. [x] `p1` - Look up the handler set for `eventType` in the internal handlers map - `inst-lookup-handlers`
+2. [x] `p1` - IF no handlers are registered for `eventType`, RETURN (no-op; event is dropped silently) - `inst-no-handlers`
+3. [x] `p1` - FOR EACH handler in the set, call `handler(payload)` synchronously - `inst-invoke-handlers`
+4. [x] `p1` - RETURN (void) - `inst-return`
 
 ---
 
 ### 3.4 EventBus Subscribe
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-state-management-eventbus-subscribe`
+- [x] `p1` - **ID**: `cpt-hai3-algo-state-management-eventbus-subscribe`
 
 **Inputs**: `eventType: K`, `handler: EventHandler<EventPayloadMap[K]>`
 
-1. [ ] `p1` - IF no handler set exists for `eventType`, create a new `Set` and insert it into the handlers map - `inst-init-handler-set`
-2. [ ] `p1` - Add `handler` to the handler set for `eventType` - `inst-add-handler`
-3. [ ] `p1` - RETURN a `Subscription` object whose `unsubscribe()` removes the handler from the set and deletes the set entry if it becomes empty - `inst-return-subscription`
+1. [x] `p1` - IF no handler set exists for `eventType`, create a new `Set` and insert it into the handlers map - `inst-init-handler-set`
+2. [x] `p1` - Add `handler` to the handler set for `eventType` - `inst-add-handler`
+3. [x] `p1` - RETURN a `Subscription` object whose `unsubscribe()` removes the handler from the set and deletes the set entry if it becomes empty - `inst-return-subscription`
 
 ---
 
 ### 3.5 EventBus Subscribe Once
 
-- [ ] `p2` - **ID**: `cpt-hai3-algo-state-management-eventbus-subscribe-once`
+- [x] `p2` - **ID**: `cpt-hai3-algo-state-management-eventbus-subscribe-once`
 
 **Inputs**: `eventType: K`, `handler: EventHandler<EventPayloadMap[K]>`
 
-1. [ ] `p2` - Create a wrapped handler that calls the original `handler` then immediately calls `subscription.unsubscribe()` - `inst-create-wrapped-handler`
-2. [ ] `p2` - Subscribe the wrapped handler via `eventBus.on(eventType, wrappedHandler)`, storing the returned subscription - `inst-subscribe-wrapped`
-3. [ ] `p2` - RETURN the subscription object - `inst-return-subscription`
+1. [x] `p2` - Create a wrapped handler that calls the original `handler` then immediately calls `subscription.unsubscribe()` - `inst-create-wrapped-handler`
+2. [x] `p2` - Subscribe the wrapped handler via `eventBus.on(eventType, wrappedHandler)`, storing the returned subscription - `inst-subscribe-wrapped`
+3. [x] `p2` - RETURN the subscription object - `inst-return-subscription`
 
 ---
 
 ### 3.6 Create Slice Wrapper
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-state-management-create-slice`
+- [x] `p1` - **ID**: `cpt-hai3-algo-state-management-create-slice`
 
 **Inputs**: `options: CreateSliceOptions<TState, TReducers, TName>`
 
-1. [ ] `p1` - Pass `options` to Redux Toolkit's `createSlice` internally - `inst-rtk-create-slice`
-2. [ ] `p1` - Build a `SliceObject<TState>` containing only `name` and `reducer` from the RTK slice result — all other RTK properties (`.actions`, `.selectors`, `.caseReducers`) are intentionally excluded from the returned `slice` object to hide Redux internals - `inst-build-slice-object`
-3. [ ] `p1` - Spread RTK's `slice.actions` as top-level keys on the result object, making each reducer function directly accessible without the `.actions` indirection - `inst-spread-reducer-fns`
-4. [ ] `p1` - RETURN `{ slice, ...reducerFunctions }` - `inst-return-result`
+1. [x] `p1` - Pass `options` to Redux Toolkit's `createSlice` internally - `inst-rtk-create-slice`
+2. [x] `p1` - Build a `SliceObject<TState>` containing only `name` and `reducer` from the RTK slice result — all other RTK properties (`.actions`, `.selectors`, `.caseReducers`) are intentionally excluded from the returned `slice` object to hide Redux internals - `inst-build-slice-object`
+3. [x] `p1` - Spread RTK's `slice.actions` as top-level keys on the result object, making each reducer function directly accessible without the `.actions` indirection - `inst-spread-reducer-fns`
+4. [x] `p1` - RETURN `{ slice, ...reducerFunctions }` - `inst-return-result`
 
 ---
 
 ### 3.7 Reset Store (Testing)
 
-- [ ] `p2` - **ID**: `cpt-hai3-algo-state-management-reset-store`
+- [x] `p2` - **ID**: `cpt-hai3-algo-state-management-reset-store`
 
-1. [ ] `p2` - FOR EACH entry in the effect cleanups map, call the cleanup function - `inst-cleanup-all-effects`
-2. [ ] `p2` - Clear the effect cleanups map - `inst-clear-cleanups`
-3. [ ] `p2` - Delete all keys from `dynamicReducers` - `inst-clear-dynamic-reducers`
-4. [ ] `p2` - Reset static reducers to an empty object - `inst-reset-static-reducers`
-5. [ ] `p2` - Set the store instance to `null` - `inst-null-store`
-6. [ ] `p2` - RETURN (void) - `inst-return`
+1. [x] `p2` - FOR EACH entry in the effect cleanups map, call the cleanup function - `inst-cleanup-all-effects`
+2. [x] `p2` - Clear the effect cleanups map - `inst-clear-cleanups`
+3. [x] `p2` - Delete all keys from `dynamicReducers` - `inst-clear-dynamic-reducers`
+4. [x] `p2` - Reset static reducers to an empty object - `inst-reset-static-reducers`
+5. [x] `p2` - Set the store instance to `null` - `inst-null-store`
+6. [x] `p2` - RETURN (void) - `inst-return`
 
 ---
 
@@ -255,34 +255,34 @@ Success criteria: Any `@hai3/state` consumer can emit and receive typed events, 
 
 ### 4.1 Store Lifecycle
 
-- [ ] `p1` - **ID**: `cpt-hai3-state-state-management-store-lifecycle`
+- [x] `p1` - **ID**: `cpt-hai3-state-state-management-store-lifecycle`
 
-1. [ ] `p1` - **FROM** `UNINITIALIZED` **TO** `ACTIVE` **WHEN** `createStore(initialReducers)` is called - `inst-create`
-2. [ ] `p1` - **FROM** `UNINITIALIZED` **TO** `ACTIVE` **WHEN** `registerSlice()` is called before any explicit `createStore()` — auto-creation path - `inst-auto-create`
-3. [ ] `p1` - **FROM** `ACTIVE` **TO** `ACTIVE` **WHEN** `registerSlice(slice)` is called — root reducer is replaced, store remains active - `inst-register-slice`
-4. [ ] `p2` - **FROM** `ACTIVE` **TO** `ACTIVE` **WHEN** `unregisterSlice(sliceName)` is called — root reducer is replaced without the removed slice - `inst-unregister-slice`
-5. [ ] `p2` - **FROM** `ACTIVE` **TO** `UNINITIALIZED` **WHEN** `resetStore()` is called — all effects cleaned up, all reducers cleared, instance nulled - `inst-reset`
+1. [x] `p1` - **FROM** `UNINITIALIZED` **TO** `ACTIVE` **WHEN** `createStore(initialReducers)` is called - `inst-create`
+2. [x] `p1` - **FROM** `UNINITIALIZED` **TO** `ACTIVE` **WHEN** `registerSlice()` is called before any explicit `createStore()` — auto-creation path - `inst-auto-create`
+3. [x] `p1` - **FROM** `ACTIVE` **TO** `ACTIVE` **WHEN** `registerSlice(slice)` is called — root reducer is replaced, store remains active - `inst-register-slice`
+4. [x] `p2` - **FROM** `ACTIVE` **TO** `ACTIVE` **WHEN** `unregisterSlice(sliceName)` is called — root reducer is replaced without the removed slice - `inst-unregister-slice`
+5. [x] `p2` - **FROM** `ACTIVE` **TO** `UNINITIALIZED` **WHEN** `resetStore()` is called — all effects cleaned up, all reducers cleared, instance nulled - `inst-reset`
 
 ---
 
 ### 4.2 Effect Registration Lifecycle
 
-- [ ] `p1` - **ID**: `cpt-hai3-state-state-management-effect-lifecycle`
+- [x] `p1` - **ID**: `cpt-hai3-state-state-management-effect-lifecycle`
 
-1. [ ] `p1` - **FROM** `UNREGISTERED` **TO** `ACTIVE` **WHEN** `registerSlice(slice, initEffects)` completes and `initEffects` returns a cleanup function - `inst-activate-effect`
-2. [ ] `p1` - **FROM** `ACTIVE` **TO** `ACTIVE` **WHEN** HMR triggers re-registration: previous cleanup is called, new effect initializer is run - `inst-hmr-reinit`
-3. [ ] `p2` - **FROM** `ACTIVE` **TO** `UNREGISTERED` **WHEN** `unregisterSlice(sliceName)` calls the stored cleanup function - `inst-deactivate-effect`
-4. [ ] `p2` - **FROM** `ACTIVE` **TO** `UNREGISTERED` **WHEN** `resetStore()` calls all cleanup functions - `inst-reset-effects`
+1. [x] `p1` - **FROM** `UNREGISTERED` **TO** `ACTIVE` **WHEN** `registerSlice(slice, initEffects)` completes and `initEffects` returns a cleanup function - `inst-activate-effect`
+2. [x] `p1` - **FROM** `ACTIVE` **TO** `ACTIVE` **WHEN** HMR triggers re-registration: previous cleanup is called, new effect initializer is run - `inst-hmr-reinit`
+3. [x] `p2` - **FROM** `ACTIVE` **TO** `UNREGISTERED` **WHEN** `unregisterSlice(sliceName)` calls the stored cleanup function - `inst-deactivate-effect`
+4. [x] `p2` - **FROM** `ACTIVE` **TO** `UNREGISTERED` **WHEN** `resetStore()` calls all cleanup functions - `inst-reset-effects`
 
 ---
 
 ### 4.3 EventBus Handler Registration
 
-- [ ] `p1` - **ID**: `cpt-hai3-state-state-management-handler-registration`
+- [x] `p1` - **ID**: `cpt-hai3-state-state-management-handler-registration`
 
-1. [ ] `p1` - **FROM** `NO_LISTENERS` **TO** `HAS_LISTENERS` **WHEN** `eventBus.on(eventType, handler)` is called for an event with no existing subscribers - `inst-first-subscribe`
-2. [ ] `p1` - **FROM** `HAS_LISTENERS` **TO** `HAS_LISTENERS` **WHEN** additional handlers subscribe to the same event type - `inst-additional-subscribe`
-3. [ ] `p1` - **FROM** `HAS_LISTENERS` **TO** `NO_LISTENERS` **WHEN** the last handler for an event type calls `subscription.unsubscribe()` — the handler set is deleted from the map - `inst-last-unsubscribe`
+1. [x] `p1` - **FROM** `NO_LISTENERS` **TO** `HAS_LISTENERS` **WHEN** `eventBus.on(eventType, handler)` is called for an event with no existing subscribers - `inst-first-subscribe`
+2. [x] `p1` - **FROM** `HAS_LISTENERS` **TO** `HAS_LISTENERS` **WHEN** additional handlers subscribe to the same event type - `inst-additional-subscribe`
+3. [x] `p1` - **FROM** `HAS_LISTENERS` **TO** `NO_LISTENERS` **WHEN** the last handler for an event type calls `subscription.unsubscribe()` — the handler set is deleted from the map - `inst-last-unsubscribe`
 
 ---
 
@@ -290,7 +290,7 @@ Success criteria: Any `@hai3/state` consumer can emit and receive typed events, 
 
 ### 5.1 EventBus Pub/Sub
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-state-management-eventbus`
+- [x] `p1` - **ID**: `cpt-hai3-dod-state-management-eventbus`
 
 The `eventBus` singleton provides type-safe event emission and subscription. Emitting an event delivers the payload synchronously to all registered handlers. Subscribing returns a `Subscription` with a working `unsubscribe()`. The `once()` method auto-unsubscribes after the first invocation. `clear(eventType)` and `clearAll()` remove handlers without calling them.
 
@@ -316,7 +316,7 @@ The `eventBus` singleton provides type-safe event emission and subscription. Emi
 
 ### 5.2 Store Factory and Singleton
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-state-management-store-factory`
+- [x] `p1` - **ID**: `cpt-hai3-dod-state-management-store-factory`
 
 `createStore(initialReducers)` produces a `HAI3Store<RootState>` wrapping a Redux Toolkit store configured with the provided static reducers. `getStore()` returns the same instance without re-creating it; if no instance exists it auto-creates an empty store. The `HAI3Store` facade exposes `getState`, `dispatch`, `subscribe`, and `replaceReducer`. Redux internals (`EnhancedStore`, `configureStore`, `combineReducers`) are not re-exported.
 
@@ -339,7 +339,7 @@ The `eventBus` singleton provides type-safe event emission and subscription. Emi
 
 ### 5.3 Dynamic Slice Registration
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-state-management-slice-registration`
+- [x] `p1` - **ID**: `cpt-hai3-dod-state-management-slice-registration`
 
 `registerSlice(slice, initEffects?)` adds a reducer under `slice.name` as the state key and hot-swaps the root reducer via `replaceReducer`. Domain-based slice names (containing `/`) must match the `screensetId/domain` two-part format — violations throw a descriptive error. HMR re-registration is handled by cleaning up previous effects and re-running `initEffects` without adding a duplicate reducer. `hasSlice(name)` and `getRegisteredSlices()` expose runtime introspection.
 
@@ -362,7 +362,7 @@ The `eventBus` singleton provides type-safe event emission and subscription. Emi
 
 ### 5.4 Effect System
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-state-management-effect-system`
+- [x] `p1` - **ID**: `cpt-hai3-dod-state-management-effect-system`
 
 `registerSlice` accepts an optional `EffectInitializer` function that receives `dispatch: AppDispatch`. The initializer subscribes to `eventBus` events and dispatches to reducers. If it returns a cleanup function, that function is stored and called before any re-registration or unregistration. This prevents duplicate subscriptions during HMR and ensures clean teardown during testing.
 
@@ -385,7 +385,7 @@ The `eventBus` singleton provides type-safe event emission and subscription. Emi
 
 ### 5.5 HAI3 createSlice Wrapper
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-state-management-create-slice`
+- [x] `p1` - **ID**: `cpt-hai3-dod-state-management-create-slice`
 
 `createSlice(options)` wraps Redux Toolkit's `createSlice` and returns `{ slice, ...reducerFunctions }`. The `slice` property carries only `name` and `reducer` — all Redux Toolkit internals (`.actions`, `.selectors`, `.caseReducers`) are excluded. Reducer functions are spread at the top level of the return value so effects can import them directly. This enforces HAI3 terminology where "action" means an event-emitting function, not a Redux action creator.
 
@@ -405,7 +405,7 @@ The `eventBus` singleton provides type-safe event emission and subscription. Emi
 
 ### 5.6 Module Augmentation for Type Safety
 
-- [ ] `p2` - **ID**: `cpt-hai3-dod-state-management-module-augmentation`
+- [x] `p2` - **ID**: `cpt-hai3-dod-state-management-module-augmentation`
 
 `EventPayloadMap` and `RootState` are declared as empty TypeScript interfaces (not types) so consumers can extend them via `declare module '@hai3/state'`. Augmented event keys are enforced at the call sites of `eventBus.emit()` and `eventBus.on()` — the compiler rejects unknown keys and mismatched payloads. Augmented `RootState` keys are available to `getStore().getState()` selectors with correct type inference.
 
@@ -425,7 +425,7 @@ The `eventBus` singleton provides type-safe event emission and subscription. Emi
 
 ### 5.7 Slice Unregistration and Store Reset
 
-- [ ] `p2` - **ID**: `cpt-hai3-dod-state-management-unregister-reset`
+- [x] `p2` - **ID**: `cpt-hai3-dod-state-management-unregister-reset`
 
 `unregisterSlice(sliceName)` removes a dynamic slice from the store, runs its effect cleanup, and rebuilds the root reducer. If the slice was not registered, a console warning is emitted and the call is a no-op. `resetStore()` tears down all effects, clears all reducers, and nulls the store instance — intended only for test isolation.
 
@@ -446,7 +446,7 @@ The `eventBus` singleton provides type-safe event emission and subscription. Emi
 
 ### 5.8 Flux Terminology Enforcement
 
-- [ ] `p2` - **ID**: `cpt-hai3-dod-state-management-flux-terminology`
+- [x] `p2` - **ID**: `cpt-hai3-dod-state-management-flux-terminology`
 
 The public API of `@hai3/state` uses HAI3 Flux terminology exclusively. Types are named `ReducerPayload` (not `PayloadAction`), `EffectInitializer` (not middleware or thunk), `EventHandler` (not listener or observer), `Subscription` (not unsubscribe token). The terms `action creator`, `dispatch`, or any Redux Toolkit internal type are not part of the exported public surface. `ReducerPayload<T>` is a transparent alias for RTK's `PayloadAction<T>`; the alias is the only publicly exported name.
 

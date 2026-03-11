@@ -4,6 +4,11 @@
  * Framework Layer: L2
  */
 
+// @cpt-FEATURE:cpt-hai3-flow-framework-composition-i18n-propagation:p1
+// @cpt-FEATURE:cpt-hai3-flow-framework-composition-shared-property-broadcast:p1
+// @cpt-FEATURE:cpt-hai3-dod-framework-composition-propagation:p1
+// @cpt-FEATURE:cpt-hai3-dod-framework-composition-shared-property:p1
+
 import { eventBus } from '@hai3/state';
 import { i18nRegistry as singletonI18nRegistry, Language } from '@hai3/i18n';
 import { HAI3_SHARED_PROPERTY_LANGUAGE } from '@hai3/screensets';
@@ -22,9 +27,11 @@ declare module '@hai3/state' {
  *
  * @param payload - The language change payload
  */
+// @cpt-begin:cpt-hai3-flow-framework-composition-i18n-propagation:p1:inst-1
 function setLanguage(payload: SetLanguagePayload): void {
   eventBus.emit('i18n/language/changed', payload);
 }
+// @cpt-end:cpt-hai3-flow-framework-composition-i18n-propagation:p1:inst-1
 
 /**
  * I18n plugin factory.
@@ -57,6 +64,8 @@ export function i18n(): HAI3Plugin {
       },
     },
 
+    // @cpt-begin:cpt-hai3-flow-framework-composition-i18n-propagation:p1:inst-2
+    // @cpt-begin:cpt-hai3-dod-framework-composition-propagation:p1:inst-2
     onInit(app) {
       // Language change effect
       eventBus.on('i18n/language/changed', async (payload: SetLanguagePayload) => {
@@ -74,5 +83,7 @@ export function i18n(): HAI3Plugin {
         console.warn('[HAI3] Failed to load initial translations:', err);
       });
     },
+    // @cpt-end:cpt-hai3-flow-framework-composition-i18n-propagation:p1:inst-2
+    // @cpt-end:cpt-hai3-dod-framework-composition-propagation:p1:inst-2
   };
 }

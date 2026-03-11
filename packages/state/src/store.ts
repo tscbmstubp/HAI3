@@ -56,6 +56,9 @@ const effectCleanups: Map<string, () => void> = new Map();
  * });
  * ```
  */
+// @cpt-FEATURE:cpt-hai3-flow-state-management-store-init:p1
+// @cpt-FEATURE:cpt-hai3-dod-state-management-store-factory:p1
+// @cpt-FEATURE:cpt-hai3-state-state-management-store-lifecycle:p1
 export function createStore(
   initialReducers: Record<string, Reducer> = {}
 ): HAI3Store<RootState> {
@@ -86,6 +89,7 @@ export function createStore(
  *
  * @returns The HAI3 store instance
  */
+// @cpt-FEATURE:cpt-hai3-dod-state-management-store-factory:p1
 export function getStore(): HAI3Store<RootState> {
   if (!storeInstance) {
     return createStore();
@@ -131,6 +135,11 @@ export function getStore(): HAI3Store<RootState> {
  * // State shape: { 'chat/threads': ThreadsState }
  * ```
  */
+// @cpt-FEATURE:cpt-hai3-algo-state-management-register-slice:p1
+// @cpt-FEATURE:cpt-hai3-flow-state-management-slice-registration:p1
+// @cpt-FEATURE:cpt-hai3-dod-state-management-slice-registration:p1
+// @cpt-FEATURE:cpt-hai3-dod-state-management-effect-system:p1
+// @cpt-FEATURE:cpt-hai3-flow-state-management-effect-authoring:p1
 export function registerSlice<TState>(
   slice: SliceObject<TState>,
   initEffects?: EffectInitializer
@@ -212,6 +221,9 @@ export function registerSlice<TState>(
  *
  * @param sliceName - The name of the slice to unregister
  */
+// @cpt-FEATURE:cpt-hai3-algo-state-management-unregister-slice:p2
+// @cpt-FEATURE:cpt-hai3-flow-state-management-slice-unregister:p2
+// @cpt-FEATURE:cpt-hai3-dod-state-management-unregister-reset:p2
 export function unregisterSlice(sliceName: string): void {
   if (!storeInstance) {
     return;
@@ -274,6 +286,8 @@ export function getRegisteredSlices(): string[] {
  *
  * @internal
  */
+// @cpt-FEATURE:cpt-hai3-algo-state-management-reset-store:p2
+// @cpt-FEATURE:cpt-hai3-dod-state-management-unregister-reset:p2
 export function resetStore(): void {
   // Clean up all effects
   effectCleanups.forEach((cleanup) => cleanup());

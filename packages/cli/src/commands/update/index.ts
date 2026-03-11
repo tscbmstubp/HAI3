@@ -1,3 +1,6 @@
+// @cpt-FEATURE:cpt-hai3-flow-cli-tooling-update-project:p1
+// @cpt-FEATURE:cpt-hai3-algo-cli-tooling-detect-release-channel:p1
+// @cpt-FEATURE:cpt-hai3-dod-cli-tooling-package:p1
 import { execSync } from 'child_process';
 import fs from 'fs-extra';
 import path from 'path';
@@ -34,6 +37,7 @@ export interface UpdateCommandResult {
  * Detect the current release channel based on installed CLI version
  * @returns 'alpha' if version contains prerelease identifier, 'stable' otherwise
  */
+// @cpt-begin:cpt-hai3-algo-cli-tooling-detect-release-channel:p1:inst-1
 function detectCurrentChannel(): 'alpha' | 'stable' {
   try {
     const output = execSync('npm list -g @hai3/cli --json', { stdio: 'pipe' }).toString();
@@ -50,10 +54,12 @@ function detectCurrentChannel(): 'alpha' | 'stable' {
     return 'stable';
   }
 }
+// @cpt-end:cpt-hai3-algo-cli-tooling-detect-release-channel:p1:inst-1
 
 /**
  * Update command implementation
  */
+// @cpt-begin:cpt-hai3-flow-cli-tooling-update-project:p1:inst-1
 export const updateCommand: CommandDefinition<
   UpdateCommandArgs,
   UpdateCommandResult
@@ -248,3 +254,4 @@ export const updateCommand: CommandDefinition<
     };
   },
 };
+// @cpt-end:cpt-hai3-flow-cli-tooling-update-project:p1:inst-1

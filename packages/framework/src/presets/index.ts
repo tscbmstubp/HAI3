@@ -4,6 +4,9 @@
  * Framework Layer: L2
  */
 
+// @cpt-FEATURE:cpt-hai3-flow-framework-composition-full-preset:p1
+// @cpt-FEATURE:cpt-hai3-dod-framework-composition-presets:p1
+
 import type { HAI3Plugin, Presets, ThemesConfig } from '../types';
 import { screensets } from '../plugins/screensets';
 import { themes } from '../plugins/themes';
@@ -52,6 +55,8 @@ export interface FullPresetConfig {
  *   .build();
  * ```
  */
+// @cpt-begin:cpt-hai3-flow-framework-composition-full-preset:p1:inst-1
+// @cpt-begin:cpt-hai3-dod-framework-composition-presets:p1:inst-1
 export function full(config?: FullPresetConfig): HAI3Plugin[] {
   return [
     effects(),
@@ -63,6 +68,7 @@ export function full(config?: FullPresetConfig): HAI3Plugin[] {
     microfrontends(config?.microfrontends),
   ];
 }
+// @cpt-end:cpt-hai3-flow-framework-composition-full-preset:p1:inst-1
 
 /**
  * Minimal preset - Screensets + themes only.
@@ -78,6 +84,7 @@ export function minimal(): HAI3Plugin[] {
     themes(),
   ];
 }
+// @cpt-end:cpt-hai3-dod-framework-composition-presets:p1:inst-1
 
 /**
  * Headless preset - Screensets only.

@@ -12,6 +12,7 @@
  * - User-created screensets in src/screensets/ are preserved
  * - Only template screensets (demo) are synced
  */
+// @cpt-FEATURE:cpt-hai3-algo-cli-tooling-sync-templates:p2
 
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -148,6 +149,7 @@ async function syncDirectory(
  * @param layer - Optional layer for layer-aware filtering of targets and commands
  * @returns Array of synced paths
  */
+// @cpt-begin:cpt-hai3-algo-cli-tooling-sync-templates:p2:inst-1
 export async function syncTemplates(
   projectRoot: string,
   logger: TemplateLogger,
@@ -190,6 +192,7 @@ export async function syncTemplates(
 
   return synced;
 }
+// @cpt-end:cpt-hai3-algo-cli-tooling-sync-templates:p2:inst-1
 
 /**
  * Sync commands from commands-bundle/ with layer-aware variant selection

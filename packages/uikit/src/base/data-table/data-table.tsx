@@ -1,3 +1,7 @@
+// @cpt-FEATURE:cpt-hai3-dod-uikit-components-data-display:p1
+// @cpt-FEATURE:cpt-hai3-flow-uikit-components-consume-composite:p1
+// @cpt-FEATURE:cpt-hai3-state-uikit-components-data-table:p1
+
 "use client"
 
 import * as React from "react"
@@ -42,6 +46,7 @@ export interface DataTableProps<TData, TValue> {
   noResultsMessage?: string
 }
 
+// @cpt-begin:cpt-hai3-state-uikit-components-data-table:p1:inst-1
 export function DataTable<TData, TValue>({
   columns,
   data,
@@ -144,6 +149,8 @@ export function DataTable<TData, TValue>({
     </div>
   )
 }
+
+// @cpt-end:cpt-hai3-state-uikit-components-data-table:p1:inst-1
 
 // Re-export table instance type for external use
 export type { useReactTable }

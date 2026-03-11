@@ -1,3 +1,6 @@
+// @cpt-FEATURE:cpt-hai3-flow-studio-devtools-restore-settings:p1
+// @cpt-FEATURE:cpt-hai3-algo-studio-devtools-restore-gts-validation:p1
+// @cpt-FEATURE:cpt-hai3-dod-studio-devtools-persistence:p1
 import { useEffect, useRef } from 'react';
 import {
   eventBus,
@@ -18,6 +21,7 @@ function isScreenExtension(ext: Extension): ext is ScreenExtension {
  * Restore theme, language, and mock mode from localStorage on mount.
  * Emits the framework events that the framework already subscribes to.
  */
+// @cpt-begin:cpt-hai3-flow-studio-devtools-restore-settings:p1:inst-1
 export const useRestoreStudioSettings = (): void => {
   const restoredRef = useRef(false);
 
@@ -41,11 +45,13 @@ export const useRestoreStudioSettings = (): void => {
     }
   }, []);
 };
+// @cpt-end:cpt-hai3-flow-studio-devtools-restore-settings:p1:inst-1
 
 /**
  * Restore GTS Package selection when registry becomes available.
  * Mounts the persisted package's first screen extension.
  */
+// @cpt-begin:cpt-hai3-algo-studio-devtools-restore-gts-validation:p1:inst-1
 export const useRestoreGtsPackage = (registry: ScreensetsRegistry | null | undefined): void => {
   const restoredRef = useRef(false);
 
@@ -84,3 +90,4 @@ export const useRestoreGtsPackage = (registry: ScreensetsRegistry | null | undef
     void restore();
   }, [registry]);
 };
+// @cpt-end:cpt-hai3-algo-studio-devtools-restore-gts-validation:p1:inst-1

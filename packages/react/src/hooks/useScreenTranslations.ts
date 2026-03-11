@@ -3,6 +3,10 @@
  *
  * React Layer: L3
  */
+// @cpt-FEATURE:cpt-hai3-flow-react-bindings-use-screen-translations:p1
+// @cpt-FEATURE:cpt-hai3-algo-react-bindings-load-screen-translations:p1
+// @cpt-FEATURE:cpt-hai3-state-react-bindings-screen-translation:p1
+// @cpt-FEATURE:cpt-hai3-dod-react-bindings-screen-translation-hook:p1
 
 import { useState, useEffect, useMemo, useCallback, useSyncExternalStore } from 'react';
 import type { TranslationMap, TranslationLoader } from '@hai3/framework';
@@ -61,6 +65,10 @@ function isTranslationLoader(
  * };
  * ```
  */
+// @cpt-begin:cpt-hai3-flow-react-bindings-use-screen-translations:p1:inst-1
+// @cpt-begin:cpt-hai3-algo-react-bindings-load-screen-translations:p1:inst-1
+// @cpt-begin:cpt-hai3-state-react-bindings-screen-translation:p1:inst-1
+// @cpt-begin:cpt-hai3-dod-react-bindings-screen-translation-hook:p1:inst-1
 export function useScreenTranslations(
   screensetId: string,
   screenId: string,
@@ -156,3 +164,7 @@ export function useScreenTranslations(
 
   return { isLoaded, error };
 }
+// @cpt-end:cpt-hai3-flow-react-bindings-use-screen-translations:p1:inst-1
+// @cpt-end:cpt-hai3-algo-react-bindings-load-screen-translations:p1:inst-1
+// @cpt-end:cpt-hai3-state-react-bindings-screen-translation:p1:inst-1
+// @cpt-end:cpt-hai3-dod-react-bindings-screen-translation-hook:p1:inst-1

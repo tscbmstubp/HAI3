@@ -5,6 +5,10 @@
  * Tracks registration state (unregistered, registering, registered, error) and error messages per extension.
  */
 
+// @cpt-FEATURE:cpt-hai3-state-framework-composition-mfe-registration:p1
+// @cpt-FEATURE:cpt-hai3-state-framework-composition-mfe-mount:p1
+// @cpt-FEATURE:cpt-hai3-dod-framework-composition-mfe-plugin:p1
+
 import { createSlice, type ReducerPayload } from '@hai3/state';
 
 // ============================================================================
@@ -38,6 +42,8 @@ const initialState: MfeState = {
 // Slice Definition
 // ============================================================================
 
+// @cpt-begin:cpt-hai3-state-framework-composition-mfe-registration:p1:inst-1
+// @cpt-begin:cpt-hai3-state-framework-composition-mfe-mount:p1:inst-1
 const { slice, ...actions } = createSlice({
   name: SLICE_KEY,
   initialState,
@@ -70,6 +76,8 @@ const { slice, ...actions } = createSlice({
     },
   },
 });
+// @cpt-end:cpt-hai3-state-framework-composition-mfe-registration:p1:inst-1
+// @cpt-end:cpt-hai3-state-framework-composition-mfe-mount:p1:inst-1
 
 // ============================================================================
 // Exports

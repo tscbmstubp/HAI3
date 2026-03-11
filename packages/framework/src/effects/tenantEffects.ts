@@ -5,6 +5,10 @@
  * Event-driven architecture: consuming apps emit events, effects handle state updates.
  */
 
+// @cpt-FEATURE:cpt-hai3-flow-framework-composition-app-config:p1
+// @cpt-FEATURE:cpt-hai3-state-framework-composition-tenant:p1
+// @cpt-FEATURE:cpt-hai3-dod-framework-composition-app-config:p1
+
 import { eventBus, getStore } from '@hai3/state';
 import { setTenant, clearTenant } from '../slices/tenantSlice';
 import type { Tenant } from '../layoutTypes';
@@ -48,6 +52,8 @@ declare module '@hai3/state' {
  * Initialize tenant effects
  * Call this once during app bootstrap to start listening for tenant events.
  */
+// @cpt-begin:cpt-hai3-flow-framework-composition-app-config:p1:inst-1
+// @cpt-begin:cpt-hai3-state-framework-composition-tenant:p1:inst-2
 export function initTenantEffects(): () => void {
   const store = getStore();
 
@@ -67,3 +73,5 @@ export function initTenantEffects(): () => void {
     subCleared.unsubscribe();
   };
 }
+// @cpt-end:cpt-hai3-flow-framework-composition-app-config:p1:inst-1
+// @cpt-end:cpt-hai3-state-framework-composition-tenant:p1:inst-2

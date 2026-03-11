@@ -1,3 +1,7 @@
+// @cpt-FEATURE:cpt-hai3-algo-uikit-components-validate-ref-pattern:p1
+// @cpt-FEATURE:cpt-hai3-dod-uikit-components-ref-pattern:p1
+// @cpt-FEATURE:cpt-hai3-flow-uikit-components-consume-base:p1
+
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
@@ -41,6 +45,8 @@ export interface ButtonProps
   asChild?: boolean
 }
 
+// @cpt-begin:cpt-hai3-algo-uikit-components-validate-ref-pattern:p1:inst-1
+// @cpt-begin:cpt-hai3-flow-uikit-components-consume-base:p1:inst-1
 const Button = (
   {
     ref,
@@ -63,5 +69,7 @@ const Button = (
   )
 }
 Button.displayName = "Button"
+// @cpt-end:cpt-hai3-algo-uikit-components-validate-ref-pattern:p1:inst-1
+// @cpt-end:cpt-hai3-flow-uikit-components-consume-base:p1:inst-1
 
 export { Button, buttonVariants }

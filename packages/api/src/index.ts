@@ -10,6 +10,8 @@
  * SDK Layer: L1 (Zero @hai3 dependencies)
  */
 
+// @cpt-FEATURE:cpt-hai3-dod-api-communication-public-api:p1
+
 // Re-export all types
 export type {
   JsonPrimitive,

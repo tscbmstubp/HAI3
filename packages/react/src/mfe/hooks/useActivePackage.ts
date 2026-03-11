@@ -6,6 +6,10 @@
  *
  * React Layer: L3
  */
+// @cpt-FEATURE:cpt-hai3-flow-react-bindings-use-active-package:p1
+// @cpt-FEATURE:cpt-hai3-algo-react-bindings-mfe-context-guard:p1
+// @cpt-FEATURE:cpt-hai3-algo-react-bindings-stable-snapshots:p1
+// @cpt-FEATURE:cpt-hai3-dod-react-bindings-observation-hooks:p1
 
 import { useSyncExternalStore, useCallback, useRef } from 'react';
 import { useHAI3 } from '../../HAI3Context';
@@ -39,6 +43,10 @@ import { extractGtsPackage, HAI3_SCREEN_DOMAIN } from '@hai3/framework';
  * }
  * ```
  */
+// @cpt-begin:cpt-hai3-flow-react-bindings-use-active-package:p1:inst-1
+// @cpt-begin:cpt-hai3-algo-react-bindings-mfe-context-guard:p1:inst-8
+// @cpt-begin:cpt-hai3-algo-react-bindings-stable-snapshots:p1:inst-3
+// @cpt-begin:cpt-hai3-dod-react-bindings-observation-hooks:p1:inst-3
 export function useActivePackage(): string | undefined {
   const app = useHAI3();
   const registry = app.screensetsRegistry;
@@ -86,3 +94,7 @@ export function useActivePackage(): string | undefined {
 
   return useSyncExternalStore(subscribe, getSnapshot, getSnapshot);
 }
+// @cpt-end:cpt-hai3-flow-react-bindings-use-active-package:p1:inst-1
+// @cpt-end:cpt-hai3-algo-react-bindings-mfe-context-guard:p1:inst-8
+// @cpt-end:cpt-hai3-algo-react-bindings-stable-snapshots:p1:inst-3
+// @cpt-end:cpt-hai3-dod-react-bindings-observation-hooks:p1:inst-3

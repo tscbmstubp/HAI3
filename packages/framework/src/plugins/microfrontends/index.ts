@@ -8,6 +8,13 @@
  * @packageDocumentation
  */
 
+// @cpt-FEATURE:cpt-hai3-flow-framework-composition-mfe-lifecycle:p1
+// @cpt-FEATURE:cpt-hai3-flow-framework-composition-shared-property-broadcast:p1
+// @cpt-FEATURE:cpt-hai3-algo-framework-composition-gts-validation:p1
+// @cpt-FEATURE:cpt-hai3-state-framework-composition-mfe-mount:p1
+// @cpt-FEATURE:cpt-hai3-dod-framework-composition-mfe-plugin:p1
+// @cpt-FEATURE:cpt-hai3-dod-framework-composition-shared-property:p1
+
 import {
   screensetsRegistryFactory,
   type MfeHandler,
@@ -75,6 +82,9 @@ export interface MicrofrontendsConfig {
  * app.actions.mountExtension('my.extension.v1');
  * ```
  */
+// @cpt-begin:cpt-hai3-flow-framework-composition-mfe-lifecycle:p1:inst-1
+// @cpt-begin:cpt-hai3-state-framework-composition-mfe-mount:p1:inst-1
+// @cpt-begin:cpt-hai3-dod-framework-composition-mfe-plugin:p1:inst-1
 export function microfrontends(config: MicrofrontendsConfig = {}): HAI3Plugin {
   // Build the ScreensetsRegistry instance with GTS plugin and optional handlers
   // This registry handles all MFE lifecycle: domains, extensions, actions, etc.
@@ -160,6 +170,9 @@ export function microfrontends(config: MicrofrontendsConfig = {}): HAI3Plugin {
     },
   };
 }
+// @cpt-end:cpt-hai3-flow-framework-composition-mfe-lifecycle:p1:inst-1
+// @cpt-end:cpt-hai3-state-framework-composition-mfe-mount:p1:inst-1
+// @cpt-end:cpt-hai3-dod-framework-composition-mfe-plugin:p1:inst-1
 
 // Re-export MFE actions for direct usage
 export {

@@ -3,6 +3,10 @@
  *
  * React Layer: L3 (Depends on @hai3/framework)
  */
+// @cpt-FEATURE:cpt-hai3-flow-react-bindings-bootstrap-provider:p1
+// @cpt-FEATURE:cpt-hai3-algo-react-bindings-resolve-app:p1
+// @cpt-FEATURE:cpt-hai3-algo-react-bindings-build-provider-tree:p1
+// @cpt-FEATURE:cpt-hai3-dod-react-bindings-provider:p1
 
 import React, { useMemo, useEffect } from 'react';
 import { Provider as ReduxProvider } from 'react-redux';
@@ -42,6 +46,10 @@ import type { HAI3ProviderProps } from './types';
  * </HAI3Provider>
  * ```
  */
+// @cpt-begin:cpt-hai3-flow-react-bindings-bootstrap-provider:p1:inst-1
+// @cpt-begin:cpt-hai3-algo-react-bindings-resolve-app:p1:inst-1
+// @cpt-begin:cpt-hai3-algo-react-bindings-build-provider-tree:p1:inst-1
+// @cpt-begin:cpt-hai3-dod-react-bindings-provider:p1:inst-1
 export const HAI3Provider: React.FC<HAI3ProviderProps> = ({
   children,
   config,
@@ -87,3 +95,7 @@ export const HAI3Provider: React.FC<HAI3ProviderProps> = ({
 
   return content;
 };
+// @cpt-end:cpt-hai3-flow-react-bindings-bootstrap-provider:p1:inst-1
+// @cpt-end:cpt-hai3-algo-react-bindings-resolve-app:p1:inst-1
+// @cpt-end:cpt-hai3-algo-react-bindings-build-provider-tree:p1:inst-1
+// @cpt-end:cpt-hai3-dod-react-bindings-provider:p1:inst-1

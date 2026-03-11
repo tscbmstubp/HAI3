@@ -1,3 +1,6 @@
+// @cpt-FEATURE:cpt-hai3-flow-cli-tooling-validate-components:p1
+// @cpt-FEATURE:cpt-hai3-algo-cli-tooling-scan-component-violations:p1
+// @cpt-FEATURE:cpt-hai3-dod-cli-tooling-validate:p1
 import path from 'path';
 import fs from 'fs/promises';
 import type { CommandDefinition } from '../../core/command.js';
@@ -78,6 +81,7 @@ function isInBaseUikitFolder(filePath: string): boolean {
 /**
  * Scan a file for component violations
  */
+// @cpt-begin:cpt-hai3-algo-cli-tooling-scan-component-violations:p1:inst-1
 async function scanFile(
   filePath: string,
   relativePath: string
@@ -215,6 +219,8 @@ async function scanFile(
   return violations;
 }
 
+// @cpt-end:cpt-hai3-algo-cli-tooling-scan-component-violations:p1:inst-1
+
 /**
  * Recursively scan directory for TypeScript/TSX files
  */
@@ -256,6 +262,7 @@ async function scanDirectory(
 /**
  * Validate components command implementation
  */
+// @cpt-begin:cpt-hai3-flow-cli-tooling-validate-components:p1:inst-1
 export const validateComponentsCommand: CommandDefinition<
   ValidateComponentsArgs,
   ValidateComponentsResult
@@ -349,3 +356,4 @@ export const validateComponentsCommand: CommandDefinition<
     };
   },
 };
+// @cpt-end:cpt-hai3-flow-cli-tooling-validate-components:p1:inst-1

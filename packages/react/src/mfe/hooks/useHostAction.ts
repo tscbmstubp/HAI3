@@ -5,6 +5,9 @@
  *
  * React Layer: L3
  */
+// @cpt-FEATURE:cpt-hai3-flow-react-bindings-use-host-action:p1
+// @cpt-FEATURE:cpt-hai3-algo-react-bindings-mfe-context-guard:p1
+// @cpt-FEATURE:cpt-hai3-dod-react-bindings-mfe-hooks:p1
 
 import { useCallback } from 'react';
 import { useMfeContext } from '../MfeContext';
@@ -37,6 +40,9 @@ import { useMfeContext } from '../MfeContext';
  * }
  * ```
  */
+// @cpt-begin:cpt-hai3-flow-react-bindings-use-host-action:p1:inst-1
+// @cpt-begin:cpt-hai3-algo-react-bindings-mfe-context-guard:p1:inst-5
+// @cpt-begin:cpt-hai3-dod-react-bindings-mfe-hooks:p1:inst-5
 export function useHostAction<TPayload extends Record<string, unknown> = Record<string, unknown>>(
   actionTypeId: string
 ): (payload?: TPayload) => void {
@@ -64,3 +70,6 @@ export function useHostAction<TPayload extends Record<string, unknown> = Record<
     });
   }, [actionTypeId, bridge]);
 }
+// @cpt-end:cpt-hai3-flow-react-bindings-use-host-action:p1:inst-1
+// @cpt-end:cpt-hai3-algo-react-bindings-mfe-context-guard:p1:inst-5
+// @cpt-end:cpt-hai3-dod-react-bindings-mfe-hooks:p1:inst-5

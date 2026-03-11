@@ -3,6 +3,8 @@
  *
  * React Layer: L3
  */
+// @cpt-FEATURE:cpt-hai3-flow-react-bindings-use-dispatch:p1
+// @cpt-FEATURE:cpt-hai3-dod-react-bindings-redux-hooks:p1
 
 import { useDispatch } from 'react-redux';
 import type { AppDispatch } from '@hai3/framework';
@@ -18,8 +20,12 @@ import type { AppDispatch } from '@hai3/framework';
  * dispatch(someAction());
  * ```
  */
+// @cpt-begin:cpt-hai3-flow-react-bindings-use-dispatch:p1:inst-1
+// @cpt-begin:cpt-hai3-dod-react-bindings-redux-hooks:p1:inst-2
 export function useAppDispatch(): AppDispatch {
   // Use untyped useDispatch and cast the result
   // This avoids type constraint issues with react-redux's generic
   return useDispatch() as AppDispatch;
 }
+// @cpt-end:cpt-hai3-flow-react-bindings-use-dispatch:p1:inst-1
+// @cpt-end:cpt-hai3-dod-react-bindings-redux-hooks:p1:inst-2

@@ -1,3 +1,5 @@
+// @cpt-FEATURE:cpt-hai3-flow-studio-devtools-resize-panel:p1
+// @cpt-FEATURE:cpt-hai3-state-studio-devtools-resize:p1
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { clamp } from 'lodash';
 import { eventBus } from '@hai3/react';
@@ -6,6 +8,8 @@ import { loadStudioState } from '../utils/persistence';
 import { STORAGE_KEYS, PANEL_CONSTRAINTS } from '../types';
 import { StudioEvents } from '../events/studioEvents';
 
+// @cpt-begin:cpt-hai3-flow-studio-devtools-resize-panel:p1:inst-1
+// @cpt-begin:cpt-hai3-state-studio-devtools-resize:p1:inst-1
 export const useResizable = () => {
   const [size, setSize] = useState<Size>(() =>
     loadStudioState(STORAGE_KEYS.SIZE, {
@@ -87,3 +91,5 @@ export const useResizable = () => {
     handleMouseDown,
   };
 };
+// @cpt-end:cpt-hai3-flow-studio-devtools-resize-panel:p1:inst-1
+// @cpt-end:cpt-hai3-state-studio-devtools-resize:p1:inst-1

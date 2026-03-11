@@ -5,6 +5,9 @@
  *
  * React Layer: L3
  */
+// @cpt-FEATURE:cpt-hai3-flow-react-bindings-mfe-provider:p1
+// @cpt-FEATURE:cpt-hai3-algo-react-bindings-mfe-context-guard:p1
+// @cpt-FEATURE:cpt-hai3-dod-react-bindings-mfe-hooks:p1
 
 import { useMfeContext } from '../MfeContext';
 import type { ChildMfeBridge } from '@hai3/framework';
@@ -34,7 +37,13 @@ import type { ChildMfeBridge } from '@hai3/framework';
  * }
  * ```
  */
+// @cpt-begin:cpt-hai3-flow-react-bindings-mfe-provider:p1:inst-3
+// @cpt-begin:cpt-hai3-algo-react-bindings-mfe-context-guard:p1:inst-3
+// @cpt-begin:cpt-hai3-dod-react-bindings-mfe-hooks:p1:inst-3
 export function useMfeBridge(): ChildMfeBridge {
   const { bridge } = useMfeContext();
   return bridge;
 }
+// @cpt-end:cpt-hai3-flow-react-bindings-mfe-provider:p1:inst-3
+// @cpt-end:cpt-hai3-algo-react-bindings-mfe-context-guard:p1:inst-3
+// @cpt-end:cpt-hai3-dod-react-bindings-mfe-hooks:p1:inst-3

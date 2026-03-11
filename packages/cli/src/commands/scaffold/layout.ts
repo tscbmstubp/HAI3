@@ -1,3 +1,5 @@
+// @cpt-FEATURE:cpt-hai3-flow-cli-tooling-scaffold-layout:p1
+// @cpt-FEATURE:cpt-hai3-dod-cli-tooling-package:p1
 import path from 'path';
 import type { CommandDefinition } from '../../core/command.js';
 import { validationOk, validationError } from '../../core/types.js';
@@ -25,6 +27,7 @@ export interface ScaffoldLayoutResult {
  * Generates layout components (Layout, Header, Footer, Menu, etc.)
  * in the user's project from HAI3 UIKit templates.
  */
+// @cpt-begin:cpt-hai3-flow-cli-tooling-scaffold-layout:p1:inst-1
 export const scaffoldLayoutCommand: CommandDefinition<
   ScaffoldLayoutArgs,
   ScaffoldLayoutResult
@@ -90,3 +93,4 @@ export const scaffoldLayoutCommand: CommandDefinition<
     };
   },
 };
+// @cpt-end:cpt-hai3-flow-cli-tooling-scaffold-layout:p1:inst-1

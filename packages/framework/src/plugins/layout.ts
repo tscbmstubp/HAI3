@@ -6,6 +6,9 @@
  * NOTE: Layout slices are owned by @hai3/framework (not @hai3/uicore which is deprecated)
  */
 
+// @cpt-FEATURE:cpt-hai3-dod-framework-composition-layout:p1
+// @cpt-FEATURE:cpt-hai3-flow-framework-composition-app-config:p1
+
 import type { Dispatch, UnknownAction } from '@reduxjs/toolkit';
 import { eventBus } from '@hai3/state';
 import type { HAI3Plugin, ShowPopupPayload } from '../types';
@@ -98,6 +101,7 @@ function setHeaderVisible(_visible: boolean): void {
  *   .build();
  * ```
  */
+// @cpt-begin:cpt-hai3-dod-framework-composition-layout:p1:inst-1
 export function layout(): HAI3Plugin {
 
   return {
@@ -165,3 +169,4 @@ export function layout(): HAI3Plugin {
     },
   };
 }
+// @cpt-end:cpt-hai3-dod-framework-composition-layout:p1:inst-1

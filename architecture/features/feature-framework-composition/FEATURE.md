@@ -1,8 +1,8 @@
 # Feature: Framework Composition
 
-- [ ] `p1` - **ID**: `cpt-hai3-featstatus-framework-composition`
+- [x] `p1` - **ID**: `cpt-hai3-featstatus-framework-composition`
 
-- [ ] `p1` - **ID**: `cpt-hai3-feature-framework-composition`
+- [x] `p1` - **ID**: `cpt-hai3-feature-framework-composition`
 
 ## Table of Contents
 
@@ -63,7 +63,7 @@ Enable host applications to compose a fully-wired HAI3 framework instance by ass
 
 ### Application Bootstrap
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-framework-composition-app-bootstrap`
+- [x] `p1` - **ID**: `cpt-hai3-flow-framework-composition-app-bootstrap`
 
 **Actors**: `cpt-hai3-actor-host-app`, `cpt-hai3-actor-runtime`
 
@@ -81,7 +81,7 @@ Enable host applications to compose a fully-wired HAI3 framework instance by ass
 
 ### Plugin Registration with Dependency Enforcement
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-framework-composition-plugin-dependency`
+- [x] `p1` - **ID**: `cpt-hai3-flow-framework-composition-plugin-dependency`
 
 **Actors**: `cpt-hai3-actor-framework-plugin`, `cpt-hai3-actor-host-app`
 
@@ -94,7 +94,7 @@ Enable host applications to compose a fully-wired HAI3 framework instance by ass
 
 ### Convenience Full-Preset Bootstrap
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-framework-composition-full-preset`
+- [x] `p1` - **ID**: `cpt-hai3-flow-framework-composition-full-preset`
 
 **Actors**: `cpt-hai3-actor-host-app`
 
@@ -105,7 +105,7 @@ Enable host applications to compose a fully-wired HAI3 framework instance by ass
 
 ### Theme Change and MFE Propagation
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-framework-composition-theme-propagation`
+- [x] `p1` - **ID**: `cpt-hai3-flow-framework-composition-theme-propagation`
 
 **Actors**: `cpt-hai3-actor-host-app`, `cpt-hai3-actor-framework-plugin`, `cpt-hai3-actor-microfrontend`
 
@@ -118,7 +118,7 @@ Enable host applications to compose a fully-wired HAI3 framework instance by ass
 
 ### Language Change and MFE Propagation
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-framework-composition-i18n-propagation`
+- [x] `p1` - **ID**: `cpt-hai3-flow-framework-composition-i18n-propagation`
 
 **Actors**: `cpt-hai3-actor-host-app`, `cpt-hai3-actor-framework-plugin`, `cpt-hai3-actor-microfrontend`
 
@@ -131,7 +131,7 @@ Enable host applications to compose a fully-wired HAI3 framework instance by ass
 
 ### MFE Extension Registration
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-framework-composition-mfe-registration`
+- [x] `p1` - **ID**: `cpt-hai3-flow-framework-composition-mfe-registration`
 
 **Actors**: `cpt-hai3-actor-host-app`, `cpt-hai3-actor-microfrontend`
 
@@ -144,7 +144,7 @@ Enable host applications to compose a fully-wired HAI3 framework instance by ass
 
 ### MFE Extension Lifecycle (Load / Mount / Unmount)
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-framework-composition-mfe-lifecycle`
+- [x] `p1` - **ID**: `cpt-hai3-flow-framework-composition-mfe-lifecycle`
 
 **Actors**: `cpt-hai3-actor-host-app`, `cpt-hai3-actor-microfrontend`
 
@@ -159,7 +159,7 @@ Enable host applications to compose a fully-wired HAI3 framework instance by ass
 
 ### Shared Property Broadcast
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-framework-composition-shared-property-broadcast`
+- [x] `p1` - **ID**: `cpt-hai3-flow-framework-composition-shared-property-broadcast`
 
 **Actors**: `cpt-hai3-actor-host-app`, `cpt-hai3-actor-gts-plugin`, `cpt-hai3-actor-microfrontend`
 
@@ -172,7 +172,7 @@ Enable host applications to compose a fully-wired HAI3 framework instance by ass
 
 ### App Configuration via Events
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-framework-composition-app-config`
+- [x] `p1` - **ID**: `cpt-hai3-flow-framework-composition-app-config`
 
 **Actors**: `cpt-hai3-actor-host-app`
 
@@ -183,7 +183,7 @@ Enable host applications to compose a fully-wired HAI3 framework instance by ass
 
 ### Application Teardown
 
-- [ ] `p2` - **ID**: `cpt-hai3-flow-framework-composition-teardown`
+- [x] `p2` - **ID**: `cpt-hai3-flow-framework-composition-teardown`
 
 **Actors**: `cpt-hai3-actor-host-app`
 
@@ -197,7 +197,7 @@ Enable host applications to compose a fully-wired HAI3 framework instance by ass
 
 ### Builder Dependency Resolution (Topological Sort)
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-framework-composition-dep-resolution`
+- [x] `p1` - **ID**: `cpt-hai3-algo-framework-composition-dep-resolution`
 
 1. [ ] `p1` - Maintain a `visited` set (fully resolved) and a `visiting` set (in-progress DFS) — both keyed by plugin name - `inst-init-visited-sets`
 2. [ ] `p1` - **FOR EACH** registered plugin: call `visit(plugin)` - `inst-visit-each`
@@ -210,7 +210,7 @@ Enable host applications to compose a fully-wired HAI3 framework instance by ass
 
 ### Plugin Provides Aggregation
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-framework-composition-provides-aggregation`
+- [x] `p1` - **ID**: `cpt-hai3-algo-framework-composition-provides-aggregation`
 
 1. [ ] `p1` - Initialize empty `registries` record, `slices` array, `effects` array, `actions` partial object - `inst-init-accumulators`
 2. [ ] `p1` - **FOR EACH** plugin in resolved order: **IF** `plugin.provides` is absent skip to next - `inst-check-provides`
@@ -222,7 +222,7 @@ Enable host applications to compose a fully-wired HAI3 framework instance by ass
 
 ### GTS Shared Property Validation
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-framework-composition-gts-validation`
+- [x] `p1` - **ID**: `cpt-hai3-algo-framework-composition-gts-validation`
 
 1. [ ] `p1` - Construct `ephemeralId` by appending the runtime suffix to the property type ID: `ephemeralId = "${propertyTypeId}hai3.mfes.comm.runtime.v1"` - `inst-build-ephemeral-id`
 2. [ ] `p1` - Call `typeSystem.register({ id: ephemeralId, value })` to register the candidate instance in the GTS store (overwrites any prior registration for the same deterministic ID) - `inst-gts-register`
@@ -234,7 +234,7 @@ Enable host applications to compose a fully-wired HAI3 framework instance by ass
 
 ### Base Path Resolution
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-framework-composition-base-path`
+- [x] `p1` - **ID**: `cpt-hai3-algo-framework-composition-base-path`
 
 1. [ ] `p1` - Receive raw `base` string from `HAI3Config`; **IF** empty or undefined **RETURN** `"/"` - `inst-empty-base`
 2. [ ] `p1` - **IF** `base` does not start with `"/"`: prepend `"/"` - `inst-add-leading-slash`
@@ -247,7 +247,7 @@ Enable host applications to compose a fully-wired HAI3 framework instance by ass
 
 ### Mock Mode Toggle
 
-- [ ] `p2` - **ID**: `cpt-hai3-algo-framework-composition-mock-toggle`
+- [x] `p2` - **ID**: `cpt-hai3-algo-framework-composition-mock-toggle`
 
 1. [ ] `p2` - Host calls `app.actions.toggleMockMode(enabled)` - `inst-call-toggle-mock`
 2. [ ] `p2` - Action emits a mock-toggle event on the event bus - `inst-emit-mock-event`
@@ -260,7 +260,7 @@ Enable host applications to compose a fully-wired HAI3 framework instance by ass
 
 ### MFE Extension Registration State
 
-- [ ] `p1` - **ID**: `cpt-hai3-state-framework-composition-mfe-registration`
+- [x] `p1` - **ID**: `cpt-hai3-state-framework-composition-mfe-registration`
 
 Tracked in `state.mfe.registrationStates[extensionId]`.
 
@@ -272,7 +272,7 @@ Tracked in `state.mfe.registrationStates[extensionId]`.
 
 ### MFE Domain Mount State
 
-- [ ] `p1` - **ID**: `cpt-hai3-state-framework-composition-mfe-mount`
+- [x] `p1` - **ID**: `cpt-hai3-state-framework-composition-mfe-mount`
 
 Tracked in `state.mfe.mountedExtensions[domainId]` as an extension ID string or `undefined`.
 
@@ -281,7 +281,7 @@ Tracked in `state.mfe.mountedExtensions[domainId]` as an extension ID string or 
 
 ### Plugin Builder State
 
-- [ ] `p1` - **ID**: `cpt-hai3-state-framework-composition-builder`
+- [x] `p1` - **ID**: `cpt-hai3-state-framework-composition-builder`
 
 Lifecycle state of the `HAI3AppBuilder` instance.
 
@@ -291,7 +291,7 @@ Lifecycle state of the `HAI3AppBuilder` instance.
 
 ### Tenant State
 
-- [ ] `p1` - **ID**: `cpt-hai3-state-framework-composition-tenant`
+- [x] `p1` - **ID**: `cpt-hai3-state-framework-composition-tenant`
 
 Tracked in `state.tenant`.
 
@@ -305,7 +305,7 @@ Tracked in `state.tenant`.
 
 ### Builder API and Plugin System
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-framework-composition-builder`
+- [x] `p1` - **ID**: `cpt-hai3-dod-framework-composition-builder`
 
 Host applications can compose a HAI3 framework instance by chaining `.use(plugin)` calls on the builder returned by `createHAI3()` and calling `.build()`. The builder resolves plugin dependencies topologically, aggregates all slice/effect/action/registry contributions, creates the Redux store, and returns a `HAI3App` with fully initialized registries and actions. Duplicate plugins (same name) are silently ignored. Circular dependencies throw immediately. Missing dependencies throw in `strictMode` or warn otherwise.
 
@@ -340,7 +340,7 @@ Host applications can compose a HAI3 framework instance by chaining `.use(plugin
 
 ### Layout Orchestration
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-framework-composition-layout`
+- [x] `p1` - **ID**: `cpt-hai3-dod-framework-composition-layout`
 
 The `layout()` plugin registers Redux slices for all seven layout domains (header, footer, menu, sidebar, screen, popup, overlay), subscribes to layout events on the event bus, and dispatches corresponding reducer actions to keep state consistent. The `screensets()` plugin registers the screen slice. All layout state types are exported from `@hai3/framework`.
 
@@ -363,7 +363,7 @@ The `layout()` plugin registers Redux slices for all seven layout domains (heade
 
 ### App Configuration and Event-Driven API
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-framework-composition-app-config`
+- [x] `p1` - **ID**: `cpt-hai3-dod-framework-composition-app-config`
 
 The framework provides an event-driven API for configuring tenant, language, theme, and navigation. All configuration changes propagate via the event bus rather than direct state mutation. The `Tenant` type has shape `{ id: string }` and tenant state is typed `Tenant | null`. Router mode is configurable via `HAI3Config.routerMode` (`'browser'` | `'hash'` | `'memory'`). Base path normalization handles leading slash insertion, trailing slash removal, and empty-string-to-root conversion.
 
@@ -392,7 +392,7 @@ The framework provides an event-driven API for configuring tenant, language, the
 
 ### Theme and Language Propagation to MFEs
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-framework-composition-propagation`
+- [x] `p1` - **ID**: `cpt-hai3-dod-framework-composition-propagation`
 
 When the host changes theme or language, the respective plugin propagates the new value to all registered MFE domains by calling `screensetsRegistry.updateSharedProperty()` with the appropriate shared property constant. Errors from the registry call are caught and logged; they never crash the host application. On initialization, the `themes()` plugin applies the first registered theme; the `i18n()` plugin loads English translations in the background.
 
@@ -417,7 +417,7 @@ When the host changes theme or language, the respective plugin propagates the ne
 
 ### Microfrontends Plugin and MFE Lifecycle
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-framework-composition-mfe-plugin`
+- [x] `p1` - **ID**: `cpt-hai3-dod-framework-composition-mfe-plugin`
 
 The `microfrontends()` plugin builds a `ScreensetsRegistry` instance (with GTS type system and optional MFE handlers) via `screensetsRegistryFactory.build()`. It exposes the registry as `app.screensetsRegistry`. It registers the `mfe` Redux slice tracking per-extension registration state (`unregistered` | `registering` | `registered` | `error`) and per-domain mount state. It wires MFE lifecycle actions (`loadExtension`, `mountExtension`, `unmountExtension`, `registerExtension`, `unregisterExtension`) into the HAI3 actions map. The plugin intercepts `executeActionsChain` completions for mount/unmount to dispatch Redux slice updates.
 
@@ -445,7 +445,7 @@ The `microfrontends()` plugin builds a `ScreensetsRegistry` instance (with GTS t
 
 ### Shared Property Broadcast with GTS Validation
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-framework-composition-shared-property`
+- [x] `p1` - **ID**: `cpt-hai3-dod-framework-composition-shared-property`
 
 `ScreensetsRegistry.updateSharedProperty(propertyId, value)` is the sole write path for shared property values. The implementation validates the value against the GTS-derived schema before any propagation. Validation uses `typeSystem.register({ id: ephemeralId, value })` + `typeSystem.validateInstance(ephemeralId)` where `ephemeralId = "${propertyTypeId}hai3.mfes.comm.runtime.v1"`. If validation fails, the method throws and no domain receives the update. Only domains whose `sharedProperties` array includes `propertyId` receive the update. No matching domains is a silent no-op. The deprecated `updateDomainProperty()` and `updateDomainProperties()` methods do NOT exist on the abstract class or implementation.
 
@@ -469,7 +469,7 @@ The `microfrontends()` plugin builds a `ScreensetsRegistry` instance (with GTS t
 
 ### Presets
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-framework-composition-presets`
+- [x] `p1` - **ID**: `cpt-hai3-dod-framework-composition-presets`
 
 Three presets are provided as functions returning `HAI3Plugin[]`:
 - `full(config?)` — all seven plugins (`effects`, `screensets`, `themes`, `layout`, `i18n`, `mock`, `microfrontends`)
@@ -488,7 +488,7 @@ All presets are exported from `@hai3/framework`. The `presets` object collects a
 
 ### SDK Re-exports and Convenience Surface
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-framework-composition-reexports`
+- [x] `p1` - **ID**: `cpt-hai3-dod-framework-composition-reexports`
 
 `@hai3/framework` re-exports the public API of all four L1 packages so that consumers can import from a single entry point. Re-exported symbols include:
 - From `@hai3/state`: `eventBus`, `createStore`, `getStore`, `registerSlice`, `hasSlice`, `createSlice`, and all related types
@@ -509,22 +509,22 @@ The framework does NOT export `createAction` to consumers; actions are handwritt
 
 ## Acceptance Criteria
 
-- [ ] `createHAI3().use(pluginA()).use(pluginB()).build()` produces a `HAI3App` with `store`, `themeRegistry`, `i18nRegistry`, `apiRegistry`, `screensetsRegistry`, and `actions` all populated
-- [ ] Plugin dependency ordering is enforced: if `pluginB` declares `dependencies: ['pluginA']`, `pluginA.onInit` is always called before `pluginB.onInit` regardless of `.use()` call order
-- [ ] Registering the same plugin name twice results in only one plugin in the resolved list (second is silently ignored)
-- [ ] A circular dependency between two plugins throws an error during `.build()`
-- [ ] `app.actions.changeTheme({ themeId: 'dark' })` calls `themeRegistry.apply('dark')` AND calls `screensetsRegistry.updateSharedProperty(HAI3_SHARED_PROPERTY_THEME, 'dark')` when the `microfrontends()` plugin is registered
-- [ ] Errors thrown by `screensetsRegistry.updateSharedProperty()` in theme/language propagation are caught and logged; the host application continues without crash
-- [ ] `screensetsRegistry.updateSharedProperty(HAI3_SHARED_PROPERTY_THEME, 'invalid-theme')` throws a GTS validation error; no domain subscriber receives the value
-- [ ] `screensetsRegistry.updateSharedProperty(HAI3_SHARED_PROPERTY_THEME, 'dark')` propagates to all domains declaring the property; domains not declaring it receive no update
-- [ ] `app.actions.registerExtension(ext)` transitions `state.mfe.registrationStates[ext.id]` from `'unregistered'` → `'registering'` → `'registered'`
-- [ ] A failing `screensetsRegistry.registerExtension()` call transitions state to `'error'` with the error message recorded
-- [ ] `app.actions.mountExtension(extensionId)` after successful execution sets `state.mfe.mountedExtensions[domainId]` to `extensionId`
-- [ ] `normalizeBase('/console/')` returns `'/console'`; `normalizeBase('')` returns `'/'`; `normalizeBase('console')` returns `'/console'`
-- [ ] `stripBase('/console/dashboard', '/console')` returns `'/dashboard'`; `stripBase('/admin/x', '/console')` returns `null`; `stripBase('/console-admin', '/console')` returns `null`
-- [ ] `createHAI3App()` uses the `full()` preset and returns a valid `HAI3App` without configuration
-- [ ] `@hai3/framework` has no React import (enforced by `dependency-cruiser`)
-- [ ] All layout domain types (`HeaderState`, `FooterState`, `MenuState`, `SidebarState`, `ScreenState`, `PopupState`, `OverlayState`) are exported from `@hai3/framework`
+- [x] `createHAI3().use(pluginA()).use(pluginB()).build()` produces a `HAI3App` with `store`, `themeRegistry`, `i18nRegistry`, `apiRegistry`, `screensetsRegistry`, and `actions` all populated
+- [x] Plugin dependency ordering is enforced: if `pluginB` declares `dependencies: ['pluginA']`, `pluginA.onInit` is always called before `pluginB.onInit` regardless of `.use()` call order
+- [x] Registering the same plugin name twice results in only one plugin in the resolved list (second is silently ignored)
+- [x] A circular dependency between two plugins throws an error during `.build()`
+- [x] `app.actions.changeTheme({ themeId: 'dark' })` calls `themeRegistry.apply('dark')` AND calls `screensetsRegistry.updateSharedProperty(HAI3_SHARED_PROPERTY_THEME, 'dark')` when the `microfrontends()` plugin is registered
+- [x] Errors thrown by `screensetsRegistry.updateSharedProperty()` in theme/language propagation are caught and logged; the host application continues without crash
+- [x] `screensetsRegistry.updateSharedProperty(HAI3_SHARED_PROPERTY_THEME, 'invalid-theme')` throws a GTS validation error; no domain subscriber receives the value
+- [x] `screensetsRegistry.updateSharedProperty(HAI3_SHARED_PROPERTY_THEME, 'dark')` propagates to all domains declaring the property; domains not declaring it receive no update
+- [x] `app.actions.registerExtension(ext)` transitions `state.mfe.registrationStates[ext.id]` from `'unregistered'` → `'registering'` → `'registered'`
+- [x] A failing `screensetsRegistry.registerExtension()` call transitions state to `'error'` with the error message recorded
+- [x] `app.actions.mountExtension(extensionId)` after successful execution sets `state.mfe.mountedExtensions[domainId]` to `extensionId`
+- [x] `normalizeBase('/console/')` returns `'/console'`; `normalizeBase('')` returns `'/'`; `normalizeBase('console')` returns `'/console'`
+- [x] `stripBase('/console/dashboard', '/console')` returns `'/dashboard'`; `stripBase('/admin/x', '/console')` returns `null`; `stripBase('/console-admin', '/console')` returns `null`
+- [x] `createHAI3App()` uses the `full()` preset and returns a valid `HAI3App` without configuration
+- [x] `@hai3/framework` has no React import (enforced by `dependency-cruiser`)
+- [x] All layout domain types (`HeaderState`, `FooterState`, `MenuState`, `SidebarState`, `ScreenState`, `PopupState`, `OverlayState`) are exported from `@hai3/framework`
 
 ---
 

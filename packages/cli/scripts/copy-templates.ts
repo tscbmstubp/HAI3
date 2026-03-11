@@ -18,6 +18,8 @@
  * - Command adapters are GENERATED for all IDEs
  * - OpenSpec commands are copied from root .claude/commands/openspec/ to all IDE directories
  */
+// @cpt-FEATURE:cpt-hai3-algo-cli-tooling-build-templates:p1
+// @cpt-FEATURE:cpt-hai3-dod-cli-tooling-templates:p1
 import fs from 'fs-extra';
 import lodash from 'lodash';
 import path from 'path';
@@ -228,6 +230,7 @@ Use \`.ai/${relativePath}\` as the single source of truth.
  *
  * @param templatesDir - Destination templates directory
  */
+// @cpt-begin:cpt-hai3-algo-cli-tooling-build-templates:p1:inst-1
 async function copyOpenSpecSkills(
   templatesDir: string
 ): Promise<{ claude: number; cursor: number; windsurf: number; copilot: number }> {
@@ -304,6 +307,7 @@ async function copyOpenSpecSkills(
 
   return { claude: claudeCount, cursor: cursorCount, windsurf: windsurfCount, copilot: copilotCount };
 }
+// @cpt-end:cpt-hai3-algo-cli-tooling-build-templates:p1:inst-1
 
 /**
  * Bundle commands from @hai3 packages into CLI templates
@@ -594,6 +598,7 @@ async function countFiles(dir: string): Promise<number> {
   return count;
 }
 
+// @cpt-begin:cpt-hai3-algo-cli-tooling-build-templates:p1:inst-2
 async function copyTemplates() {
   console.log('📦 Copying templates from main project...\n');
 
@@ -902,6 +907,7 @@ async function copyTemplates() {
   console.log('\n✅ Templates copied successfully!');
   console.log(`   Location: ${TEMPLATES_DIR}`);
 }
+// @cpt-end:cpt-hai3-algo-cli-tooling-build-templates:p1:inst-2
 
 copyTemplates().catch((err) => {
   console.error('❌ Failed to copy templates:', err);

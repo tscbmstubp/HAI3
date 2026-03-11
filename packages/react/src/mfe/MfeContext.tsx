@@ -6,6 +6,9 @@
  *
  * React Layer: L3 (Depends on @hai3/framework)
  */
+// @cpt-FEATURE:cpt-hai3-flow-react-bindings-mfe-provider:p1
+// @cpt-FEATURE:cpt-hai3-algo-react-bindings-mfe-context-guard:p1
+// @cpt-FEATURE:cpt-hai3-dod-react-bindings-mfe-hooks:p1
 
 import { createContext, useContext } from 'react';
 import type { ChildMfeBridge } from '@hai3/framework';
@@ -43,6 +46,9 @@ export const MfeContext = createContext<MfeContextValue | null>(null);
  *
  * @returns The MFE context value
  */
+// @cpt-begin:cpt-hai3-flow-react-bindings-mfe-provider:p1:inst-1
+// @cpt-begin:cpt-hai3-algo-react-bindings-mfe-context-guard:p1:inst-2
+// @cpt-begin:cpt-hai3-dod-react-bindings-mfe-hooks:p1:inst-1
 export function useMfeContext(): MfeContextValue {
   const context = useContext(MfeContext);
 
@@ -55,3 +61,6 @@ export function useMfeContext(): MfeContextValue {
 
   return context;
 }
+// @cpt-end:cpt-hai3-flow-react-bindings-mfe-provider:p1:inst-1
+// @cpt-end:cpt-hai3-algo-react-bindings-mfe-context-guard:p1:inst-2
+// @cpt-end:cpt-hai3-dod-react-bindings-mfe-hooks:p1:inst-1

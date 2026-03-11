@@ -5,6 +5,10 @@
  * This replaces @hai3/uikit-contracts for type imports.
  */
 
+// @cpt-FEATURE:cpt-hai3-dod-uikit-components-registry-types:p2
+// @cpt-FEATURE:cpt-hai3-dod-uikit-components-standalone:p1
+// @cpt-FEATURE:cpt-hai3-flow-uikit-components-registry-lookup:p2
+
 import type { ComponentType, ReactNode, ButtonHTMLAttributes } from 'react';
 
 // ============================================================================
@@ -411,6 +415,8 @@ export type DropdownMenuSubContentComponent = ComponentType<DropdownMenuSubConte
  * UI Kit Component Enum
  * Defines components that can be registered with the UI Kit registry.
  */
+// @cpt-begin:cpt-hai3-dod-uikit-components-registry-types:p2:inst-1
+// @cpt-begin:cpt-hai3-flow-uikit-components-registry-lookup:p2:inst-1
 export enum UiKitComponent {
   Button = 'Button',
   IconButton = 'IconButton',
@@ -488,3 +494,5 @@ export interface UiKitComponentMap {
  * Component Names - for type-safe registration
  */
 export type ComponentName = keyof UiKitComponentMap;
+// @cpt-end:cpt-hai3-dod-uikit-components-registry-types:p2:inst-1
+// @cpt-end:cpt-hai3-flow-uikit-components-registry-lookup:p2:inst-1

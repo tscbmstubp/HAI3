@@ -5,6 +5,7 @@
  *
  * @packageDocumentation
  */
+// @cpt-FEATURE:cpt-hai3-algo-screenset-registry-contract-matching:p1
 
 import type { MfeEntry } from '../types/mfe-entry';
 import type { ExtensionDomain } from '../types/extension-domain';
@@ -72,6 +73,7 @@ const INFRASTRUCTURE_LIFECYCLE_ACTIONS = new Set<string>([
  * @param domain - The extension domain to validate against
  * @returns Validation result with errors if invalid
  */
+// @cpt-begin:cpt-hai3-algo-screenset-registry-contract-matching:p1:inst-1
 export function validateContract(
   entry: MfeEntry,
   domain: ExtensionDomain
@@ -121,6 +123,7 @@ export function validateContract(
     errors,
   };
 }
+// @cpt-end:cpt-hai3-algo-screenset-registry-contract-matching:p1:inst-1
 
 /**
  * Format contract validation errors into a human-readable message.

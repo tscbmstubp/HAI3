@@ -5,6 +5,12 @@
  * Maps to shadcn CSS variable naming convention
  */
 
+// @cpt-FEATURE:cpt-hai3-dod-uikit-components-theme:p1
+// @cpt-FEATURE:cpt-hai3-flow-uikit-components-apply-theme-document:p1
+// @cpt-FEATURE:cpt-hai3-flow-uikit-components-apply-theme-shadow:p1
+// @cpt-FEATURE:cpt-hai3-algo-uikit-components-apply-theme-document:p1
+// @cpt-FEATURE:cpt-hai3-algo-uikit-components-apply-theme-shadow:p1
+
 import type { Theme } from '../types';
 
 /**
@@ -33,6 +39,8 @@ const hslToVar = (color: string): string => {
  * @param theme - Theme object to apply
  * @param themeName - Optional theme name for data attribute
  */
+// @cpt-begin:cpt-hai3-algo-uikit-components-apply-theme-document:p1:inst-1
+// @cpt-begin:cpt-hai3-flow-uikit-components-apply-theme-document:p1:inst-1
 export const applyTheme = (theme: Theme, themeName?: string): void => {
   const root = document.documentElement;
 
@@ -109,6 +117,8 @@ export const applyTheme = (theme: Theme, themeName?: string): void => {
     root.style.fontSize = '';
   }
 };
+// @cpt-end:cpt-hai3-algo-uikit-components-apply-theme-document:p1:inst-1
+// @cpt-end:cpt-hai3-flow-uikit-components-apply-theme-document:p1:inst-1
 
 /**
  * Apply theme to a shadow root by injecting CSS variables
@@ -119,6 +129,8 @@ export const applyTheme = (theme: Theme, themeName?: string): void => {
  * @param theme - Theme object to apply
  * @param themeName - Optional theme name for data attribute
  */
+// @cpt-begin:cpt-hai3-algo-uikit-components-apply-theme-shadow:p1:inst-1
+// @cpt-begin:cpt-hai3-flow-uikit-components-apply-theme-shadow:p1:inst-1
 export const applyThemeToShadowRoot = (
   shadowRoot: ShadowRoot,
   theme: Theme,
@@ -211,3 +223,5 @@ export const applyThemeToShadowRoot = (
 
   styleElement.textContent = cssContent;
 };
+// @cpt-end:cpt-hai3-algo-uikit-components-apply-theme-shadow:p1:inst-1
+// @cpt-end:cpt-hai3-flow-uikit-components-apply-theme-shadow:p1:inst-1

@@ -1,8 +1,8 @@
 # Feature: MFE Blob URL Isolation
 
-- [ ] `p1` - **ID**: `cpt-hai3-featstatus-mfe-isolation`
+- [x] `p1` - **ID**: `cpt-hai3-featstatus-mfe-isolation`
 
-- [ ] `p1` - **ID**: `cpt-hai3-feature-mfe-isolation`
+- [x] `p1` - **ID**: `cpt-hai3-feature-mfe-isolation`
 
 ## Table of Contents
 
@@ -66,59 +66,59 @@ Enable multiple independently deployed MFE bundles to coexist in the same browse
 
 ### MFE Load via Blob URL Isolation
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-mfe-isolation-load`
+- [x] `p1` - **ID**: `cpt-hai3-flow-mfe-isolation-load`
 
 **Actors**:
 - `cpt-hai3-actor-host-app`
 - `cpt-hai3-actor-microfrontend`
 - `cpt-hai3-actor-runtime`
 
-1. [ ] - `p1` - Host requests load of an `MfeEntryMF` through the screensets registry — `inst-host-request-load`
-2. [ ] - `p1` - `MfeHandlerMF.load()` delegates to `loadInternal()` wrapped in retry logic — `inst-retry-wrapper`
-3. [ ] - `p1` - `loadInternal()` resolves the `MfManifest` (inline object or cached by ID) — `inst-resolve-manifest`
-4. [ ] - `p1` - `loadExposedModuleIsolated()` derives `baseUrl` from `manifest.remoteEntry` (directory portion) — `inst-derive-base-url`
-5. [ ] - `p1` - A fresh `LoadBlobState` is created with an empty `blobUrlMap` and `visited` set scoped to this load — `inst-create-load-state`
-6. [ ] - `p1` - Algorithm: build share scope via `cpt-hai3-algo-mfe-isolation-build-share-scope` — `inst-build-share-scope`
-7. [ ] - `p1` - `writeShareScope()` writes the constructed entries to `globalThis.__federation_shared__['default']` — `inst-write-share-scope`
-8. [ ] - `p1` - Algorithm: fetch `remoteEntry.js` source text via `cpt-hai3-algo-mfe-isolation-fetch-source` — `inst-fetch-remote-entry`
-9. [ ] - `p1` - Algorithm: parse expose chunk filename via `cpt-hai3-algo-mfe-isolation-parse-expose-chunk` — `inst-parse-expose-chunk`
-10. [ ] - `p1` - **IF** expose chunk filename is null **RETURN** `MfeLoadError` — `inst-check-expose-chunk`
-11. [ ] - `p1` - Algorithm: build blob URL chain for expose chunk via `cpt-hai3-algo-mfe-isolation-blob-url-chain` — `inst-blob-url-chain`
-12. [ ] - `p1` - **IF** expose blob URL is absent from `blobUrlMap` **RETURN** `MfeLoadError` — `inst-check-expose-blob`
-13. [ ] - `p1` - Dynamic `import()` of the expose blob URL produces the expose module — `inst-import-expose-blob`
-14. [ ] - `p1` - Module factory extracted from expose module; result validated as `MfeEntryLifecycle` (must have `mount` and `unmount`) — `inst-validate-lifecycle`
-15. [ ] - `p1` - **IF** lifecycle interface not satisfied **RETURN** `MfeLoadError` — `inst-check-lifecycle`
-16. [ ] - `p1` - **RETURN** `MfeEntryLifecycle<ChildMfeBridge>` to caller — `inst-return-lifecycle`
+1. [x] - `p1` - Host requests load of an `MfeEntryMF` through the screensets registry — `inst-host-request-load`
+2. [x] - `p1` - `MfeHandlerMF.load()` delegates to `loadInternal()` wrapped in retry logic — `inst-retry-wrapper`
+3. [x] - `p1` - `loadInternal()` resolves the `MfManifest` (inline object or cached by ID) — `inst-resolve-manifest`
+4. [x] - `p1` - `loadExposedModuleIsolated()` derives `baseUrl` from `manifest.remoteEntry` (directory portion) — `inst-derive-base-url`
+5. [x] - `p1` - A fresh `LoadBlobState` is created with an empty `blobUrlMap` and `visited` set scoped to this load — `inst-create-load-state`
+6. [x] - `p1` - Algorithm: build share scope via `cpt-hai3-algo-mfe-isolation-build-share-scope` — `inst-build-share-scope`
+7. [x] - `p1` - `writeShareScope()` writes the constructed entries to `globalThis.__federation_shared__['default']` — `inst-write-share-scope`
+8. [x] - `p1` - Algorithm: fetch `remoteEntry.js` source text via `cpt-hai3-algo-mfe-isolation-fetch-source` — `inst-fetch-remote-entry`
+9. [x] - `p1` - Algorithm: parse expose chunk filename via `cpt-hai3-algo-mfe-isolation-parse-expose-chunk` — `inst-parse-expose-chunk`
+10. [x] - `p1` - **IF** expose chunk filename is null **RETURN** `MfeLoadError` — `inst-check-expose-chunk`
+11. [x] - `p1` - Algorithm: build blob URL chain for expose chunk via `cpt-hai3-algo-mfe-isolation-blob-url-chain` — `inst-blob-url-chain`
+12. [x] - `p1` - **IF** expose blob URL is absent from `blobUrlMap` **RETURN** `MfeLoadError` — `inst-check-expose-blob`
+13. [x] - `p1` - Dynamic `import()` of the expose blob URL produces the expose module — `inst-import-expose-blob`
+14. [x] - `p1` - Module factory extracted from expose module; result validated as `MfeEntryLifecycle` (must have `mount` and `unmount`) — `inst-validate-lifecycle`
+15. [x] - `p1` - **IF** lifecycle interface not satisfied **RETURN** `MfeLoadError` — `inst-check-lifecycle`
+16. [x] - `p1` - **RETURN** `MfeEntryLifecycle<ChildMfeBridge>` to caller — `inst-return-lifecycle`
 
 ### MFE Build with Externalize Plugin
 
-- [ ] `p2` - **ID**: `cpt-hai3-flow-mfe-isolation-build`
+- [x] `p2` - **ID**: `cpt-hai3-flow-mfe-isolation-build`
 
 **Actors**:
 - `cpt-hai3-actor-build-system`
 
-1. [ ] - `p1` - MFE `vite.config.ts` registers `federation()` plugin (expose entries, shared deps list) and `hai3MfeExternalize({ shared })` plugin — `inst-vite-config`
-2. [ ] - `p1` - On `vite build`, the `federation` plugin processes expose entry files, injecting `importShared()` calls for declared shared packages — `inst-federation-plugin-runs`
-3. [ ] - `p1` - `hai3-mfe-externalize` plugin (enforce: `'post'`) processes the generated bundle in `generateBundle` hook — `inst-externalize-hook`
-4. [ ] - `p1` - Algorithm: identify and rename shared chunks via `cpt-hai3-algo-mfe-isolation-rename-shared-chunks` — `inst-rename-chunks`
-5. [ ] - `p1` - Algorithm: map bundled sub-chunks to owning package via `cpt-hai3-algo-mfe-isolation-map-bundled-chunks` — `inst-map-bundled-chunks`
-6. [ ] - `p1` - Algorithm: rewrite bundled imports in non-infrastructure chunks via `cpt-hai3-algo-mfe-isolation-rewrite-imports` — `inst-rewrite-imports`
-7. [ ] - `p1` - Resulting bundle has deterministic shared chunk names and all bundled-package imports replaced with `importShared()` calls — `inst-build-output`
+1. [x] - `p1` - MFE `vite.config.ts` registers `federation()` plugin (expose entries, shared deps list) and `hai3MfeExternalize({ shared })` plugin — `inst-vite-config`
+2. [x] - `p1` - On `vite build`, the `federation` plugin processes expose entry files, injecting `importShared()` calls for declared shared packages — `inst-federation-plugin-runs`
+3. [x] - `p1` - `hai3-mfe-externalize` plugin (enforce: `'post'`) processes the generated bundle in `generateBundle` hook — `inst-externalize-hook`
+4. [x] - `p1` - Algorithm: identify and rename shared chunks via `cpt-hai3-algo-mfe-isolation-rename-shared-chunks` — `inst-rename-chunks`
+5. [x] - `p1` - Algorithm: map bundled sub-chunks to owning package via `cpt-hai3-algo-mfe-isolation-map-bundled-chunks` — `inst-map-bundled-chunks`
+6. [x] - `p1` - Algorithm: rewrite bundled imports in non-infrastructure chunks via `cpt-hai3-algo-mfe-isolation-rewrite-imports` — `inst-rewrite-imports`
+7. [x] - `p1` - Resulting bundle has deterministic shared chunk names and all bundled-package imports replaced with `importShared()` calls — `inst-build-output`
 
 ### MFE-Internal Bootstrap
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-mfe-isolation-mfe-bootstrap`
+- [x] `p1` - **ID**: `cpt-hai3-flow-mfe-isolation-mfe-bootstrap`
 
 **Actors**:
 - `cpt-hai3-actor-microfrontend`
 - `cpt-hai3-actor-runtime`
 
-1. [ ] - `p1` - The MFE's `init.ts` module is evaluated as a module-level side effect when the expose chunk is first imported — `inst-init-side-effect`
-2. [ ] - `p1` - `init.ts` calls `apiRegistry.register()` and `apiRegistry.initialize()` to register API services before the store is built — `inst-register-api`
-3. [ ] - `p1` - `createHAI3().use(effects()).use(mock()).build()` creates a minimal `HAI3App` with an isolated store singleton — `inst-create-mfe-app`
-4. [ ] - `p1` - `registerSlice(slice, effectInitializer)` wires domain state into the MFE-local store — `inst-register-slice`
-5. [ ] - `p1` - `mfeApp` is exported for use by lifecycle React components as the `<HAI3Provider app={mfeApp}>` prop — `inst-export-mfe-app`
-6. [ ] - `p1` - **IF** any lifecycle component imports `react-redux`, `redux`, or `@reduxjs/toolkit` directly, the architecture constraint is violated — `inst-no-direct-redux`
+1. [x] - `p1` - The MFE's `init.ts` module is evaluated as a module-level side effect when the expose chunk is first imported — `inst-init-side-effect`
+2. [x] - `p1` - `init.ts` calls `apiRegistry.register()` and `apiRegistry.initialize()` to register API services before the store is built — `inst-register-api`
+3. [x] - `p1` - `createHAI3().use(effects()).use(mock()).build()` creates a minimal `HAI3App` with an isolated store singleton — `inst-create-mfe-app`
+4. [x] - `p1` - `registerSlice(slice, effectInitializer)` wires domain state into the MFE-local store — `inst-register-slice`
+5. [x] - `p1` - `mfeApp` is exported for use by lifecycle React components as the `<HAI3Provider app={mfeApp}>` prop — `inst-export-mfe-app`
+6. [x] - `p1` - **IF** any lifecycle component imports `react-redux`, `redux`, or `@reduxjs/toolkit` directly, the architecture constraint is violated — `inst-no-direct-redux`
 
 ---
 
@@ -126,124 +126,124 @@ Enable multiple independently deployed MFE bundles to coexist in the same browse
 
 ### Build Share Scope
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-mfe-isolation-build-share-scope`
+- [x] `p1` - **ID**: `cpt-hai3-algo-mfe-isolation-build-share-scope`
 
 Constructs the `shareScope` object from `manifest.sharedDependencies`. Only dependencies that declare a `chunkPath` receive blob-URL-based `get()` closures; others are omitted.
 
-1. [ ] - `p1` - **IF** `manifest.sharedDependencies` is empty or absent **RETURN** empty `ShareScope` object — `inst-empty-deps`
-2. [ ] - `p1` - **FOR EACH** dependency in `sharedDependencies`:
+1. [x] - `p1` - **IF** `manifest.sharedDependencies` is empty or absent **RETURN** empty `ShareScope` object — `inst-empty-deps`
+2. [x] - `p1` - **FOR EACH** dependency in `sharedDependencies`:
    - **IF** `dep.chunkPath` is present: create a blob-URL `get()` closure via `createBlobUrlGet(dep.chunkPath, loadState)` and add `{ [dep.name]: { '*': { get: blobGet } } }` to the scope — `inst-create-blob-get`
    - **IF** `dep.chunkPath` is absent: skip this dependency (no entry added; MFE falls back to its own bundled copy via `getSharedFromLocal()`) — `inst-skip-no-chunk-path`
-3. [ ] - `p1` - **RETURN** the constructed `ShareScope` — `inst-return-share-scope`
+3. [x] - `p1` - **RETURN** the constructed `ShareScope` — `inst-return-share-scope`
 
 ### Blob URL Get Closure
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-mfe-isolation-blob-url-get`
+- [x] `p1` - **ID**: `cpt-hai3-algo-mfe-isolation-blob-url-get`
 
 The closure returned by `createBlobUrlGet` is stored in the share scope and invoked by the federation runtime's `importShared()` during MFE module evaluation.
 
-1. [ ] - `p1` - When invoked: call `createBlobUrlChain(loadState, chunkPath)` to ensure the chunk and its dependencies are blob-URL'd — `inst-trigger-chain`
-2. [ ] - `p1` - Retrieve the resulting blob URL from `loadState.blobUrlMap.get(chunkPath)` — `inst-get-blob-url`
-3. [ ] - `p1` - **IF** blob URL is absent **RETURN** `MfeLoadError` — `inst-missing-blob-url`
-4. [ ] - `p1` - Dynamic `import()` of the blob URL produces a fresh module evaluation — `inst-import-blob`
-5. [ ] - `p1` - **RETURN** a module factory `() => module` so the federation runtime receives the expected shape — `inst-return-factory`
+1. [x] - `p1` - When invoked: call `createBlobUrlChain(loadState, chunkPath)` to ensure the chunk and its dependencies are blob-URL'd — `inst-trigger-chain`
+2. [x] - `p1` - Retrieve the resulting blob URL from `loadState.blobUrlMap.get(chunkPath)` — `inst-get-blob-url`
+3. [x] - `p1` - **IF** blob URL is absent **RETURN** `MfeLoadError` — `inst-missing-blob-url`
+4. [x] - `p1` - Dynamic `import()` of the blob URL produces a fresh module evaluation — `inst-import-blob`
+5. [x] - `p1` - **RETURN** a module factory `() => module` so the federation runtime receives the expected shape — `inst-return-factory`
 
 ### Fetch Source Text (with Cache)
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-mfe-isolation-fetch-source`
+- [x] `p1` - **ID**: `cpt-hai3-algo-mfe-isolation-fetch-source`
 
 All source text fetches go through the `MfeHandlerMF`-level `sourceTextCache` (keyed by absolute URL), ensuring at most one network request per chunk across all loads.
 
-1. [ ] - `p1` - **IF** `sourceTextCache` contains an entry for `absoluteChunkUrl` **RETURN** the cached `Promise<string>` — `inst-cache-hit`
-2. [ ] - `p1` - **TRY**: issue `fetch(absoluteChunkUrl)` — `inst-fetch-request`
+1. [x] - `p1` - **IF** `sourceTextCache` contains an entry for `absoluteChunkUrl` **RETURN** the cached `Promise<string>` — `inst-cache-hit`
+2. [x] - `p1` - **TRY**: issue `fetch(absoluteChunkUrl)` — `inst-fetch-request`
    - **IF** `response.ok` is false **RETURN** `MfeLoadError` with HTTP status and URL — `inst-http-error`
    - **RETURN** `response.text()` — `inst-return-text`
-3. [ ] - `p1` - **CATCH**: remove the failed entry from `sourceTextCache` (prevents a stuck negative cache entry), then **RETURN** `MfeLoadError` wrapping the original error — `inst-cache-evict-on-error`
-4. [ ] - `p1` - Store the `Promise<string>` in `sourceTextCache` keyed by `absoluteChunkUrl` before awaiting — `inst-cache-store`
-5. [ ] - `p1` - **RETURN** the stored promise — `inst-return-promise`
+3. [x] - `p1` - **CATCH**: remove the failed entry from `sourceTextCache` (prevents a stuck negative cache entry), then **RETURN** `MfeLoadError` wrapping the original error — `inst-cache-evict-on-error`
+4. [x] - `p1` - Store the `Promise<string>` in `sourceTextCache` keyed by `absoluteChunkUrl` before awaiting — `inst-cache-store`
+5. [x] - `p1` - **RETURN** the stored promise — `inst-return-promise`
 
 ### Recursive Blob URL Chain
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-mfe-isolation-blob-url-chain`
+- [x] `p1` - **ID**: `cpt-hai3-algo-mfe-isolation-blob-url-chain`
 
 Processes a chunk and all its static relative imports depth-first. Within a single load, each filename is processed at most once.
 
-1. [ ] - `p1` - **IF** `loadState.blobUrlMap` already has `filename` OR `loadState.visited` contains `filename` **RETURN** (already processed) — `inst-already-processed`
-2. [ ] - `p1` - Add `filename` to `loadState.visited` — `inst-mark-visited`
-3. [ ] - `p1` - Fetch source text for `loadState.baseUrl + filename` via `cpt-hai3-algo-mfe-isolation-fetch-source` — `inst-fetch-chunk`
-4. [ ] - `p1` - Parse static import filenames via `cpt-hai3-algo-mfe-isolation-parse-imports` — `inst-parse-deps`
-5. [ ] - `p1` - **FOR EACH** dependency filename: recursively call `createBlobUrlChain(loadState, dep)` — `inst-recurse-deps`
-6. [ ] - `p1` - Rewrite module imports in the source text via `cpt-hai3-algo-mfe-isolation-rewrite-module-imports`, using `loadState.blobUrlMap` for already-processed deps and `loadState.baseUrl` for the rest — `inst-rewrite-source`
-7. [ ] - `p1` - Create a `Blob` from the rewritten source with MIME type `text/javascript` — `inst-create-blob`
-8. [ ] - `p1` - Call `URL.createObjectURL(blob)` to produce a blob URL — `inst-create-object-url`
-9. [ ] - `p2` - Do NOT call `URL.revokeObjectURL()` at any point — modules with top-level `await` continue evaluating asynchronously after `import()` resolves, and premature revocation causes `ERR_FILE_NOT_FOUND` — `inst-no-revoke`
-10. [ ] - `p1` - Store the blob URL in `loadState.blobUrlMap` keyed by `filename` — `inst-store-blob-url`
+1. [x] - `p1` - **IF** `loadState.blobUrlMap` already has `filename` OR `loadState.visited` contains `filename` **RETURN** (already processed) — `inst-already-processed`
+2. [x] - `p1` - Add `filename` to `loadState.visited` — `inst-mark-visited`
+3. [x] - `p1` - Fetch source text for `loadState.baseUrl + filename` via `cpt-hai3-algo-mfe-isolation-fetch-source` — `inst-fetch-chunk`
+4. [x] - `p1` - Parse static import filenames via `cpt-hai3-algo-mfe-isolation-parse-imports` — `inst-parse-deps`
+5. [x] - `p1` - **FOR EACH** dependency filename: recursively call `createBlobUrlChain(loadState, dep)` — `inst-recurse-deps`
+6. [x] - `p1` - Rewrite module imports in the source text via `cpt-hai3-algo-mfe-isolation-rewrite-module-imports`, using `loadState.blobUrlMap` for already-processed deps and `loadState.baseUrl` for the rest — `inst-rewrite-source`
+7. [x] - `p1` - Create a `Blob` from the rewritten source with MIME type `text/javascript` — `inst-create-blob`
+8. [x] - `p1` - Call `URL.createObjectURL(blob)` to produce a blob URL — `inst-create-object-url`
+9. [x] - `p2` - Do NOT call `URL.revokeObjectURL()` at any point — modules with top-level `await` continue evaluating asynchronously after `import()` resolves, and premature revocation causes `ERR_FILE_NOT_FOUND` — `inst-no-revoke`
+10. [x] - `p1` - Store the blob URL in `loadState.blobUrlMap` keyed by `filename` — `inst-store-blob-url`
 
 ### Parse Static Import Filenames
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-mfe-isolation-parse-imports`
+- [x] `p1` - **ID**: `cpt-hai3-algo-mfe-isolation-parse-imports`
 
 Extracts normalized dependency filenames from a chunk's source text so the recursive chain knows which sub-chunks to process.
 
-1. [ ] - `p1` - Match all `from './...'` and `from '../...'` patterns in the source text — `inst-match-relative`
-2. [ ] - `p1` - **FOR EACH** match: resolve the relative specifier against `chunkFilename` using URL-based path resolution (synthetic `http://r/` base, then strip the leading `/`) — `inst-resolve-path`
-3. [ ] - `p1` - Deduplicate the resulting filename list — `inst-dedupe`
-4. [ ] - `p1` - **RETURN** the deduplicated list of resolved filenames — `inst-return-filenames`
+1. [x] - `p1` - Match all `from './...'` and `from '../...'` patterns in the source text — `inst-match-relative`
+2. [x] - `p1` - **FOR EACH** match: resolve the relative specifier against `chunkFilename` using URL-based path resolution (synthetic `http://r/` base, then strip the leading `/`) — `inst-resolve-path`
+3. [x] - `p1` - Deduplicate the resulting filename list — `inst-dedupe`
+4. [x] - `p1` - **RETURN** the deduplicated list of resolved filenames — `inst-return-filenames`
 
 ### Rewrite Module Imports
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-mfe-isolation-rewrite-module-imports`
+- [x] `p1` - **ID**: `cpt-hai3-algo-mfe-isolation-rewrite-module-imports`
 
 Replaces relative specifiers in a chunk's source text with either a blob URL (if the dependency has already been processed in the current load) or an absolute HTTP URL.
 
-1. [ ] - `p1` - For each relative specifier (both `./` and `../`) in static `from '...'` patterns: resolve the relative specifier against `chunkFilename`; look up the resolved key in `blobUrlMap`; if found, replace with the blob URL; otherwise replace with `baseUrl + resolvedKey` — `inst-static-imports`
-2. [ ] - `p1` - Apply the same resolution and replacement to dynamic `import('./...')` and `import('../...')` patterns — `inst-dynamic-imports`
-3. [ ] - `p1` - Non-relative specifiers (bare package names, absolute URLs) are not modified — `inst-skip-non-relative`
-4. [ ] - `p1` - **RETURN** the fully rewritten source text — `inst-return-rewritten`
+1. [x] - `p1` - For each relative specifier (both `./` and `../`) in static `from '...'` patterns: resolve the relative specifier against `chunkFilename`; look up the resolved key in `blobUrlMap`; if found, replace with the blob URL; otherwise replace with `baseUrl + resolvedKey` — `inst-static-imports`
+2. [x] - `p1` - Apply the same resolution and replacement to dynamic `import('./...')` and `import('../...')` patterns — `inst-dynamic-imports`
+3. [x] - `p1` - Non-relative specifiers (bare package names, absolute URLs) are not modified — `inst-skip-non-relative`
+4. [x] - `p1` - **RETURN** the fully rewritten source text — `inst-return-rewritten`
 
 ### Parse Expose Chunk Filename
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-mfe-isolation-parse-expose-chunk`
+- [x] `p1` - **ID**: `cpt-hai3-algo-mfe-isolation-parse-expose-chunk`
 
 Extracts the filename of the expose entry chunk from the remoteEntry source.
 
-1. [ ] - `p1` - Escape the `exposedModule` string for regex use — `inst-escape-module`
-2. [ ] - `p1` - Apply the pattern: `"<exposedModule>"[^}]*__federation_import\(['"]\.\/([^'"]+)['"]\)` against the remoteEntry source text — `inst-apply-regex`
-3. [ ] - `p1` - **IF** pattern matches **RETURN** the captured filename (group 1) — `inst-return-filename`
-4. [ ] - `p1` - **IF** no match **RETURN** null — `inst-return-null`
+1. [x] - `p1` - Escape the `exposedModule` string for regex use — `inst-escape-module`
+2. [x] - `p1` - Apply the pattern: `"<exposedModule>"[^}]*__federation_import\(['"]\.\/([^'"]+)['"]\)` against the remoteEntry source text — `inst-apply-regex`
+3. [x] - `p1` - **IF** pattern matches **RETURN** the captured filename (group 1) — `inst-return-filename`
+4. [x] - `p1` - **IF** no match **RETURN** null — `inst-return-null`
 
 ### Write Share Scope to Global
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-mfe-isolation-write-share-scope`
+- [x] `p1` - **ID**: `cpt-hai3-algo-mfe-isolation-write-share-scope`
 
 Writes the constructed share scope entries to `globalThis.__federation_shared__` so the federation runtime's `importShared()` can resolve them during MFE evaluation.
 
-1. [ ] - `p1` - Read or initialise `globalThis.__federation_shared__` as an object — `inst-init-global`
-2. [ ] - `p1` - **FOR EACH** `[packageName, versions]` in the share scope:
+1. [x] - `p1` - Read or initialise `globalThis.__federation_shared__` as an object — `inst-init-global`
+2. [x] - `p1` - **FOR EACH** `[packageName, versions]` in the share scope:
    - **FOR EACH** `[versionKey, versionValue]` in `versions`:
      - Derive `scope` as `versionValue.scope ?? 'default'` — `inst-derive-scope`
      - Ensure `globalThis.__federation_shared__[scope]` and `[scope][packageName]` exist — `inst-ensure-scope-keys`
      - Write `versionValue` to `globalThis.__federation_shared__[scope][packageName][versionKey]` — `inst-write-entry`
-3. [ ] - `p1` - Each `get()` closure already captures its own `LoadBlobState`; overwriting the global entry for a new load does not affect an earlier load's already-resolved `importShared()` calls — `inst-concurrent-safety`
+3. [x] - `p1` - Each `get()` closure already captures its own `LoadBlobState`; overwriting the global entry for a new load does not affect an earlier load's already-resolved `importShared()` calls — `inst-concurrent-safety`
 
 ### hai3-mfe-externalize: Rename Shared Chunks
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-mfe-isolation-rename-shared-chunks`
+- [x] `p1` - **ID**: `cpt-hai3-algo-mfe-isolation-rename-shared-chunks`
 
 Renames `__federation_shared_<pkg>-<hash>.js` chunks to `__federation_shared_<pkg>.js`, making `chunkPath` values in MFE manifests stable across rebuilds.
 
-1. [ ] - `p1` - **FOR EACH** bundle entry whose key matches `__federation_shared_<pkg>-<8-char-hash>.js`: record `oldKey → newKey` in `renameMap`; record the chunk and its code length in `federationChunks` keyed by package name — `inst-identify-federation-chunks`
-2. [ ] - `p1` - Apply `renameMap`: set `chunk.fileName` to `newKey`, insert under `newKey`, delete `oldKey` — `inst-apply-rename`
-3. [ ] - `p1` - **FOR EACH** chunk in the bundle: update `imports`, `dynamicImports` arrays and inline code string references from old base filenames to new base filenames — `inst-update-refs`
+1. [x] - `p1` - **FOR EACH** bundle entry whose key matches `__federation_shared_<pkg>-<8-char-hash>.js`: record `oldKey → newKey` in `renameMap`; record the chunk and its code length in `federationChunks` keyed by package name — `inst-identify-federation-chunks`
+2. [x] - `p1` - Apply `renameMap`: set `chunk.fileName` to `newKey`, insert under `newKey`, delete `oldKey` — `inst-apply-rename`
+3. [x] - `p1` - **FOR EACH** chunk in the bundle: update `imports`, `dynamicImports` arrays and inline code string references from old base filenames to new base filenames — `inst-update-refs`
 
 ### hai3-mfe-externalize: Map Bundled Sub-Chunks to Packages
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-mfe-isolation-map-bundled-chunks`
+- [x] `p1` - **ID**: `cpt-hai3-algo-mfe-isolation-map-bundled-chunks`
 
 Determines which bundled sub-chunk is the primary bundle of each shared package, using a thin-wrapper heuristic.
 
-1. [ ] - `p1` - Collect the code length of every non-federation-infrastructure chunk keyed by base filename — `inst-collect-lengths`
-2. [ ] - `p1` - **FOR EACH** federation shared chunk (from `federationChunks`):
+1. [x] - `p1` - Collect the code length of every non-federation-infrastructure chunk keyed by base filename — `inst-collect-lengths`
+2. [x] - `p1` - **FOR EACH** federation shared chunk (from `federationChunks`):
    - **FOR EACH** of its imports that is not federation infrastructure:
      - **IF** the federation chunk's code length is LESS THAN the imported chunk's code length (thin wrapper): this is a candidate claim — `inst-thin-wrapper-check`
      - **IF** `bundledChunkToPackage` already maps the imported filename: replace only if the current candidate's code length is smaller than the existing claimant (smallest thin wrapper wins) — `inst-conflict-resolution`
@@ -251,14 +251,14 @@ Determines which bundled sub-chunk is the primary bundle of each shared package,
 
 ### hai3-mfe-externalize: Rewrite Bundled Imports to importShared
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-mfe-isolation-rewrite-imports`
+- [x] `p1` - **ID**: `cpt-hai3-algo-mfe-isolation-rewrite-imports`
 
 Replaces direct imports of bundled sub-chunks in non-infrastructure MFE chunks with `importShared()` calls so all execution paths route through the federation runtime's per-load module cache.
 
-1. [ ] - `p1` - **IF** `bundledChunkToPackage` is empty **RETURN** (no rewrites needed) — `inst-early-exit`
-2. [ ] - `p1` - Locate the `__federation_fn_import` chunk filename in the bundle (provides the `importShared` function) — `inst-find-fn-import`
-3. [ ] - `p1` - **IF** federation fn import chunk not found **RETURN** — `inst-fn-import-missing`
-4. [ ] - `p1` - **FOR EACH** non-infrastructure chunk in the bundle:
+1. [x] - `p1` - **IF** `bundledChunkToPackage` is empty **RETURN** (no rewrites needed) — `inst-early-exit`
+2. [x] - `p1` - Locate the `__federation_fn_import` chunk filename in the bundle (provides the `importShared` function) — `inst-find-fn-import`
+3. [x] - `p1` - **IF** federation fn import chunk not found **RETURN** — `inst-fn-import-missing`
+4. [x] - `p1` - **FOR EACH** non-infrastructure chunk in the bundle:
    - **FOR EACH** imported key in the chunk's `imports` array that maps to a package in `bundledChunkToPackage`:
      - Replace named imports `{ a as b }` with `const __importShared_<pkg> = await importShared('<pkg>'); const b = () => __importShared_<pkg>;` — `inst-named-import`
      - Replace default imports `Foo` with `const Foo = await importShared('<pkg>');` — `inst-default-import`
@@ -272,27 +272,27 @@ Replaces direct imports of bundled sub-chunks in non-infrastructure MFE chunks w
 
 ### LoadBlobState (Per-Load Isolation Map)
 
-- [ ] `p1` - **ID**: `cpt-hai3-state-mfe-isolation-load-blob-state`
+- [x] `p1` - **ID**: `cpt-hai3-state-mfe-isolation-load-blob-state`
 
 Tracks the blob URL map and visitation set for a single MFE load call. Created fresh for each `loadExposedModuleIsolated()` invocation.
 
-1. [ ] - `p1` - **FROM** INIT **TO** ACTIVE **WHEN** `loadExposedModuleIsolated()` creates a new `LoadBlobState` with empty `blobUrlMap` and `visited` set — `inst-state-init`
-2. [ ] - `p1` - **FROM** ACTIVE **TO** ACTIVE (VISITED) **WHEN** `createBlobUrlChain` adds a filename to `visited` — `inst-state-visited`
-3. [ ] - `p1` - **FROM** ACTIVE (VISITED) **TO** ACTIVE (MAPPED) **WHEN** a blob URL is inserted into `blobUrlMap` for the visited filename — `inst-state-mapped`
-4. [ ] - `p1` - **FROM** ACTIVE **TO** COMPLETE **WHEN** the expose blob URL is successfully imported and the lifecycle module is returned — `inst-state-complete`
-5. [ ] - `p1` - **FROM** ACTIVE **TO** FAILED **WHEN** any step throws `MfeLoadError` — `inst-state-failed`
-6. [ ] - `p2` - `LoadBlobState` instances are not retained after the load completes; blob URLs in `blobUrlMap` are never revoked and persist for the page lifetime — `inst-state-gc`
+1. [x] - `p1` - **FROM** INIT **TO** ACTIVE **WHEN** `loadExposedModuleIsolated()` creates a new `LoadBlobState` with empty `blobUrlMap` and `visited` set — `inst-state-init`
+2. [x] - `p1` - **FROM** ACTIVE **TO** ACTIVE (VISITED) **WHEN** `createBlobUrlChain` adds a filename to `visited` — `inst-state-visited`
+3. [x] - `p1` - **FROM** ACTIVE (VISITED) **TO** ACTIVE (MAPPED) **WHEN** a blob URL is inserted into `blobUrlMap` for the visited filename — `inst-state-mapped`
+4. [x] - `p1` - **FROM** ACTIVE **TO** COMPLETE **WHEN** the expose blob URL is successfully imported and the lifecycle module is returned — `inst-state-complete`
+5. [x] - `p1` - **FROM** ACTIVE **TO** FAILED **WHEN** any step throws `MfeLoadError` — `inst-state-failed`
+6. [x] - `p2` - `LoadBlobState` instances are not retained after the load completes; blob URLs in `blobUrlMap` are never revoked and persist for the page lifetime — `inst-state-gc`
 
 ### SourceTextCache (Handler-Level)
 
-- [ ] `p1` - **ID**: `cpt-hai3-state-mfe-isolation-source-cache`
+- [x] `p1` - **ID**: `cpt-hai3-state-mfe-isolation-source-cache`
 
 Tracks the fetch state of each chunk URL across all loads for the lifetime of the `MfeHandlerMF` instance.
 
-1. [ ] - `p1` - **FROM** ABSENT **TO** PENDING **WHEN** a fetch for `absoluteChunkUrl` is initiated and the `Promise<string>` is stored in `sourceTextCache` — `inst-cache-pending`
-2. [ ] - `p1` - **FROM** PENDING **TO** RESOLVED **WHEN** `fetch()` succeeds and the promise resolves with source text — `inst-cache-resolved`
-3. [ ] - `p1` - **FROM** PENDING **TO** ABSENT **WHEN** `fetch()` fails; the entry is removed from `sourceTextCache` to avoid a stuck negative cache — `inst-cache-evicted`
-4. [ ] - `p1` - **FROM** RESOLVED **TO** RESOLVED **WHEN** subsequent loads request the same URL (cache hit; no new fetch) — `inst-cache-hit-state`
+1. [x] - `p1` - **FROM** ABSENT **TO** PENDING **WHEN** a fetch for `absoluteChunkUrl` is initiated and the `Promise<string>` is stored in `sourceTextCache` — `inst-cache-pending`
+2. [x] - `p1` - **FROM** PENDING **TO** RESOLVED **WHEN** `fetch()` succeeds and the promise resolves with source text — `inst-cache-resolved`
+3. [x] - `p1` - **FROM** PENDING **TO** ABSENT **WHEN** `fetch()` fails; the entry is removed from `sourceTextCache` to avoid a stuck negative cache — `inst-cache-evicted`
+4. [x] - `p1` - **FROM** RESOLVED **TO** RESOLVED **WHEN** subsequent loads request the same URL (cache hit; no new fetch) — `inst-cache-hit-state`
 
 ---
 
@@ -300,7 +300,7 @@ Tracks the fetch state of each chunk URL across all loads for the lifetime of th
 
 ### Blob URL Isolation Core
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-mfe-isolation-blob-core`
+- [x] `p1` - **ID**: `cpt-hai3-dod-mfe-isolation-blob-core`
 
 `MfeHandlerMF` achieves per-load module isolation through the blob URL chain mechanism. Each load produces independent module evaluations with no shared object references between MFEs.
 
@@ -342,7 +342,7 @@ Tracks the fetch state of each chunk URL across all loads for the lifetime of th
 
 ### hai3-mfe-externalize Vite Plugin
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-mfe-isolation-externalize-plugin`
+- [x] `p1` - **ID**: `cpt-hai3-dod-mfe-isolation-externalize-plugin`
 
 The `hai3MfeExternalize` Vite plugin produces MFE bundles where all shared dependency imports route through `importShared()`, and shared chunk filenames are deterministic.
 
@@ -368,7 +368,7 @@ The `hai3MfeExternalize` Vite plugin produces MFE bundles where all shared depen
 
 ### MFE-Internal Dataflow
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-mfe-isolation-internal-dataflow`
+- [x] `p1` - **ID**: `cpt-hai3-dod-mfe-isolation-internal-dataflow`
 
 Each MFE package bootstraps its own isolated `HAI3App` and exposes it for use by lifecycle React components. No direct Redux imports appear in MFE source code.
 
@@ -390,7 +390,7 @@ Each MFE package bootstraps its own isolated `HAI3App` and exposes it for use by
 
 ### SharedDependencyConfig chunkPath Field
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-mfe-isolation-chunk-path-type`
+- [x] `p1` - **ID**: `cpt-hai3-dod-mfe-isolation-chunk-path-type`
 
 `SharedDependencyConfig` declares the optional `chunkPath` field used to derive the absolute chunk URL for blob URL isolation.
 
@@ -407,15 +407,15 @@ Each MFE package bootstraps its own isolated `HAI3App` and exposes it for use by
 
 ## Acceptance Criteria
 
-- [ ] Two MFEs loaded sequentially with the same `react` `chunkPath` produce React instances where `Object.is(mfeA_React, mfeB_React)` is `false`
-- [ ] Two MFEs loaded with the same `chunkPath` result in at most one network fetch for that chunk URL (source text cache deduplication)
-- [ ] Two MFEs loaded concurrently each receive their own unique blob URL and fresh module evaluation; no `MfeLoadError` is thrown in the concurrent case
-- [ ] After `import(blobUrl)` resolves, `URL.revokeObjectURL` is never called for any blob URL created during an MFE load
-- [ ] A 404 or network error fetching any chunk source text throws `MfeLoadError` with the chunk URL and failure reason; the failed fetch is removed from the source text cache
-- [ ] The `hai3-mfe-externalize` plugin does not modify any imports during `vite dev` (build-only operation)
-- [ ] After `vite build`, all `__federation_shared_<pkg>-<hash>.js` chunks are renamed to `__federation_shared_<pkg>.js` and all referencing chunks are updated accordingly
-- [ ] After `vite build`, code-split chunks that previously imported from bundled CJS wrappers instead contain `importShared('<pkg>')` calls via the federation fn-import chunk
-- [ ] MFE `init.ts` files contain no direct imports from `react-redux`, `redux`, or `@reduxjs/toolkit`; all store access goes through `@hai3/react` APIs
+- [x] Two MFEs loaded sequentially with the same `react` `chunkPath` produce React instances where `Object.is(mfeA_React, mfeB_React)` is `false`
+- [x] Two MFEs loaded with the same `chunkPath` result in at most one network fetch for that chunk URL (source text cache deduplication)
+- [x] Two MFEs loaded concurrently each receive their own unique blob URL and fresh module evaluation; no `MfeLoadError` is thrown in the concurrent case
+- [x] After `import(blobUrl)` resolves, `URL.revokeObjectURL` is never called for any blob URL created during an MFE load
+- [x] A 404 or network error fetching any chunk source text throws `MfeLoadError` with the chunk URL and failure reason; the failed fetch is removed from the source text cache
+- [x] The `hai3-mfe-externalize` plugin does not modify any imports during `vite dev` (build-only operation)
+- [x] After `vite build`, all `__federation_shared_<pkg>-<hash>.js` chunks are renamed to `__federation_shared_<pkg>.js` and all referencing chunks are updated accordingly
+- [x] After `vite build`, code-split chunks that previously imported from bundled CJS wrappers instead contain `importShared('<pkg>')` calls via the federation fn-import chunk
+- [x] MFE `init.ts` files contain no direct imports from `react-redux`, `redux`, or `@reduxjs/toolkit`; all store access goes through `@hai3/react` APIs
 
 ---
 

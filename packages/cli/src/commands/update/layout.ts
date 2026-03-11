@@ -1,3 +1,5 @@
+// @cpt-FEATURE:cpt-hai3-flow-cli-tooling-update-layout:p2
+// @cpt-FEATURE:cpt-hai3-dod-cli-tooling-package:p1
 import path from 'path';
 import fs from 'fs-extra';
 import type { CommandDefinition } from '../../core/command.js';
@@ -25,6 +27,7 @@ export interface UpdateLayoutResult {
  *
  * Updates layout components from HAI3 UIKit templates.
  */
+// @cpt-begin:cpt-hai3-flow-cli-tooling-update-layout:p2:inst-1
 export const updateLayoutCommand: CommandDefinition<
   UpdateLayoutArgs,
   UpdateLayoutResult
@@ -117,3 +120,4 @@ export const updateLayoutCommand: CommandDefinition<
     };
   },
 };
+// @cpt-end:cpt-hai3-flow-cli-tooling-update-layout:p2:inst-1

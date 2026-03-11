@@ -1,8 +1,8 @@
 # Feature: Studio DevTools
 
-- [ ] `p1` - **ID**: `cpt-hai3-featstatus-studio-devtools`
+- [x] `p1` - **ID**: `cpt-hai3-featstatus-studio-devtools`
 
-- [ ] `p2` - `cpt-hai3-feature-studio-devtools`
+- [x] `p2` - `cpt-hai3-feature-studio-devtools`
 
 ## Table of Contents
 
@@ -56,7 +56,7 @@ Success criteria: A developer can toggle theme, language, and API mock mode in u
 
 ### Panel Toggle and Keyboard Access
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-studio-devtools-panel-toggle`
+- [x] `p1` - **ID**: `cpt-hai3-flow-studio-devtools-panel-toggle`
 
 **Actors**: `cpt-hai3-actor-studio-user`
 
@@ -70,7 +70,7 @@ Success criteria: A developer can toggle theme, language, and API mock mode in u
 
 ### Panel Drag and Reposition
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-studio-devtools-drag-panel`
+- [x] `p1` - **ID**: `cpt-hai3-flow-studio-devtools-drag-panel`
 
 **Actors**: `cpt-hai3-actor-studio-user`, `cpt-hai3-actor-runtime`
 
@@ -78,10 +78,10 @@ Success criteria: A developer can toggle theme, language, and API mock mode in u
 2. [ ] `p1` - `useDraggable` hook records drag start offset (cursor position relative to panel top-left) — `inst-record-offset`
 3. [ ] `p1` - `isDragging` state transitions to `true`; cursor changes to `grabbing` — `inst-dragging-state`
 4. [ ] `p1` - **FOR EACH** `mousemove` event while dragging — `inst-mousemove-loop`
-   - [ ] `p1` - Compute candidate new position from cursor coordinates minus recorded offset — `inst-compute-candidate`
-   - [ ] `p1` - Clamp position to viewport bounds using `clampToViewport` with `VIEWPORT_MARGIN = 20` — `inst-clamp-during-drag`
-   - [ ] `p1` - Set panel position state to clamped value — `inst-set-position`
-   - [ ] `p1` - Emit `studio/positionChanged` event with new position — `inst-emit-position`
+   - [x] `p1` - Compute candidate new position from cursor coordinates minus recorded offset — `inst-compute-candidate`
+   - [x] `p1` - Clamp position to viewport bounds using `clampToViewport` with `VIEWPORT_MARGIN = 20` — `inst-clamp-during-drag`
+   - [x] `p1` - Set panel position state to clamped value — `inst-set-position`
+   - [x] `p1` - Emit `studio/positionChanged` event with new position — `inst-emit-position`
 5. [ ] `p1` - On `mouseup`, `isDragging` transitions to `false`; cursor reverts to `grab` — `inst-mouseup`
 6. [ ] `p1` - Persistence effect receives `studio/positionChanged` and writes position to `hai3:studio:position` — `inst-persist-panel-pos`
 
@@ -89,7 +89,7 @@ Success criteria: A developer can toggle theme, language, and API mock mode in u
 
 ### CollapsedButton Drag with Click Distinction
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-studio-devtools-drag-button`
+- [x] `p1` - **ID**: `cpt-hai3-flow-studio-devtools-drag-button`
 
 **Actors**: `cpt-hai3-actor-studio-user`, `cpt-hai3-actor-runtime`
 
@@ -98,19 +98,19 @@ Success criteria: A developer can toggle theme, language, and API mock mode in u
 3. [ ] `p1` - `useDraggable` hook activates with `storageKey = hai3:studio:buttonPosition` — `inst-button-draggable`
 4. [ ] `p1` - On `mouseup`, compute total cursor displacement from start position — `inst-compute-displacement`
 5. [ ] `p1` - **IF** displacement is less than 5px in both axes — `inst-click-threshold`
-   - [ ] `p1` - Treat interaction as a click: call `toggleCollapsed()` to expand the panel — `inst-toggle-on-click`
-   - [ ] `p1` - Button position does NOT change — `inst-no-pos-change-on-click`
+   - [x] `p1` - Treat interaction as a click: call `toggleCollapsed()` to expand the panel — `inst-toggle-on-click`
+   - [x] `p1` - Button position does NOT change — `inst-no-pos-change-on-click`
 6. [ ] `p1` - **IF** displacement is 5px or more in any axis — `inst-drag-threshold`
-   - [ ] `p1` - Treat interaction as a drag: follow cursor with viewport clamping — `inst-drag-button`
-   - [ ] `p1` - Emit `studio/buttonPositionChanged` with new position — `inst-emit-button-pos`
-   - [ ] `p1` - Panel does NOT expand — `inst-no-expand-on-drag`
+   - [x] `p1` - Treat interaction as a drag: follow cursor with viewport clamping — `inst-drag-button`
+   - [x] `p1` - Emit `studio/buttonPositionChanged` with new position — `inst-emit-button-pos`
+   - [x] `p1` - Panel does NOT expand — `inst-no-expand-on-drag`
 7. [ ] `p1` - Persistence effect receives `studio/buttonPositionChanged` and writes to `hai3:studio:buttonPosition` — `inst-persist-button-pos`
 
 ---
 
 ### Panel Resize
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-studio-devtools-resize-panel`
+- [x] `p1` - **ID**: `cpt-hai3-flow-studio-devtools-resize-panel`
 
 **Actors**: `cpt-hai3-actor-studio-user`, `cpt-hai3-actor-runtime`
 
@@ -118,10 +118,10 @@ Success criteria: A developer can toggle theme, language, and API mock mode in u
 2. [ ] `p1` - `useResizable` hook records resize start state: current mouse coordinates and current panel dimensions — `inst-record-resize-start`
 3. [ ] `p1` - Document cursor changes to `nwse-resize`; text selection disabled on `document.body` — `inst-resize-cursor`
 4. [ ] `p1` - **FOR EACH** `mousemove` event while resizing — `inst-resize-mousemove`
-   - [ ] `p1` - Compute new width and height from delta since drag start — `inst-compute-new-size`
-   - [ ] `p1` - Clamp width to `[320, 600]` px — `inst-clamp-width`
-   - [ ] `p1` - Clamp height to `[400, 800]` px — `inst-clamp-height`
-   - [ ] `p1` - Set size state; emit `studio/sizeChanged` with new size — `inst-emit-size`
+   - [x] `p1` - Compute new width and height from delta since drag start — `inst-compute-new-size`
+   - [x] `p1` - Clamp width to `[320, 600]` px — `inst-clamp-width`
+   - [x] `p1` - Clamp height to `[400, 800]` px — `inst-clamp-height`
+   - [x] `p1` - Set size state; emit `studio/sizeChanged` with new size — `inst-emit-size`
 5. [ ] `p1` - On `mouseup`, cursor and text selection restored — `inst-resize-mouseup`
 6. [ ] `p1` - Persistence effect receives `studio/sizeChanged` and writes size to `hai3:studio:size` — `inst-persist-size`
 
@@ -129,7 +129,7 @@ Success criteria: A developer can toggle theme, language, and API mock mode in u
 
 ### Theme Change
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-studio-devtools-theme-change`
+- [x] `p1` - **ID**: `cpt-hai3-flow-studio-devtools-theme-change`
 
 **Actors**: `cpt-hai3-actor-studio-user`, `cpt-hai3-actor-framework-plugin`
 
@@ -145,7 +145,7 @@ Success criteria: A developer can toggle theme, language, and API mock mode in u
 
 ### Language Change
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-studio-devtools-language-change`
+- [x] `p1` - **ID**: `cpt-hai3-flow-studio-devtools-language-change`
 
 **Actors**: `cpt-hai3-actor-studio-user`, `cpt-hai3-actor-framework-plugin`
 
@@ -162,7 +162,7 @@ Success criteria: A developer can toggle theme, language, and API mock mode in u
 
 ### API Mock Mode Toggle
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-studio-devtools-mock-toggle`
+- [x] `p1` - **ID**: `cpt-hai3-flow-studio-devtools-mock-toggle`
 
 **Actors**: `cpt-hai3-actor-studio-user`, `cpt-hai3-actor-framework-plugin`
 
@@ -177,7 +177,7 @@ Success criteria: A developer can toggle theme, language, and API mock mode in u
 
 ### GTS Package Selection
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-studio-devtools-gts-package`
+- [x] `p1` - **ID**: `cpt-hai3-flow-studio-devtools-gts-package`
 
 **Actors**: `cpt-hai3-actor-studio-user`
 
@@ -197,7 +197,7 @@ Success criteria: A developer can toggle theme, language, and API mock mode in u
 
 ### Settings Restore on Mount
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-studio-devtools-restore-settings`
+- [x] `p1` - **ID**: `cpt-hai3-flow-studio-devtools-restore-settings`
 
 **Actors**: `cpt-hai3-actor-runtime`, `cpt-hai3-actor-framework-plugin`
 
@@ -220,7 +220,7 @@ Success criteria: A developer can toggle theme, language, and API mock mode in u
 
 ### Viewport Position Clamping
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-studio-devtools-viewport-clamp`
+- [x] `p1` - **ID**: `cpt-hai3-flow-studio-devtools-viewport-clamp`
 
 **Actors**: `cpt-hai3-actor-runtime`
 
@@ -228,16 +228,16 @@ Success criteria: A developer can toggle theme, language, and API mock mode in u
 2. [ ] `p1` - Immediately clamp the loaded position via `clampToViewport(storedPosition, elementSize)` — `inst-clamp-on-load`
 3. [ ] `p1` - `clampToViewport` enforces: `x ∈ [20, innerWidth - elementWidth - 20]`, `y ∈ [20, innerHeight - elementHeight - 20]` — `inst-clamp-formula`
 4. [ ] `p1` - **IF** viewport subsequently resizes (window `resize` event) — `inst-resize-event`
-   - [ ] `p1` - Re-clamp current position against the new viewport dimensions — `inst-re-clamp`
-   - [ ] `p1` - **IF** clamped position differs from current, update position state and emit position-changed event (so localStorage is updated) — `inst-update-on-resize`
-   - [ ] `p1` - **IF** clamped position equals current, no state update and no event emission — `inst-no-update-if-same`
+   - [x] `p1` - Re-clamp current position against the new viewport dimensions — `inst-re-clamp`
+   - [x] `p1` - **IF** clamped position differs from current, update position state and emit position-changed event (so localStorage is updated) — `inst-update-on-resize`
+   - [x] `p1` - **IF** clamped position equals current, no state update and no event emission — `inst-no-update-if-same`
 5. [ ] `p1` - Same `clampToViewport` function used by both `StudioPanel` and `CollapsedButton` — `inst-shared-clamp`
 
 ---
 
 ### Conditional Loading and Production Exclusion
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-studio-devtools-conditional-load`
+- [x] `p1` - **ID**: `cpt-hai3-flow-studio-devtools-conditional-load`
 
 **Actors**: `cpt-hai3-actor-build-system`, `cpt-hai3-actor-runtime`
 
@@ -253,7 +253,7 @@ Success criteria: A developer can toggle theme, language, and API mock mode in u
 
 ### Position Clamping Algorithm
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-studio-devtools-clamp-to-viewport`
+- [x] `p1` - **ID**: `cpt-hai3-algo-studio-devtools-clamp-to-viewport`
 
 Given element position `{x, y}` and element size `{width, height}`:
 
@@ -266,7 +266,7 @@ Given element position `{x, y}` and element size `{width, height}`:
 
 ### Default Position Derivation
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-studio-devtools-default-position`
+- [x] `p1` - **ID**: `cpt-hai3-algo-studio-devtools-default-position`
 
 Used when no stored position exists in localStorage:
 
@@ -278,7 +278,7 @@ Used when no stored position exists in localStorage:
 
 ### Persistence Initialization
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-studio-devtools-persistence-init`
+- [x] `p1` - **ID**: `cpt-hai3-algo-studio-devtools-persistence-init`
 
 Called once when `StudioProvider` mounts via `initPersistenceEffects()`:
 
@@ -295,7 +295,7 @@ Called once when `StudioProvider` mounts via `initPersistenceEffects()`:
 
 ### localStorage Read/Write with Error Guard
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-studio-devtools-localStorage-guard`
+- [x] `p1` - **ID**: `cpt-hai3-algo-studio-devtools-localStorage-guard`
 
 All reads and writes to localStorage use guarded utilities:
 
@@ -310,7 +310,7 @@ All reads and writes to localStorage use guarded utilities:
 
 ### GTS Package Restore Validation
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-studio-devtools-restore-gts-validation`
+- [x] `p1` - **ID**: `cpt-hai3-algo-studio-devtools-restore-gts-validation`
 
 Executed once when `screensetsRegistry` first becomes available:
 
@@ -327,7 +327,7 @@ Executed once when `screensetsRegistry` first becomes available:
 
 ### Event Routing for Dual Draggable Elements
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-studio-devtools-event-routing`
+- [x] `p1` - **ID**: `cpt-hai3-algo-studio-devtools-event-routing`
 
 `useDraggable` selects the correct event name based on `storageKey`:
 
@@ -340,7 +340,7 @@ Executed once when `screensetsRegistry` first becomes available:
 
 ### Dropdown Portal Management
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-studio-devtools-portal-management`
+- [x] `p1` - **ID**: `cpt-hai3-algo-studio-devtools-portal-management`
 
 Prevents dropdowns from being clipped by the glassmorphic panel's `backdrop-filter` stacking context:
 
@@ -356,7 +356,7 @@ Prevents dropdowns from being clipped by the glassmorphic panel's `backdrop-filt
 
 ### Panel Visibility State Machine
 
-- [ ] `p1` - **ID**: `cpt-hai3-state-studio-devtools-panel-visibility`
+- [x] `p1` - **ID**: `cpt-hai3-state-studio-devtools-panel-visibility`
 
 1. [ ] `p1` - **FROM** `EXPANDED` **TO** `COLLAPSED` **WHEN** Studio User clicks collapse button in panel header — `inst-collapse-via-header`
 2. [ ] `p1` - **FROM** `EXPANDED` **TO** `COLLAPSED` **WHEN** Studio User presses `Shift+\`` — `inst-collapse-via-kbd`
@@ -369,7 +369,7 @@ Prevents dropdowns from being clipped by the glassmorphic panel's `backdrop-filt
 
 ### Drag State Machine
 
-- [ ] `p1` - **ID**: `cpt-hai3-state-studio-devtools-drag`
+- [x] `p1` - **ID**: `cpt-hai3-state-studio-devtools-drag`
 
 Applies independently to both `StudioPanel` and `CollapsedButton` draggables:
 
@@ -382,7 +382,7 @@ Applies independently to both `StudioPanel` and `CollapsedButton` draggables:
 
 ### Resize State Machine
 
-- [ ] `p1` - **ID**: `cpt-hai3-state-studio-devtools-resize`
+- [x] `p1` - **ID**: `cpt-hai3-state-studio-devtools-resize`
 
 1. [ ] `p1` - **FROM** `IDLE` **TO** `RESIZING` **WHEN** `mousedown` on bottom-right resize handle — `inst-resize-start`
 2. [ ] `p1` - **FROM** `RESIZING` **TO** `RESIZING` **WHEN** `mousemove` (size updates within constraints, event emitted) — `inst-resize-move`
@@ -396,7 +396,7 @@ Applies independently to both `StudioPanel` and `CollapsedButton` draggables:
 
 ### DoD: Floating Panel and Glassmorphic Overlay
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-studio-devtools-panel-overlay`
+- [x] `p1` - **ID**: `cpt-hai3-dod-studio-devtools-panel-overlay`
 
 `StudioPanel` renders as a fixed-position floating overlay with glassmorphic styling, a draggable header, collapsible state, and a bottom-right resize handle. `CollapsedButton` is a 48×48 circular glassmorphic button that appears when the panel is collapsed and supports independent dragging.
 
@@ -431,7 +431,7 @@ Applies independently to both `StudioPanel` and `CollapsedButton` draggables:
 
 ### DoD: Control Panel Sections
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-studio-devtools-control-panel`
+- [x] `p1` - **ID**: `cpt-hai3-dod-studio-devtools-control-panel`
 
 `ControlPanel` renders four sections vertically: `MfePackageSelector`, `ApiModeToggle`, `ThemeSelector`, `LanguageSelector`. All controls use UIKit components imported directly from `@hai3/uikit`. Dropdowns render inside the high-z-index portal container to prevent clipping by the panel's `backdrop-filter` stacking context.
 
@@ -461,7 +461,7 @@ Applies independently to both `StudioPanel` and `CollapsedButton` draggables:
 
 ### DoD: Settings Persistence and Restore
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-studio-devtools-persistence`
+- [x] `p1` - **ID**: `cpt-hai3-dod-studio-devtools-persistence`
 
 All Studio control panel settings (theme, language, mock mode, active GTS package) and all UI state (panel position, panel size, collapsed state, button position) are persisted to localStorage on change and restored on Studio mount. All persistence logic lives exclusively inside `@hai3/studio`.
 
@@ -491,7 +491,7 @@ All Studio control panel settings (theme, language, mock mode, active GTS packag
 
 ### DoD: Viewport Position Clamping
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-studio-devtools-viewport-clamping`
+- [x] `p1` - **ID**: `cpt-hai3-dod-studio-devtools-viewport-clamping`
 
 Both `StudioPanel` and `CollapsedButton` always remain fully visible within the viewport with a 20px margin from all edges, both on initial mount and after window resize.
 
@@ -517,7 +517,7 @@ Both `StudioPanel` and `CollapsedButton` always remain fully visible within the 
 
 ### DoD: Keyboard Shortcut and Focus
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-studio-devtools-keyboard`
+- [x] `p1` - **ID**: `cpt-hai3-dod-studio-devtools-keyboard`
 
 Studio panel toggling is accessible via `Shift+\`` keyboard shortcut using `e.code === 'Backquote'` for cross-keyboard-layout reliability.
 
@@ -540,7 +540,7 @@ Studio panel toggling is accessible via `Shift+\`` keyboard shortcut using `e.co
 
 ### DoD: Conditional Loading and Zero Production Footprint
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-studio-devtools-conditional-loading`
+- [x] `p1` - **ID**: `cpt-hai3-dod-studio-devtools-conditional-loading`
 
 `@hai3/studio` is a standalone workspace package with `"sideEffects": false`. The host application loads it only in development via a `import.meta.env.DEV`-guarded dynamic `import()`. Production builds contain no Studio code.
 
@@ -566,18 +566,18 @@ Studio panel toggling is accessible via `Shift+\`` keyboard shortcut using `e.co
 
 ## Acceptance Criteria
 
-- [ ] Studio panel renders as a fixed glassmorphic overlay in development mode and does not appear in production builds
-- [ ] Panel can be dragged to any in-viewport position and resized within `[320–600]×[400–800]` px constraints
-- [ ] Collapsed button and panel maintain independent positions with the 5px click-vs-drag threshold correctly separating the two interactions
-- [ ] `Shift+\`` toggles panel visibility from any focus point in the application
-- [ ] Dropdown menus for theme, language, and GTS package render above the panel with no z-index clipping
-- [ ] Changing theme, language, mock mode, or GTS package via Studio applies the change immediately to the live application
-- [ ] All settings survive a page reload — theme, language, mock state, active package, position, size, collapsed state all restore correctly
-- [ ] Settings restore emits framework events that existing plugin handlers process without any framework code changes
-- [ ] GTS package restore skips gracefully when the persisted package ID is no longer registered or the registry is unavailable
-- [ ] Panel and button positions are clamped to the visible viewport on load and re-clamped on window resize; no unnecessary persistence occurs when position is unchanged
-- [ ] No Studio code executes in production (`import.meta.env.DEV` guard confirmed via bundle analysis)
-- [ ] All `@hai3/studio` code compiles with TypeScript strict mode and zero `any`/`as unknown as` violations
+- [x] Studio panel renders as a fixed glassmorphic overlay in development mode and does not appear in production builds
+- [x] Panel can be dragged to any in-viewport position and resized within `[320–600]×[400–800]` px constraints
+- [x] Collapsed button and panel maintain independent positions with the 5px click-vs-drag threshold correctly separating the two interactions
+- [x] `Shift+\`` toggles panel visibility from any focus point in the application
+- [x] Dropdown menus for theme, language, and GTS package render above the panel with no z-index clipping
+- [x] Changing theme, language, mock mode, or GTS package via Studio applies the change immediately to the live application
+- [x] All settings survive a page reload — theme, language, mock state, active package, position, size, collapsed state all restore correctly
+- [x] Settings restore emits framework events that existing plugin handlers process without any framework code changes
+- [x] GTS package restore skips gracefully when the persisted package ID is no longer registered or the registry is unavailable
+- [x] Panel and button positions are clamped to the visible viewport on load and re-clamped on window resize; no unnecessary persistence occurs when position is unchanged
+- [x] No Studio code executes in production (`import.meta.env.DEV` guard confirmed via bundle analysis)
+- [x] All `@hai3/studio` code compiles with TypeScript strict mode and zero `any`/`as unknown as` violations
 
 ---
 

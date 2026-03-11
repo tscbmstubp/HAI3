@@ -11,6 +11,8 @@
  *   hai3 migrate --status           # Show migration status
  *   hai3 migrate --path <dir>       # Target specific directory
  */
+// @cpt-FEATURE:cpt-hai3-flow-cli-tooling-migrate:p2
+// @cpt-FEATURE:cpt-hai3-dod-cli-tooling-migrations:p2
 
 import path from 'path';
 import type { CommandDefinition } from '../../core/command.js';
@@ -84,6 +86,7 @@ function createMigrationLogger(ctx: {
 /**
  * Migrate command implementation
  */
+// @cpt-begin:cpt-hai3-flow-cli-tooling-migrate:p2:inst-1
 export const migrateCommand: CommandDefinition<
   MigrateCommandArgs,
   MigrateCommandResult
@@ -293,3 +296,4 @@ export const migrateCommand: CommandDefinition<
     };
   },
 };
+// @cpt-end:cpt-hai3-flow-cli-tooling-migrate:p2:inst-1

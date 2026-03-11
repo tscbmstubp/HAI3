@@ -6,6 +6,8 @@
  * - Command variants
  * - GUIDELINES.md variants
  */
+// @cpt-FEATURE:cpt-hai3-algo-cli-tooling-select-command-variant:p1
+// @cpt-FEATURE:cpt-hai3-dod-cli-tooling-layer-variants:p1
 
 /**
  * Layer types for SDK architecture
@@ -73,6 +75,7 @@ export function isTargetApplicableToLayer(targetFileName: string, layer: LayerTy
  * @param availableFiles - List of available command files
  * @returns Selected variant filename or null if command should be excluded
  */
+// @cpt-begin:cpt-hai3-algo-cli-tooling-select-command-variant:p1:inst-1
 export function selectCommandVariant(
   baseName: string,
   layer: LayerType,
@@ -96,3 +99,4 @@ export function selectCommandVariant(
 
   return null; // Command excluded for this layer
 }
+// @cpt-end:cpt-hai3-algo-cli-tooling-select-command-variant:p1:inst-1

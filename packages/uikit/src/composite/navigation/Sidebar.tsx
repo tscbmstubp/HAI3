@@ -4,12 +4,19 @@
  * Removed: mobile support, keyboard shortcuts, cookie persistence
  */
 
+// @cpt-FEATURE:cpt-hai3-dod-uikit-components-navigation:p1
+// @cpt-FEATURE:cpt-hai3-state-uikit-components-sidebar-collapsed:p1
+// @cpt-FEATURE:cpt-hai3-flow-uikit-components-consume-composite:p1
+// @cpt-FEATURE:cpt-hai3-dod-uikit-components-ref-pattern:p1
+
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva } from "class-variance-authority"
 
 import { cn } from "../../lib/utils"
 
+// @cpt-begin:cpt-hai3-state-uikit-components-sidebar-collapsed:p1:inst-1
+// @cpt-begin:cpt-hai3-dod-uikit-components-ref-pattern:p1:inst-1
 const Sidebar = (
   {
     ref,
@@ -39,6 +46,8 @@ const Sidebar = (
     </aside>
   )
 }
+// @cpt-end:cpt-hai3-state-uikit-components-sidebar-collapsed:p1:inst-1
+// @cpt-end:cpt-hai3-dod-uikit-components-ref-pattern:p1:inst-1
 Sidebar.displayName = "Sidebar"
 
 const SidebarContent = (

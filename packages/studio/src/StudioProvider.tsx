@@ -1,3 +1,7 @@
+// @cpt-FEATURE:cpt-hai3-flow-studio-devtools-restore-settings:p1
+// @cpt-FEATURE:cpt-hai3-state-studio-devtools-panel-visibility:p1
+// @cpt-FEATURE:cpt-hai3-dod-studio-devtools-persistence:p1
+// @cpt-FEATURE:cpt-hai3-dod-studio-devtools-conditional-loading:p1
 import React, { createContext, useContext, useState, useCallback, useEffect, ReactNode } from 'react';
 import { I18nRegistry, Language, i18nRegistry, useHAI3 } from '@hai3/react';
 import { saveStudioState, loadStudioState } from './utils/persistence';
@@ -86,6 +90,8 @@ interface StudioProviderProps {
   children: ReactNode;
 }
 
+// @cpt-begin:cpt-hai3-state-studio-devtools-panel-visibility:p1:inst-1
+// @cpt-begin:cpt-hai3-dod-studio-devtools-persistence:p1:inst-1
 export const StudioProvider: React.FC<StudioProviderProps> = ({ children }) => {
   const [collapsed, setCollapsed] = useState(() =>
     loadStudioState(STORAGE_KEYS.COLLAPSED, false)
@@ -125,3 +131,5 @@ export const StudioProvider: React.FC<StudioProviderProps> = ({ children }) => {
 };
 
 StudioProvider.displayName = 'StudioProvider';
+// @cpt-end:cpt-hai3-state-studio-devtools-panel-visibility:p1:inst-1
+// @cpt-end:cpt-hai3-dod-studio-devtools-persistence:p1:inst-1

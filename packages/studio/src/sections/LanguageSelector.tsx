@@ -1,3 +1,5 @@
+// @cpt-FEATURE:cpt-hai3-flow-studio-devtools-language-change:p1
+// @cpt-FEATURE:cpt-hai3-dod-studio-devtools-control-panel:p1
 import { useTranslation, LanguageDisplayMode, TextDirection, SUPPORTED_LANGUAGES, getLanguageMetadata, type Language } from '@hai3/react';
 import { ButtonVariant } from '@hai3/uikit';
 import {
@@ -30,6 +32,7 @@ export interface LanguageSelectorProps {
  * Changes apply immediately without page reload
  * Automatically updates HTML dir attribute for RTL support
  */
+// @cpt-begin:cpt-hai3-flow-studio-devtools-language-change:p1:inst-1
 export function LanguageSelector({
   displayMode = LanguageDisplayMode.Native
 }: LanguageSelectorProps = {}) {
@@ -67,3 +70,4 @@ export function LanguageSelector({
     </div>
   );
 }
+// @cpt-end:cpt-hai3-flow-studio-devtools-language-change:p1:inst-1

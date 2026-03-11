@@ -6,6 +6,8 @@
  *
  * React Layer: L3 (Depends on @hai3/framework)
  */
+// @cpt-FEATURE:cpt-hai3-flow-react-bindings-mfe-provider:p1
+// @cpt-FEATURE:cpt-hai3-dod-react-bindings-mfe-hooks:p1
 
 import React from 'react';
 import { MfeContext, type MfeContextValue } from './MfeContext';
@@ -41,6 +43,8 @@ export interface MfeProviderProps {
  * </MfeProvider>
  * ```
  */
+// @cpt-begin:cpt-hai3-flow-react-bindings-mfe-provider:p1:inst-2
+// @cpt-begin:cpt-hai3-dod-react-bindings-mfe-hooks:p1:inst-2
 export const MfeProvider: React.FC<MfeProviderProps> = ({ value, children }) => {
   return (
     <MfeContext.Provider value={value}>
@@ -48,3 +52,5 @@ export const MfeProvider: React.FC<MfeProviderProps> = ({ value, children }) => 
     </MfeContext.Provider>
   );
 };
+// @cpt-end:cpt-hai3-flow-react-bindings-mfe-provider:p1:inst-2
+// @cpt-end:cpt-hai3-dod-react-bindings-mfe-hooks:p1:inst-2

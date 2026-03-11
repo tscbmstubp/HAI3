@@ -3,6 +3,8 @@
  *
  * React Layer: L3
  */
+// @cpt-FEATURE:cpt-hai3-flow-react-bindings-use-theme:p1
+// @cpt-FEATURE:cpt-hai3-dod-react-bindings-theme-hook:p1
 
 import { useCallback, useMemo, useSyncExternalStore } from 'react';
 import { useHAI3 } from '../HAI3Context';
@@ -31,6 +33,8 @@ import type { UseThemeReturn } from '../types';
  * );
  * ```
  */
+// @cpt-begin:cpt-hai3-flow-react-bindings-use-theme:p1:inst-1
+// @cpt-begin:cpt-hai3-dod-react-bindings-theme-hook:p1:inst-1
 export function useTheme(): UseThemeReturn {
   const app = useHAI3();
   const { themeRegistry } = app;
@@ -80,3 +84,5 @@ export function useTheme(): UseThemeReturn {
     setTheme,
   };
 }
+// @cpt-end:cpt-hai3-flow-react-bindings-use-theme:p1:inst-1
+// @cpt-end:cpt-hai3-dod-react-bindings-theme-hook:p1:inst-1

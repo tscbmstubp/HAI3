@@ -1,8 +1,8 @@
 # Feature: Publishing Pipeline
 
-- [ ] `p2` - **ID**: `cpt-hai3-featstatus-publishing-pipeline`
+- [x] `p2` - **ID**: `cpt-hai3-featstatus-publishing-pipeline`
 
-- [ ] `p2` - `cpt-hai3-feature-publishing-pipeline`
+- [x] `p2` - `cpt-hai3-feature-publishing-pipeline`
 
 ## Table of Contents
 
@@ -63,40 +63,40 @@ exactly one publish of that version; subsequent re-runs of the same workflow ski
 
 ### Publish on PR Merge
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-publishing-pipeline-publish-on-merge`
+- [x] `p1` - **ID**: `cpt-hai3-flow-publishing-pipeline-publish-on-merge`
 
 **Actors**: `cpt-hai3-actor-ci-cd`, `cpt-hai3-actor-build-system`
 
 **Trigger**: Push event on the `main` branch (GitHub Actions `push: branches: [main]`)
 
-1. [ ] `p1` - CI/CD checks out the full git history (`fetch-depth: 0`) to enable commit comparison — `inst-checkout`
-2. [ ] `p1` - CI/CD iterates over every directory under `packages/`; FOR EACH package directory, reads its `package.json` — `inst-iter-packages`
-3. [ ] `p1` - CI/CD diffs `HEAD` against `github.event.before` (the pre-push commit SHA) — `inst-diff-head`
-4. [ ] `p1` - IF `package.json` of the current directory appears in the diff AND the version value changed THEN the package is added to the candidate list with its `name`, `dir`, and `version` — `inst-detect-version-change`
-5. [ ] `p1` - IF no candidates found THEN CI/CD logs "No packages with version changes to publish" and exits with status 0 — `inst-no-changes-exit`
-6. [ ] `p1` - CI/CD sorts candidates by layer priority: L1 SDK packages (`state`, `screensets`, `api`, `i18n`, `uikit`) → L2 (`framework`) → L3 (`react`) → Studio → CLI — `inst-sort-by-layer`
-7. [ ] `p1` - CI/CD runs `npm ci` to install dependencies — `inst-install-deps`
-8. [ ] `p1` - CI/CD runs `npm run build:packages` to build all packages in layer order — `inst-build-packages`
-9. [ ] `p1` - FOR EACH package in the sorted candidate list, CI/CD runs the publish sub-flow using `cpt-hai3-flow-publishing-pipeline-publish-single-package` — `inst-publish-each`
-10. [ ] `p1` - CI/CD emits a job summary listing all published and skipped packages — `inst-summary`
+1. [x] `p1` - CI/CD checks out the full git history (`fetch-depth: 0`) to enable commit comparison — `inst-checkout`
+2. [x] `p1` - CI/CD iterates over every directory under `packages/`; FOR EACH package directory, reads its `package.json` — `inst-iter-packages`
+3. [x] `p1` - CI/CD diffs `HEAD` against `github.event.before` (the pre-push commit SHA) — `inst-diff-head`
+4. [x] `p1` - IF `package.json` of the current directory appears in the diff AND the version value changed THEN the package is added to the candidate list with its `name`, `dir`, and `version` — `inst-detect-version-change`
+5. [x] `p1` - IF no candidates found THEN CI/CD logs "No packages with version changes to publish" and exits with status 0 — `inst-no-changes-exit`
+6. [x] `p1` - CI/CD sorts candidates by layer priority: L1 SDK packages (`state`, `screensets`, `api`, `i18n`, `uikit`) → L2 (`framework`) → L3 (`react`) → Studio → CLI — `inst-sort-by-layer`
+7. [x] `p1` - CI/CD runs `npm ci` to install dependencies — `inst-install-deps`
+8. [x] `p1` - CI/CD runs `npm run build:packages` to build all packages in layer order — `inst-build-packages`
+9. [x] `p1` - FOR EACH package in the sorted candidate list, CI/CD runs the publish sub-flow using `cpt-hai3-flow-publishing-pipeline-publish-single-package` — `inst-publish-each`
+10. [x] `p1` - CI/CD emits a job summary listing all published and skipped packages — `inst-summary`
 
 ---
 
 ### Publish Single Package
 
-- [ ] `p1` - **ID**: `cpt-hai3-flow-publishing-pipeline-publish-single-package`
+- [x] `p1` - **ID**: `cpt-hai3-flow-publishing-pipeline-publish-single-package`
 
 **Actors**: `cpt-hai3-actor-ci-cd`
 
 **Precondition**: Package has been built; `NODE_AUTH_TOKEN` env var is set from `NPM_TOKEN` secret.
 
-1. [ ] `p1` - CI/CD determines the dist-tag by applying `cpt-hai3-algo-publishing-pipeline-resolve-dist-tag` to the package version — `inst-resolve-tag`
-2. [ ] `p1` - CI/CD queries NPM registry: `npm view <name>@<version> version` — `inst-npm-view`
-3. [ ] `p1` - IF the version already exists on NPM THEN CI/CD logs "Skipping `<name>@<version>` — already exists on NPM" and continues to the next package — `inst-skip-existing`
-4. [ ] `p1` - CI/CD changes working directory to `packages/<dir>` — `inst-cd-pkg`
-5. [ ] `p1` - CI/CD calls `cpt-hai3-algo-publishing-pipeline-publish-with-retry` with the resolved dist-tag — `inst-call-retry-algo`
-6. [ ] `p1` - IF all retry attempts fail THEN CI/CD logs "FAILED: `<name>@<version>` publish failed after retries" and exits with status 1, stopping all further publishing — `inst-fail-fast`
-7. [ ] `p1` - IF publish succeeds THEN CI/CD logs "SUCCESS: Published `<name>@<version>`" and records the package in the published list — `inst-record-success`
+1. [x] `p1` - CI/CD determines the dist-tag by applying `cpt-hai3-algo-publishing-pipeline-resolve-dist-tag` to the package version — `inst-resolve-tag`
+2. [x] `p1` - CI/CD queries NPM registry: `npm view <name>@<version> version` — `inst-npm-view`
+3. [x] `p1` - IF the version already exists on NPM THEN CI/CD logs "Skipping `<name>@<version>` — already exists on NPM" and continues to the next package — `inst-skip-existing`
+4. [x] `p1` - CI/CD changes working directory to `packages/<dir>` — `inst-cd-pkg`
+5. [x] `p1` - CI/CD calls `cpt-hai3-algo-publishing-pipeline-publish-with-retry` with the resolved dist-tag — `inst-call-retry-algo`
+6. [x] `p1` - IF all retry attempts fail THEN CI/CD logs "FAILED: `<name>@<version>` publish failed after retries" and exits with status 1, stopping all further publishing — `inst-fail-fast`
+7. [x] `p1` - IF publish succeeds THEN CI/CD logs "SUCCESS: Published `<name>@<version>`" and records the package in the published list — `inst-record-success`
 
 ---
 
@@ -119,45 +119,45 @@ exactly one publish of that version; subsequent re-runs of the same workflow ski
 
 ### Resolve Dist-Tag
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-publishing-pipeline-resolve-dist-tag`
+- [x] `p1` - **ID**: `cpt-hai3-algo-publishing-pipeline-resolve-dist-tag`
 
 Determines the NPM dist-tag for a given version string.
 
-1. [ ] `p1` - IF the version string contains `-alpha` THEN RETURN `"alpha"` — `inst-alpha-tag`
-2. [ ] `p1` - IF the version string contains `-beta` THEN RETURN `"beta"` — `inst-beta-tag`
-3. [ ] `p1` - IF the version string contains `-rc` THEN RETURN `"next"` — `inst-rc-tag`
-4. [ ] `p1` - RETURN `"latest"` — `inst-latest-tag`
+1. [x] `p1` - IF the version string contains `-alpha` THEN RETURN `"alpha"` — `inst-alpha-tag`
+2. [x] `p1` - IF the version string contains `-beta` THEN RETURN `"beta"` — `inst-beta-tag`
+3. [x] `p1` - IF the version string contains `-rc` THEN RETURN `"next"` — `inst-rc-tag`
+4. [x] `p1` - RETURN `"latest"` — `inst-latest-tag`
 
 ---
 
 ### Publish with Retry
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-publishing-pipeline-publish-with-retry`
+- [x] `p1` - **ID**: `cpt-hai3-algo-publishing-pipeline-publish-with-retry`
 
 Attempts `npm publish --access public --tag <dist-tag>` with exponential backoff. Operates
 inside the package directory (`packages/<dir>`). Maximum three attempts with delays of 5 s,
 10 s, and 20 s between attempts.
 
-1. [ ] `p1` - Set `attempt = 1`, `delay = 5`, `max_attempts = 3` — `inst-init-retry`
-2. [ ] `p1` - TRY `npm publish --access public --tag <dist-tag>` — `inst-run-publish`
-3. [ ] `p1` - IF publish succeeds THEN RETURN success — `inst-publish-success`
-4. [ ] `p1` - CATCH publish failure: IF `attempt < max_attempts` THEN log "Attempt `<attempt>` failed. Retrying in `<delay>`s...", wait `delay` seconds, multiply `delay` by 2, increment `attempt`, and GOTO step 2 — `inst-retry-backoff`
-5. [ ] `p1` - IF `attempt == max_attempts` AND publish failed THEN log "All `<max_attempts>` attempts failed" and RETURN failure — `inst-exhausted`
+1. [x] `p1` - Set `attempt = 1`, `delay = 5`, `max_attempts = 3` — `inst-init-retry`
+2. [x] `p1` - TRY `npm publish --access public --tag <dist-tag>` — `inst-run-publish`
+3. [x] `p1` - IF publish succeeds THEN RETURN success — `inst-publish-success`
+4. [x] `p1` - CATCH publish failure: IF `attempt < max_attempts` THEN log "Attempt `<attempt>` failed. Retrying in `<delay>`s...", wait `delay` seconds, multiply `delay` by 2, increment `attempt`, and GOTO step 2 — `inst-retry-backoff`
+5. [x] `p1` - IF `attempt == max_attempts` AND publish failed THEN log "All `<max_attempts>` attempts failed" and RETURN failure — `inst-exhausted`
 
 ---
 
 ### Detect Version Changes
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-publishing-pipeline-detect-version-changes`
+- [x] `p1` - **ID**: `cpt-hai3-algo-publishing-pipeline-detect-version-changes`
 
 Compares the current `HEAD` state against the pre-push commit to identify packages whose
 `version` field changed.
 
-1. [ ] `p1` - Retrieve `BASE_COMMIT` from `github.event.before` — `inst-base-commit`
-2. [ ] `p1` - FOR EACH `packages/<dir>/package.json` file: check if the file path appears in `git diff <BASE_COMMIT> --name-only` — `inst-diff-check`
-3. [ ] `p1` - IF the file appears in the diff: read `OLD_VERSION` via `git show <BASE_COMMIT>:<path>`, read `NEW_VERSION` from the current file — `inst-read-versions`
-4. [ ] `p1` - IF `OLD_VERSION != NEW_VERSION` AND `NEW_VERSION` is non-empty THEN add the package to the candidate list — `inst-add-candidate`
-5. [ ] `p1` - RETURN the candidate list (may be empty) — `inst-return-candidates`
+1. [x] `p1` - Retrieve `BASE_COMMIT` from `github.event.before` — `inst-base-commit`
+2. [x] `p1` - FOR EACH `packages/<dir>/package.json` file: check if the file path appears in `git diff <BASE_COMMIT> --name-only` — `inst-diff-check`
+3. [x] `p1` - IF the file appears in the diff: read `OLD_VERSION` via `git show <BASE_COMMIT>:<path>`, read `NEW_VERSION` from the current file — `inst-read-versions`
+4. [x] `p1` - IF `OLD_VERSION != NEW_VERSION` AND `NEW_VERSION` is non-empty THEN add the package to the candidate list — `inst-add-candidate`
+5. [x] `p1` - RETURN the candidate list (may be empty) — `inst-return-candidates`
 
 ---
 
@@ -186,7 +186,7 @@ Required fields for all packages:
 
 ### Layer Sort Order
 
-- [ ] `p1` - **ID**: `cpt-hai3-algo-publishing-pipeline-layer-sort`
+- [x] `p1` - **ID**: `cpt-hai3-algo-publishing-pipeline-layer-sort`
 
 Maps a package directory name to a numeric sort key that enforces the correct build and
 publish order. Lower numbers publish first.
@@ -199,9 +199,9 @@ publish order. Lower numbers publish first.
 | `studio` | 4 (standalone, after react) |
 | Any other directory (including `cli`) | 5 (tooling, always last) |
 
-1. [ ] `p1` - FOR EACH candidate package: assign its sort key using the table above — `inst-assign-key`
-2. [ ] `p1` - Sort the candidate list ascending by sort key — `inst-sort-asc`
-3. [ ] `p1` - RETURN the sorted list — `inst-return-sorted`
+1. [x] `p1` - FOR EACH candidate package: assign its sort key using the table above — `inst-assign-key`
+2. [x] `p1` - Sort the candidate list ascending by sort key — `inst-sort-asc`
+3. [x] `p1` - RETURN the sorted list — `inst-return-sorted`
 
 ---
 
@@ -209,34 +209,34 @@ publish order. Lower numbers publish first.
 
 ### Workflow Run State
 
-- [ ] `p1` - **ID**: `cpt-hai3-state-publishing-pipeline-workflow-run`
+- [x] `p1` - **ID**: `cpt-hai3-state-publishing-pipeline-workflow-run`
 
 Describes the state of a single GitHub Actions publish workflow run from trigger to
 completion.
 
-1. [ ] `p1` - **FROM** `IDLE` **TO** `DETECTING` **WHEN** push event fires on `main` — `inst-trigger`
-2. [ ] `p1` - **FROM** `DETECTING` **TO** `SKIPPED` **WHEN** no version changes are detected — `inst-no-changes`
-3. [ ] `p1` - **FROM** `DETECTING` **TO** `BUILDING` **WHEN** at least one version change is detected — `inst-has-changes`
-4. [ ] `p1` - **FROM** `BUILDING` **TO** `PUBLISHING` **WHEN** `npm run build:packages` completes successfully — `inst-build-done`
-5. [ ] `p1` - **FROM** `BUILDING` **TO** `FAILED` **WHEN** `npm run build:packages` exits with non-zero status — `inst-build-failed`
-6. [ ] `p1` - **FROM** `PUBLISHING` **TO** `SUCCEEDED` **WHEN** all candidate packages are either published or skipped (already exists) — `inst-all-done`
-7. [ ] `p1` - **FROM** `PUBLISHING` **TO** `FAILED` **WHEN** any `npm publish` attempt exhausts all retries — `inst-publish-failed`
+1. [x] `p1` - **FROM** `IDLE` **TO** `DETECTING` **WHEN** push event fires on `main` — `inst-trigger`
+2. [x] `p1` - **FROM** `DETECTING` **TO** `SKIPPED` **WHEN** no version changes are detected — `inst-no-changes`
+3. [x] `p1` - **FROM** `DETECTING` **TO** `BUILDING` **WHEN** at least one version change is detected — `inst-has-changes`
+4. [x] `p1` - **FROM** `BUILDING` **TO** `PUBLISHING` **WHEN** `npm run build:packages` completes successfully — `inst-build-done`
+5. [x] `p1` - **FROM** `BUILDING` **TO** `FAILED` **WHEN** `npm run build:packages` exits with non-zero status — `inst-build-failed`
+6. [x] `p1` - **FROM** `PUBLISHING` **TO** `SUCCEEDED` **WHEN** all candidate packages are either published or skipped (already exists) — `inst-all-done`
+7. [x] `p1` - **FROM** `PUBLISHING` **TO** `FAILED` **WHEN** any `npm publish` attempt exhausts all retries — `inst-publish-failed`
 
 ---
 
 ### Package Publish State
 
-- [ ] `p1` - **ID**: `cpt-hai3-state-publishing-pipeline-package-publish`
+- [x] `p1` - **ID**: `cpt-hai3-state-publishing-pipeline-package-publish`
 
 Describes the publishing state of a single package within one workflow run.
 
-1. [ ] `p1` - **FROM** `PENDING` **TO** `CHECKING` **WHEN** the package's turn arrives in the sorted publish loop — `inst-pkg-checking`
-2. [ ] `p1` - **FROM** `CHECKING` **TO** `SKIPPED` **WHEN** `npm view <name>@<version>` returns a result (version already on NPM) — `inst-pkg-skip`
-3. [ ] `p1` - **FROM** `CHECKING` **TO** `PUBLISHING` **WHEN** `npm view <name>@<version>` returns "not found" — `inst-pkg-publish`
-4. [ ] `p1` - **FROM** `PUBLISHING` **TO** `RETRYING` **WHEN** a publish attempt fails and retry attempts remain — `inst-pkg-retry`
-5. [ ] `p1` - **FROM** `RETRYING` **TO** `PUBLISHED` **WHEN** a retry attempt succeeds — `inst-pkg-retry-success`
-6. [ ] `p1` - **FROM** `PUBLISHING` **TO** `PUBLISHED` **WHEN** the first publish attempt succeeds — `inst-pkg-published`
-7. [ ] `p1` - **FROM** `RETRYING` **TO** `FAILED` **WHEN** all retry attempts are exhausted — `inst-pkg-failed`
+1. [x] `p1` - **FROM** `PENDING` **TO** `CHECKING` **WHEN** the package's turn arrives in the sorted publish loop — `inst-pkg-checking`
+2. [x] `p1` - **FROM** `CHECKING` **TO** `SKIPPED` **WHEN** `npm view <name>@<version>` returns a result (version already on NPM) — `inst-pkg-skip`
+3. [x] `p1` - **FROM** `CHECKING` **TO** `PUBLISHING` **WHEN** `npm view <name>@<version>` returns "not found" — `inst-pkg-publish`
+4. [x] `p1` - **FROM** `PUBLISHING` **TO** `RETRYING` **WHEN** a publish attempt fails and retry attempts remain — `inst-pkg-retry`
+5. [x] `p1` - **FROM** `RETRYING` **TO** `PUBLISHED` **WHEN** a retry attempt succeeds — `inst-pkg-retry-success`
+6. [x] `p1` - **FROM** `PUBLISHING` **TO** `PUBLISHED` **WHEN** the first publish attempt succeeds — `inst-pkg-published`
+7. [x] `p1` - **FROM** `RETRYING` **TO** `FAILED` **WHEN** all retry attempts are exhausted — `inst-pkg-failed`
 
 ---
 
@@ -244,7 +244,7 @@ Describes the publishing state of a single package within one workflow run.
 
 ### Package Metadata Contract
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-publishing-pipeline-metadata-contract`
+- [x] `p1` - **ID**: `cpt-hai3-dod-publishing-pipeline-metadata-contract`
 
 All `@hai3/*` packages include the required NPM publishing metadata in their `package.json`.
 Running `npm pack` on any package produces a tarball containing only `dist/` files plus any
@@ -280,7 +280,7 @@ documented extras (README, CLAUDE.md), with no source TypeScript files.
 
 ### Version Alignment
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-publishing-pipeline-version-alignment`
+- [x] `p1` - **ID**: `cpt-hai3-dod-publishing-pipeline-version-alignment`
 
 All `@hai3/*` packages that are published together carry the same version string. A PR that
 bumps versions bumps them uniformly (e.g., all go from `0.3.0` to `0.4.0-alpha.0`).
@@ -302,7 +302,7 @@ bumps versions bumps them uniformly (e.g., all go from `0.3.0` to `0.4.0-alpha.0
 
 ### Automated CI Publish Workflow
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-publishing-pipeline-ci-workflow`
+- [x] `p1` - **ID**: `cpt-hai3-dod-publishing-pipeline-ci-workflow`
 
 The GitHub Actions workflow at `.github/workflows/publish-packages.yml` correctly implements
 version detection, layer-ordered building, NPM registry pre-check, publish with retry, and
@@ -338,7 +338,7 @@ fail-fast error handling. The workflow triggers on push to `main` only.
 
 ### Idempotent Registry Check
 
-- [ ] `p1` - **ID**: `cpt-hai3-dod-publishing-pipeline-idempotent-check`
+- [x] `p1` - **ID**: `cpt-hai3-dod-publishing-pipeline-idempotent-check`
 
 Re-running the workflow after a successful publish does not produce errors or duplicate
 publishes. Packages whose version already exists on NPM are silently skipped.

@@ -1,3 +1,5 @@
+// @cpt-FEATURE:cpt-hai3-flow-studio-devtools-mock-toggle:p1
+// @cpt-FEATURE:cpt-hai3-dod-studio-devtools-control-panel:p1
 import React from 'react';
 import { useTranslation, useAppSelector, toggleMockMode, type MockState } from '@hai3/react';
 import { Switch } from '@hai3/uikit';
@@ -14,6 +16,7 @@ export interface ApiModeToggleProps {
   className?: string;
 }
 
+// @cpt-begin:cpt-hai3-flow-studio-devtools-mock-toggle:p1:inst-1
 export const ApiModeToggle: React.FC<ApiModeToggleProps> = ({
   className,
 }) => {
@@ -45,3 +48,4 @@ export const ApiModeToggle: React.FC<ApiModeToggleProps> = ({
 };
 
 ApiModeToggle.displayName = 'ApiModeToggle';
+// @cpt-end:cpt-hai3-flow-studio-devtools-mock-toggle:p1:inst-1

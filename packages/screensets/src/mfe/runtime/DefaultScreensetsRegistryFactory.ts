@@ -8,6 +8,9 @@
  * @packageDocumentation
  * @internal
  */
+// @cpt-FEATURE:cpt-hai3-flow-screenset-registry-factory-build:p1
+// @cpt-FEATURE:cpt-hai3-state-screenset-registry-factory-cache:p1
+// @cpt-FEATURE:cpt-hai3-dod-screenset-registry-factory-cache:p1
 
 import { ScreensetsRegistryFactory } from './ScreensetsRegistryFactory';
 import { DefaultScreensetsRegistry } from './DefaultScreensetsRegistry';
@@ -39,6 +42,8 @@ export class DefaultScreensetsRegistryFactory extends ScreensetsRegistryFactory 
    * @returns The ScreensetsRegistry singleton instance
    * @throws Error if called with different config after first build
    */
+  // @cpt-begin:cpt-hai3-flow-screenset-registry-factory-build:p1:inst-1
+  // @cpt-begin:cpt-hai3-state-screenset-registry-factory-cache:p1:inst-1
   build(config: ScreensetsRegistryConfig): ScreensetsRegistry {
     if (this.instance) {
       // Instance exists - validate config matches
@@ -59,4 +64,6 @@ export class DefaultScreensetsRegistryFactory extends ScreensetsRegistryFactory 
     this.instance = new DefaultScreensetsRegistry(config);
     return this.instance;
   }
+  // @cpt-end:cpt-hai3-flow-screenset-registry-factory-build:p1:inst-1
+  // @cpt-end:cpt-hai3-state-screenset-registry-factory-cache:p1:inst-1
 }

@@ -39,7 +39,8 @@
     "@cyberfabric/state": "*",
     "@cyberfabric/screensets": "*",
     "@cyberfabric/api": "*",
-    "@cyberfabric/i18n": "*"
+    "@cyberfabric/i18n": "*",
+    "@tanstack/query-core": "^5.0.0"
   },
   "peerDependenciesMeta": {
     "@cyberfabric/state": {
@@ -52,6 +53,9 @@
       "optional": false
     },
     "@cyberfabric/i18n": {
+      "optional": false
+    },
+    "@tanstack/query-core": {
       "optional": false
     }
   },

@@ -194,7 +194,11 @@ describe('Extension Lifecycle Actions', () => {
           subject: testExtension1.id,
         });
 
-        expect(callbacks.mountExtension).toHaveBeenCalledWith(testExtension1.id, mockContainerProvider.mockContainer);
+        expect(callbacks.mountExtension).toHaveBeenCalledWith(
+          testExtension1.id,
+          mockContainerProvider.mockContainer,
+          undefined
+        );
       });
 
       it('should throw error if payload is missing', async () => {
@@ -252,7 +256,11 @@ describe('Extension Lifecycle Actions', () => {
 
         // Verify unmount was called first, then mount
         expect(callbacks.unmountExtension).toHaveBeenCalledWith(testExtension2.id);
-        expect(callbacks.mountExtension).toHaveBeenCalledWith(newExtId, mockContainerProvider.mockContainer);
+        expect(callbacks.mountExtension).toHaveBeenCalledWith(
+          newExtId,
+          mockContainerProvider.mockContainer,
+          undefined
+        );
 
         // Verify order: unmount before mount
         const unmountFn = callbacks.unmountExtension as ReturnType<typeof vi.fn>;
@@ -298,7 +306,11 @@ describe('Extension Lifecycle Actions', () => {
 
         // Verify unmount was NOT called
         expect(callbacks.unmountExtension).not.toHaveBeenCalled();
-        expect(callbacks.mountExtension).toHaveBeenCalledWith(testExtension2.id, mockContainerProvider.mockContainer);
+        expect(callbacks.mountExtension).toHaveBeenCalledWith(
+          testExtension2.id,
+          mockContainerProvider.mockContainer,
+          undefined
+        );
       });
 
       it('should call serializeOnDomain with the domain ID when handleScreenSwap executes', async () => {
@@ -321,7 +333,11 @@ describe('Extension Lifecycle Actions', () => {
           expect.any(Function)
         );
         // The inner unmount+mount callbacks are called inside the serialized block
-        expect(callbacks.mountExtension).toHaveBeenCalledWith(testExtension2.id, mockContainerProvider.mockContainer);
+        expect(callbacks.mountExtension).toHaveBeenCalledWith(
+          testExtension2.id,
+          mockContainerProvider.mockContainer,
+          undefined
+        );
       });
 
       it('should serialize concurrent swaps on the same domain', async () => {

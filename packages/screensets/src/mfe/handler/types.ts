@@ -68,6 +68,29 @@ export interface ChildMfeBridge {
 }
 
 /**
+ * Runtime values supplied by the host at mount time.
+ *
+ * These fields let host-owned React roots pass identity metadata and an
+ * externally managed query client into child MFE providers.
+ */
+export interface MfeMountContext {
+  readonly queryClient?: unknown;
+  readonly extensionId?: string;
+  readonly domainId?: string;
+}
+
+/**
+ * Resolve host-provided runtime values for an extension mount.
+ *
+ * The runtime always supplies `extensionId` and `domainId`; resolvers add any
+ * extra opaque values such as a shared QueryClient.
+ */
+export type MountContextResolver = (
+  extensionId: string,
+  domainId: string
+) => Omit<MfeMountContext, 'extensionId' | 'domainId'> | undefined;
+
+/**
  * MFE lifecycle interface.
  * All MFE entries must implement this interface.
  */
@@ -81,8 +104,13 @@ export interface MfeEntryLifecycle<TBridge = ChildMfeBridge> {
    *
    * @param container - DOM element or shadow root to mount into
    * @param bridge - Bridge instance for communication with host
+   * @param mountContext - Host-provided runtime context for this mount
    */
-  mount(container: Element | ShadowRoot, bridge: TBridge): void | Promise<void>;
+  mount(
+    container: Element | ShadowRoot,
+    bridge: TBridge,
+    mountContext?: MfeMountContext
+  ): void | Promise<void>;
 
   /**
    * Unmount the MFE from its container.

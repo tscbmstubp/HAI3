@@ -266,6 +266,7 @@ export function getMfeManifests() {
 // @cpt-end:cpt-hai3-flow-ui-libraries-choice-screenset-generate:p2:inst-screenset-build-manifests
 
 const COMPONENTS_UI_PREFIX = path.join('src', 'components', 'ui') + path.sep;
+const COMPONENTS_UI_IMPORT_PATTERN = /(from\s+)(['"])([^'"]*?components\/ui)\/[^'"]+\2/g;
 
 /**
  * Adapt MFE template files for a custom (non-shadcn) UI kit.
@@ -300,8 +301,8 @@ export function adaptMfeForCustomUikit(files: GeneratedFile[], uikit: string): G
     if (file.path.endsWith('.tsx') || file.path.endsWith('.ts')) {
       const content = file.content
         .replace(
-          /from\s+['"]([^'"]*?)components\/ui\/[^'"]+['"]/g,
-          `from '$1components/ui'`
+          COMPONENTS_UI_IMPORT_PATTERN,
+          '$1$2$3$2'
         );
       result.push({ path: file.path, content });
       continue;

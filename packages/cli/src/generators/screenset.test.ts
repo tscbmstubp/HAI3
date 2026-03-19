@@ -215,6 +215,16 @@ describe('adaptMfeForCustomUikit', () => {
     assert.equal(deep!.content, "import { Skeleton } from '../../components/ui';");
   });
 
+  it('should rewrite aliased component/ui imports', () => {
+    const files = makeFiles([
+      [path.join('src', 'screens', 'Home.tsx'), "import { Button } from '@/components/ui/button';"],
+    ]);
+    const result = adaptMfeForCustomUikit(files, '@acme/ui');
+    const home = result.find((f) => f.path.endsWith('Home.tsx'));
+    assert.ok(home);
+    assert.equal(home!.content, "import { Button } from '@/components/ui';");
+  });
+
   it('should rewrite multiple imports in a single file', () => {
     const content = [
       "import { Button } from '../components/ui/button';",
@@ -291,7 +301,7 @@ describe('adaptMfeForCustomUikit', () => {
     const result = adaptMfeForCustomUikit(files, '@acme/ui');
     const home = result.find((f) => f.path.endsWith('Home.tsx'));
     assert.ok(home);
-    assert.ok(home!.content.includes("from '../components/ui'"));
+    assert.equal(home!.content, 'import { Button } from "../components/ui";');
     assert.ok(!home!.content.includes('/button'));
   });
 });

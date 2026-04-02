@@ -48,6 +48,7 @@ describe('bootstrapMfeDomains', () => {
     expect(registry.executeActionsChain).toBe(originalExecuteActionsChain);
     expect(registry.setMountContextResolver).toHaveBeenCalledTimes(2);
 
+    // Resolver return type is MfeMountValues; DefaultMountManager wraps it as mountContext.values.
     const resolver = vi.mocked(registry.setMountContextResolver).mock.calls[1]?.[0];
     expect(resolver?.('test-extension', 'screen')).toEqual({
       queryClient: app.queryClient,

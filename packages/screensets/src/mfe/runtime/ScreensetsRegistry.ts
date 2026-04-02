@@ -142,8 +142,7 @@ export abstract class ScreensetsRegistry {
    * Register or clear a host-provided mount-context resolver.
    *
    * The runtime always provides `extensionId` and `domainId`; the resolver adds
-   * any extra opaque values needed by the mounted MFE, such as a shared
-   * QueryClient instance.
+   * any extra opaque host values needed by the mounted MFE.
    *
    * @param resolver - Resolver for host-provided mount values, or undefined to clear it
    */

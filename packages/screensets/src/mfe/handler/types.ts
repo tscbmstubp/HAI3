@@ -68,13 +68,25 @@ export interface ChildMfeBridge {
 }
 
 /**
+ * One entry in {@link MfeMountValues}. Opaque at the screensets layer — integrators
+ * narrow at L2/L3 (e.g. React host reads `values.queryClient` after checking shape).
+ */
+export type MfeMountValue = unknown;
+
+/**
+ * String-keyed bag returned by {@link MountContextResolver} and attached to
+ * {@link MfeMountContext.values} when the resolver returns a value.
+ */
+export type MfeMountValues = Readonly<Record<string, MfeMountValue>>;
+
+/**
  * Runtime values supplied by the host at mount time.
  *
- * These fields let host-owned React roots pass identity metadata and an
- * externally managed query client into child MFE providers.
+ * The runtime always attaches identity metadata (`extensionId`, `domainId`).
+ * Higher layers may additionally pass an opaque values bag for runtime wiring.
  */
 export interface MfeMountContext {
-  readonly queryClient?: unknown;
+  readonly values?: MfeMountValues;
   readonly extensionId?: string;
   readonly domainId?: string;
 }
@@ -83,12 +95,12 @@ export interface MfeMountContext {
  * Resolve host-provided runtime values for an extension mount.
  *
  * The runtime always supplies `extensionId` and `domainId`; resolvers add any
- * extra opaque values such as a shared QueryClient.
+ * extra opaque host values needed by the mounted MFE.
  */
 export type MountContextResolver = (
   extensionId: string,
   domainId: string
-) => Omit<MfeMountContext, 'extensionId' | 'domainId'> | undefined;
+) => MfeMountValues | undefined;
 
 /**
  * MFE lifecycle interface.

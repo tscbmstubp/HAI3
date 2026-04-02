@@ -138,7 +138,9 @@ describe('DefaultMountManager — mount context forwarding', () => {
     const callArgs = (mockLifecycle.mount as ReturnType<typeof vi.fn>).mock.calls[0];
     expect(callArgs[2]).toBeDefined();
     expect(callArgs[2]).toEqual({
-      queryClient: fakeQueryClient,
+      values: {
+        queryClient: fakeQueryClient,
+      },
       extensionId: EXT_ID,
       domainId: DOMAIN_ID,
     });

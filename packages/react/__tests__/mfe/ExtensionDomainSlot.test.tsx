@@ -130,6 +130,11 @@ describe('ExtensionDomainSlot', () => {
     });
 
     expect(resolverSpy).toHaveBeenCalled();
+    const resolver = resolverSpy.mock.calls.at(-1)?.[0];
+    expect(resolver?.(extensionId, HAI3_SCREEN_DOMAIN)).toEqual({
+      queryClient: app.queryClient,
+    });
+
     expect(execSpy).toHaveBeenCalledWith({
       action: {
         type: HAI3_ACTION_MOUNT_EXT,

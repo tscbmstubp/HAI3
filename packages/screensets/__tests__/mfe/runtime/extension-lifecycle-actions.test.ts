@@ -196,8 +196,7 @@ describe('Extension Lifecycle Actions', () => {
 
         expect(callbacks.mountExtension).toHaveBeenCalledWith(
           testExtension1.id,
-          mockContainerProvider.mockContainer,
-          undefined
+          mockContainerProvider.mockContainer
         );
       });
 
@@ -258,8 +257,7 @@ describe('Extension Lifecycle Actions', () => {
         expect(callbacks.unmountExtension).toHaveBeenCalledWith(testExtension2.id);
         expect(callbacks.mountExtension).toHaveBeenCalledWith(
           newExtId,
-          mockContainerProvider.mockContainer,
-          undefined
+          mockContainerProvider.mockContainer
         );
 
         // Verify order: unmount before mount
@@ -308,8 +306,7 @@ describe('Extension Lifecycle Actions', () => {
         expect(callbacks.unmountExtension).not.toHaveBeenCalled();
         expect(callbacks.mountExtension).toHaveBeenCalledWith(
           testExtension2.id,
-          mockContainerProvider.mockContainer,
-          undefined
+          mockContainerProvider.mockContainer
         );
       });
 
@@ -335,8 +332,7 @@ describe('Extension Lifecycle Actions', () => {
         // The inner unmount+mount callbacks are called inside the serialized block
         expect(callbacks.mountExtension).toHaveBeenCalledWith(
           testExtension2.id,
-          mockContainerProvider.mockContainer,
-          undefined
+          mockContainerProvider.mockContainer
         );
       });
 

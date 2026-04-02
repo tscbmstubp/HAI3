@@ -410,6 +410,8 @@ Tracks per-language load state for `useScreenTranslations`.
 
 `HAI3Provider` accepts `children`, optional `config`, optional pre-built `app`, optional injected `queryClient`, and optional `mfeBridge`. When `app` is not provided, it creates one via `createHAI3App(config)`. When `queryClient` is not provided, it uses `app.queryClient` when available; otherwise it renders without `QueryClientProvider`. When a client is provided (or comes from the app), separate React roots can share the same TanStack cache instance. The instance is memoized; internally created resources are cleaned up on unmount. The full context tree (`HAI3Context` → `ReduxProvider` → optional `QueryClientProvider` → optional `MfeProvider`) is assembled before children render.
 
+For MFE screen roots, when a `QueryClient` is resolved the provider registers a mount-context resolver that returns `MfeMountValues` `{ queryClient }`; the screensets runtime merges that bag into `MfeMountContext.values` before invoking `lifecycle.mount(container, bridge, mountContext)`. React lifecycles (e.g. `ThemeAwareReactLifecycle`) read the shared client from `mountContext.values?.queryClient`, not a top-level `mountContext.queryClient`.
+
 **Implements**:
 - `cpt-frontx-algo-react-bindings-resolve-app`
 - `cpt-frontx-algo-react-bindings-build-provider-tree`

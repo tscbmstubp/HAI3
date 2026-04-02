@@ -10,7 +10,7 @@
 // @cpt-state:cpt-frontx-state-screenset-registry-extension-load:p1
 // @cpt-state:cpt-frontx-state-screenset-registry-extension-mount:p1
 
-import type { MfeHandler, MfeMountContext, ParentMfeBridge } from '../handler/types';
+import type { MfeHandler, MfeMountContext, MfeMountValues, ParentMfeBridge } from '../handler/types';
 import type { RuntimeCoordinator } from '../coordination/types';
 import type { ActionHandler } from '../mediator/types';
 import type { ActionsChain } from '../types';
@@ -87,7 +87,7 @@ export class DefaultMountManager extends MountManager {
   private readonly resolveMountContext: (
     extensionId: string,
     domainId: string
-  ) => Omit<MfeMountContext, 'extensionId' | 'domainId'> | undefined;
+  ) => MfeMountValues | undefined;
 
   constructor(config: {
     extensionManager: DefaultExtensionManager;
@@ -102,7 +102,7 @@ export class DefaultMountManager extends MountManager {
     resolveMountContext: (
       extensionId: string,
       domainId: string
-    ) => Omit<MfeMountContext, 'extensionId' | 'domainId'> | undefined;
+    ) => MfeMountValues | undefined;
   }) {
     super();
     this.extensionManager = config.extensionManager;
@@ -268,8 +268,9 @@ export class DefaultMountManager extends MountManager {
           `This should not happen - loadExtension should have cached the lifecycle.`
         );
       }
+      const resolvedValues = this.resolveMountContext(extensionId, extensionState.extension.domain);
       const mountContext: MfeMountContext = {
-        ...this.resolveMountContext(extensionId, extensionState.extension.domain),
+        ...(resolvedValues !== undefined && { values: resolvedValues }),
         extensionId,
         domainId: extensionState.extension.domain,
       };

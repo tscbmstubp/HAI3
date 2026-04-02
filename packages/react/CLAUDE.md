@@ -381,7 +381,8 @@ function LayoutScreen() {
 
 `ExtensionDomainSlot` is the preferred host-side renderer for screen MFEs. It
 owns mount/unmount and loading/error UI while the runtime mount-context
-resolver provides the current `QueryClient` so separately mounted roots reuse
+resolver returns `MfeMountValues` (e.g. `{ queryClient }`), which the registry
+places on `MfeMountContext.values` at mount so separately mounted roots reuse
 the host cache.
 
 When the domain's `ContainerProvider` must point at the same DOM node rendered

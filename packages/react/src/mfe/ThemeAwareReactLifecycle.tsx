@@ -3,7 +3,12 @@
 import React from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import type { QueryClient } from '@tanstack/react-query';
-import type { HAI3App, MfeEntryLifecycle, ChildMfeBridge, MfeMountContext } from '@cyberfabric/framework';
+import type {
+  HAI3App,
+  MfeEntryLifecycle,
+  ChildMfeBridge,
+  MfeMountContext,
+} from '@cyberfabric/framework';
 import { HAI3Provider } from '../HAI3Provider';
 
 interface ProviderMountOptions {
@@ -17,7 +22,7 @@ interface ProviderMountOptions {
 
 type QueryClientLike = Pick<QueryClient, 'getQueryCache' | 'getMutationCache' | 'defaultQueryOptions'>;
 
-function isQueryClientLike(value: MfeMountContext['queryClient']): value is QueryClient {
+function isQueryClientLike(value: unknown): value is QueryClient {
   const candidate = value as QueryClientLike | undefined;
 
   return (
@@ -32,7 +37,7 @@ function resolveProviderMountOptions(
   bridge: ChildMfeBridge,
   mountContext?: MfeMountContext
 ): ProviderMountOptions {
-  const queryClient = mountContext?.queryClient;
+  const queryClient = mountContext?.values?.queryClient;
   const extensionId = mountContext?.extensionId;
   const domainId = mountContext?.domainId;
 

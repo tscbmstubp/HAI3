@@ -60,6 +60,8 @@ export type { ScreensetsRegistryConfig } from './runtime';
 export type {
   ParentMfeBridge,
   ChildMfeBridge,
+  MfeMountValue,
+  MfeMountValues,
   MfeMountContext,
   MountContextResolver,
   MfeEntryLifecycle,

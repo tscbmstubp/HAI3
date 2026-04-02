@@ -421,6 +421,8 @@ export {
 export type {
   ChildMfeBridge,
   ParentMfeBridge,
+  MfeMountValue,
+  MfeMountValues,
   MfeMountContext,
   MountContextResolver,
   Extension,

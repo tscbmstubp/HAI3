@@ -7,13 +7,12 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { ChildMfeBridgeImpl } from '../../../src/mfe/bridge/ChildMfeBridge';
 import { ParentMfeBridgeImpl } from '../../../src/mfe/bridge/ParentMfeBridge';
-import type { ActionsChain, SharedProperty } from '../../../src/mfe/types';
+import type { ActionsChain, SharedProperty, ExtensionDomain } from '../../../src/mfe/types';
 import type { ActionHandler } from '../../../src/mfe/mediator/types';
 import { NoActionsChainHandlerError, BridgeDisposedError } from '../../../src/mfe/errors';
 import { DefaultActionsChainsMediator } from '../../../src/mfe/mediator/actions-chains-mediator';
 import { DefaultScreensetsRegistry } from '../../../src/mfe/runtime/DefaultScreensetsRegistry';
 import type { TypeSystemPlugin, ValidationResult, JSONSchema } from '../../../src/mfe/plugins/types';
-import type { ExtensionDomain } from '../../../src/mfe/types';
 import { MockContainerProvider } from '../test-utils';
 
 describe('Bridge Implementation', () => {

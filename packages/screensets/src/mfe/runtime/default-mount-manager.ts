@@ -331,8 +331,17 @@ export class DefaultMountManager extends MountManager {
         await lifecycle.unmount(unmountTarget);
       }
 
-      // Unregister extension action handler from mediator before disposing bridge
-      this.unregisterExtensionActionHandler(extensionId);
+      // Unregister extension action handler from mediator before disposing bridge.
+      // Wrapped in try/catch so a failure (e.g., pending actions) does not strand
+      // the rest of the unmount cleanup (bridge dispose, coordinator, state reset).
+      try {
+        this.unregisterExtensionActionHandler(extensionId);
+      } catch (unregisterError) {
+        console.error(
+          `[MountManager] Failed to unregister extension action handler for '${extensionId}':`,
+          unregisterError
+        );
+      }
 
       // Dispose bridge
       if (extensionState.bridge) {

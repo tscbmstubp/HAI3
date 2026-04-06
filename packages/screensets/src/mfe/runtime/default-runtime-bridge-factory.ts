@@ -39,6 +39,8 @@ export class DefaultRuntimeBridgeFactory extends RuntimeBridgeFactory {
    * @param executeActionsChain - Callback for executing actions chains from child to parent
    * @param registerDomainActionHandler - Callback for registering child domain action handlers in parent mediator
    * @param unregisterDomainActionHandler - Callback for unregistering child domain action handlers from parent mediator
+   * @param registerExtensionActionHandler - Callback for registering extension action handlers in parent mediator
+   * @param _unregisterExtensionActionHandler - Callback for unregistering extension action handlers (unused — cleanup handled by mount manager)
    * @returns Object containing parent and child bridge instances
    */
   createBridge(

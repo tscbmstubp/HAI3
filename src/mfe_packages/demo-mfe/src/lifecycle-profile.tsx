@@ -19,6 +19,12 @@ import { DEMO_ACTION_REFRESH_PROFILE } from './shared/extension-ids';
  */
 // @cpt-begin:child-bridge-action-handler:p3:inst-1
 class ProfileActionHandler {
+  /**
+   * Handle an action routed to this extension by the mediator.
+   *
+   * @param actionTypeId - GTS type ID of the incoming action
+   * @param _payload - Optional action payload (unused for refresh)
+   */
   async handleAction(actionTypeId: string, _payload: Record<string, never> | undefined): Promise<void> {
     if (actionTypeId === DEMO_ACTION_REFRESH_PROFILE) {
       fetchUser();

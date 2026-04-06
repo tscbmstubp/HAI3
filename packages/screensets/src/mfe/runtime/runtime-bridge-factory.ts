@@ -41,6 +41,8 @@ export abstract class RuntimeBridgeFactory {
    * @param executeActionsChain - Callback for executing actions chains
    * @param registerDomainActionHandler - Callback for registering child domain action handlers
    * @param unregisterDomainActionHandler - Callback for unregistering child domain action handlers
+   * @param registerExtensionActionHandler - Callback for registering extension action handlers in parent mediator
+   * @param unregisterExtensionActionHandler - Callback for unregistering extension action handlers from parent mediator
    * @returns Object containing parent and child bridge instances
    */
   abstract createBridge(
